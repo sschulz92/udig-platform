@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -21,7 +21,7 @@ import org.opengis.feature.simple.SimpleFeature;
 
 /**
  * A SimpleFeature that can adapt to it's layer.
- * 
+ *
  * @author Jesse Eichar
  * @since 1.0.0
  */
@@ -31,7 +31,7 @@ public class AdaptableFeature extends DecoratingFeature implements IAdaptable, S
 
     /**
      * Construct <code>AdaptableFeature</code>.
-     * 
+     *
      * @param feature the wrapped feature
      * @param evaluationObject the layer that contains the feature.
      */
@@ -40,7 +40,7 @@ public class AdaptableFeature extends DecoratingFeature implements IAdaptable, S
     }
     /**
      * Construct <code>AdaptableFeature</code>.
-     * 
+     *
      * @param feature the wrapped feature
      * @param layer the layer that contains the feature.
      */
@@ -74,12 +74,12 @@ public class AdaptableFeature extends DecoratingFeature implements IAdaptable, S
         }
         return delegate.equals(obj);
     }
-    
+
     @Override
     public int hashCode() {
     	return delegate.hashCode();
     }
-    
+
     /**
      * @see org.locationtech.udig.project.ui.internal.adapters.UDIGAdaptableDecorator#getObject()
      */

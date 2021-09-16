@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -38,7 +38,7 @@ import org.locationtech.udig.ui.UDIGDisplaySafeLock;
 
 /**
  * Handle for a WFS service.
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -58,7 +58,7 @@ public class WFSServiceImpl extends IService {
         this.identifier = identifier;
         this.params = dsParams;
     }
-    
+
     /*
      * Required adaptions: <ul> <li>IServiceInfo.class <li>List.class <IGeoResource> </ul>
      * @see org.locationtech.udig.catalog.IService#resolve(java.lang.Class,

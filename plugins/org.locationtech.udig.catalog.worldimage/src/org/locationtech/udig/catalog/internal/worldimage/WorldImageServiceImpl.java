@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -31,7 +31,7 @@ import org.geotools.gce.image.WorldImageFormatFactory;
 
 /**
  * Provides a handle to a world image service allowing the service to be lazily loaded.
- * 
+ *
  * @author mleslie
  * @since 0.6.0
  */
@@ -40,7 +40,7 @@ public class WorldImageServiceImpl extends AbstractRasterService {
 
     /**
      * Construct <code>WorldImageServiceImpl</code>.
-     * 
+     *
      * @param id
      * @param factory
      */

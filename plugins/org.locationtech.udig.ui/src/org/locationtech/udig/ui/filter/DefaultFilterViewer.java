@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -36,7 +36,7 @@ import org.opengis.filter.Filter;
  * Remember that although Viewers are a wrapper around some SWT Control or Composite you still have
  * direct access using the getControl() method so that you can do your layout data thing.
  * </p>
- * 
+ *
  * @author Jody Garnett
  * @since 1.2.0
  */
@@ -44,9 +44,9 @@ public class DefaultFilterViewer extends CQLFilterViewer {
 
     /**
      * Factory used to hook this into filterViewer extension point.
-     * 
+     *
      * @see FilterViewer for details of programatic use
-     * 
+     *
      * @author Jody Garnett
      * @since 1.3.2
      */
@@ -87,15 +87,15 @@ public class DefaultFilterViewer extends CQLFilterViewer {
      * Text box to allow the user to enter a value to base a filter on
      */
     protected Combo value;
-    
+
     protected Button insert;
-    
+
     private SelectionAdapter insertButtonListener = new SelectionAdapter() {
         @Override
         public void widgetSelected(SelectionEvent e) {
-            
+
             final StringBuilder sb = new StringBuilder();
-            
+
             if (attribute.getSelectionIndex() != -1) {
                 sb.append(attribute.getText());
                 attribute.deselectAll();
@@ -116,13 +116,13 @@ public class DefaultFilterViewer extends CQLFilterViewer {
                 sb.append(value.getText());
                 value.deselectAll();
             }
-            
+
             if (sb.length() > 0) {
                 changed();
                 text.insert(sb.toString());
                 text.setFocus();
             }
-            
+
         }
     };
 
@@ -139,7 +139,7 @@ public class DefaultFilterViewer extends CQLFilterViewer {
      * <li>SWT.MULTI - viewer is able to assume additional vertical space is available</li>
      * <li>SWT.READ_ONLY - read only</li>
      * </ul>
-     * 
+     *
      * @param parent composite viewer is being added to
      * @param style used to layout the viewer
      */
@@ -210,14 +210,14 @@ public class DefaultFilterViewer extends CQLFilterViewer {
         insert = new Button(control, SWT.NONE);
         insert.setText("Insert");
         insert.addSelectionListener(insertButtonListener);
-        
+
         setLayout(isMultiline);
 
     }
 
     /**
      * This sets the layout of the UI elements in the viewer.
-     * 
+     *
      * @param isMultiline
      */
     private void setLayout(boolean isMultiline) {
@@ -236,7 +236,7 @@ public class DefaultFilterViewer extends CQLFilterViewer {
 
             lblValue.setLayoutData("cell 4 1,alignx trailing,gapx related");
             value.setLayoutData("cell 5 1,wmin 60,alignx left,gapx related");
-            
+
             insert.setLayoutData("cell 6 1,alignx left,gapx unrel");
         } else {
             control.setLayout(new MigLayout("insets 0, flowx", "", ""));
@@ -251,7 +251,7 @@ public class DefaultFilterViewer extends CQLFilterViewer {
 
     /**
      * Used to supply a list of suggested values; given the provided attribtue descriptor.
-     * 
+     *
      * @param descriptor
      * @return list of suggested values (may be empty if no values are suggested)
      */
@@ -278,7 +278,7 @@ public class DefaultFilterViewer extends CQLFilterViewer {
      * This is the widget used to display the Filter; its parent has been provided in the
      * ExpressionViewer's constructor; but you may need direct access to it in order to set layout
      * data etc.
-     * 
+     *
      * @return control used to display the filter
      */
     public Control getControl() {

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -24,13 +24,13 @@ import org.locationtech.jts.geom.Polygon;
 
 /**
  * Provides methods for conveniently recreating JTS geometries.
- * 
+ *
  * @author jEICHAR
  * @since 0.3
  */
 public class GeometryBuilder {
     /**
-     * 
+     *
      */
     public GeometryFactory factory = new GeometryFactory();
 
@@ -40,7 +40,7 @@ public class GeometryBuilder {
 
     /**
      * create a geometry builder object.
-     * 
+     *
      * @return GeometryBuilder
      */
     public static GeometryBuilder create() {
@@ -49,7 +49,7 @@ public class GeometryBuilder {
 
     /**
      * Creates a Geometry of type type from the coordinates in the coordinate array.
-     * 
+     *
      * @param type
      * @param coords
      * @return Geometry
@@ -63,7 +63,7 @@ public class GeometryBuilder {
         }
         return null;
     }
-    /** 
+    /**
      * Creates a Geometry (or related class) from the coordinates with a few extra
      * sanity checks (such as closing rings and so on).
      * @param <T>

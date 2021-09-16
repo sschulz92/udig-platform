@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -26,7 +26,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
  * The resource is not guaranteed to exist, nor do we guarantee that we can connect with the
  * resource. Some/All portions of this handle may be loaded as required. This resource handle may
  * also be the result a metadata service query.
- * 
+ *
  * <h2>Implementing an IService</h2>
  * <p>
  * Implement the abstract methods and you are good to go:
@@ -38,7 +38,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
  * <p>
  * Please consider implementing support for resolve( ImageDescriptor.class, null ) as it
  * will allow your IProcess to show up with a unique representation in the Catalog view.
- * 
+ *
  * Based on the IGeoResource abstract class.
  * </p>
  * @author gdavis, Refractions Research
@@ -58,11 +58,11 @@ public abstract class IProcess implements IResolve {
      * </ul>
      * <p>
      * Example Use (no casting required!):
-     * 
+     *
      * <pre><code>
      * IProcessInfo info = resolve(IProcessInfo.class);
      * </code></pre>
-     * 
+     *
      * </p>
      * <p>
      * Recommendated adaptions:
@@ -71,7 +71,7 @@ public abstract class IProcess implements IResolve {
      * <li>List.class - members( monitor ) ie children of this process (if any exist)
      * </ul>
      * </p>
-     * 
+     *
      * @param adaptee
      * @param monitor
      * @return instance of adaptee, or null if unavailable (IProcessInfo and IService must be
@@ -81,7 +81,7 @@ public abstract class IProcess implements IResolve {
      * @see IResolve#resolve(Class, IProgressMonitor)
      */
     public <T> T resolve( Class<T> adaptee, IProgressMonitor monitor ) throws IOException {
-    	
+
         if (monitor == null)
             monitor = new NullProgressMonitor();
 
@@ -139,7 +139,7 @@ public abstract class IProcess implements IResolve {
     public <T> boolean canResolve( Class<T> adaptee ) {
         return adaptee != null && (adaptee.isAssignableFrom(IProcess.class) || // this
                 adaptee.isAssignableFrom(IService.class) || // service( monitor )
-                adaptee.isAssignableFrom(getClass()) || 
+                adaptee.isAssignableFrom(getClass()) ||
                 adaptee.isAssignableFrom(IResolve.class) || // parent
                 CatalogPlugin.getDefault().getResolveManager().canResolve(this, adaptee));
     }
@@ -149,7 +149,7 @@ public abstract class IProcess implements IResolve {
      * <p>
      * As an example this method is used by LabelDecorators to acquire title, and icon.
      * </p>
-     * 
+     *
      * @return IProcessInfo resolve(IProcessInfo.class,IProgressMonitor monitor);
      * @see IProcess#resolve(Class, IProgressMonitor)
      */
@@ -160,7 +160,7 @@ public abstract class IProcess implements IResolve {
      * <p>
      * Method is useful in dealing with deeply nested Process children (where parent may not
      * always be an IService).
-     * 
+     *
      * @return IService for this Process
      * @see IProcess#resolve(Class, IProgressMonitor)
      */
@@ -170,27 +170,27 @@ public abstract class IProcess implements IResolve {
      * Returns parent for this Process.
      * <p>
      * Most implementations will use the following code example:
-     * 
+     *
      * <pre><code>
      * public IService parent( IProgressMonitor monitor ) throws IOException {
      *     return service(monitor);
      * }
      * </code></pre>
-     * 
+     *
      * This code example preserves backwards compatibility with uDig 1.0 via type narrowing IResolve
      * to IService.
      * <p>
      * You will need to provide a different implementation when working with nested content (like
      * database schema).
-     * 
+     *
      * @return parent IResolve for this Process
      * @see IProcess#resolve(Class, IProgressMonitor)
      */
-//  TODO public abstract IResolve parent( IProgressMonitor monitor ) throws IOException;     
+//  TODO public abstract IResolve parent( IProgressMonitor monitor ) throws IOException;
     public IResolve parent( IProgressMonitor monitor ) throws IOException {
         return service(monitor);
     }
-    
+
     /**
      * List of children, or EMPTY_LIST for a leaf.
      * <p>
@@ -199,13 +199,13 @@ public abstract class IProcess implements IResolve {
      * @return Collections.emptyList();
      * @see org.locationtech.udig.catalog.IResolve#members(org.eclipse.core.runtime.IProgressMonitor)
      */
-    public List<IResolve> members( IProgressMonitor monitor ) {        
+    public List<IResolve> members( IProgressMonitor monitor ) {
         return Collections.emptyList(); // type safe EMPTY_LIST
     }
 
     /**
      * This should represent the identifier
-     * 
+     *
      * @see Object#equals(java.lang.Object)
      * @param arg0
      * @return
@@ -230,13 +230,13 @@ public abstract class IProcess implements IResolve {
     }
     /**
      * This should represent the identified
-     * 
+     *
      * @see Object#hashCode()
      * @return
      */
     public int hashCode() {
         int value = 31;
-        
+
         if (getIdentifier() != null)
             value += 31 + URLUtils.urlToString(getIdentifier(), false).hashCode();
         value += 31 + getClass().getName().hashCode();
@@ -260,7 +260,7 @@ public abstract class IProcess implements IResolve {
      */
     /**
      * Indicate class and id.
-     * 
+     *
      * @return string representing this IResolve
      */
     public String toString() {
@@ -279,7 +279,7 @@ public abstract class IProcess implements IResolve {
      * <p>
      * For example: A WPS (IService) with an id of http://www.something.com/wps?Service=WPS would
      * have processes with ids similar to: http://www.something.com/wps?Service=WPS#process1
-     * 
+     *
      * @see IResolve#getIdentifier()
      */
     public abstract URL getIdentifier();
@@ -287,10 +287,10 @@ public abstract class IProcess implements IResolve {
     public ID getID() {
         return new ID( getIdentifier() );
     }
-    
+
     /**
      * Disposes of any resources or listeners required. Default implementation does nothing.
-     * 
+     *
      * @param monitor monitor to show progress
      */
     public void dispose( IProgressMonitor monitor ) {

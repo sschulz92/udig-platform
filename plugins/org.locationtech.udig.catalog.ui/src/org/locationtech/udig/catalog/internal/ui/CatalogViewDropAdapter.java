@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -38,12 +38,12 @@ public class CatalogViewDropAdapter extends ViewerDropAdapter {
 
         IServiceFactory serviceFactory = CatalogPlugin.getDefault().getServiceFactory();
         IRepository local = CatalogPlugin.getDefault().getLocal();
-        
+
         if (data instanceof URL) {
             URL url = (URL) data;
             try {
                 local.acquire( url, null );  // add to catalog if needed
-                
+
             } catch (IOException e) {
                 CatalogUIPlugin.log( "Drag and Drop "+url, e);
             }
@@ -55,7 +55,7 @@ public class CatalogViewDropAdapter extends ViewerDropAdapter {
             } catch (IOException e) {
                 CatalogUIPlugin.log( "Drag and Drop "+connectionParams, e);
             }
-            //List<IService> candidates = serviceFactory.createService( connectionParams );            
+            //List<IService> candidates = serviceFactory.createService( connectionParams );
         } else if (data instanceof String || data instanceof String[]) {
             List<URL> urls = null;
             if (data instanceof String) {

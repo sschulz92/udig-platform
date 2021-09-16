@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -28,7 +28,7 @@ import org.eclipse.ui.IWorkbenchActionConstants;
  */
 public interface Constants {
     // Note:  all menus have a IWorkbenchActionConstants group
-    
+
     // Group Markers for the File menu in the menu bar
     /** menu path: "file/fileStart" */
     public static final String FILE_START=IWorkbenchActionConstants.FILE_START;
@@ -42,7 +42,7 @@ public interface Constants {
     public static final String SAVE_EXT=IWorkbenchActionConstants.SAVE_EXT;
     /** menu path: "file/fileEnd" */
     public static final String FILE_END=IWorkbenchActionConstants.FILE_END;
-    
+
     /** menu path: "file/config.ext" */
     public static final String CONFIG_EXT = "config.ext"; //$NON-NLS-1$
     /** menu path: "file/new.start" */
@@ -50,7 +50,7 @@ public interface Constants {
     /** menu path: "file/rename.ext" */
     public static final String RENAME_EXT = "rename.ext"; //$NON-NLS-1$
 
-    
+
     // Group Marker for the Edit menu in the menu bar
     public static final String EDIT_START=IWorkbenchActionConstants.EDIT_START;
     public static final String UNDO_EXT=IWorkbenchActionConstants.UNDO_EXT;
@@ -61,7 +61,7 @@ public interface Constants {
     public static final String OTHER = "other";
     /** menu path: "edit/commit" */
     public static final String COMMIT_EXT = "commit.exe"; //$NON-NLS-1$
-    
+
     // Group Marker for the Navigation menu in the menu bar
     /** menu path: "navigate" */
     public static final String M_NAVIGATE=IWorkbenchActionConstants.M_NAVIGATE;
@@ -73,14 +73,14 @@ public interface Constants {
     public static final String NAV_BOTTOM="bottom"; //$NON-NLS-1$
     /** menu path: "navigate/navEnd" */
     public static final String NAV_END=IWorkbenchActionConstants.NAV_END;
-    
+
     // Group Marker for the Layer menu in the menu bar
     public static final String M_LAYER="layer"; //$NON-NLS-1$
     public static final String LAYER_ADD_EXT="add.ext"; //$NON-NLS-1$
     public static final String LAYER_EDIT_EXT="edit.ext"; //$NON-NLS-1$
     public static final String LAYER_MAPGRAPHIC_EXT="mapGraphic.ext"; //$NON-NLS-1$
     public static final String LAYER_MAPGRAPHIC_OTHER="mapGraphicOther.ext"; //$NON-NLS-1$
-    
+
     // Group Marker for the Window menu in the menu bar - Only MB_ADDITIONS
     // Group Marker for the Tool menu in the menu bar
     /** menu path: "tools" */
@@ -89,10 +89,10 @@ public interface Constants {
     public static final String TOOL_ACTION="action.ext"; //$NON-NLS-U1$
     /** menu path: "tools/modal.ext" */
     public static final String TOOL_MODAL="modal.ext"; //$NON-NLS-1$
-    
+
     // Group Marker for the Help menu in the menu bar
     public static final String HELP_START=IWorkbenchActionConstants.HELP_START;
     public static final String HELP_END=IWorkbenchActionConstants.HELP_END;
-    
-    
+
+
 }

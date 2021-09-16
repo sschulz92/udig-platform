@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -36,7 +36,7 @@ import org.locationtech.udig.project.ui.UDIGEditorInput;
 
 /**
  * creates a pdf file from the printing page.
- * 
+ *
  * @author Richard Gould
  * @author Andrea Antonello (www.hydrologis.com)
  * @author Frank Gasdorf
@@ -79,14 +79,14 @@ public class PrintAction extends Action implements IEditorActionDelegate {
         if (outFile.exists()) {
             fileIsLocked = !outFile.renameTo(outFile);
         }
-        
+
         if (fileIsLocked) {
-            MessageDialog.open(MessageDialog.ERROR, workbenchWindow.getShell(), Messages.PrintAction_errorDialogTitle, 
+            MessageDialog.open(MessageDialog.ERROR, workbenchWindow.getShell(), Messages.PrintAction_errorDialogTitle,
                     MessageFormat.format(Messages.PrintAction_errorDialogLockMessage, outFile.getAbsolutePath()), SWT.NONE);
             return;
         }
 
-        
+
         // copy the page before modifying it
         final Page copy = (Page) EcoreUtil.copy((EObject) page);
         final PdfPrintingEngine engine = new PdfPrintingEngine(copy, outFile);
@@ -113,7 +113,7 @@ public class PrintAction extends Action implements IEditorActionDelegate {
 
     /**
      * TODO summary sentence for setActiveEditor ...
-     * 
+     *
      * @see org.eclipse.ui.IEditorActionDelegate#setActiveEditor(org.eclipse.jface.action.IAction, org.eclipse.ui.IEditorPart)
      * @param action
      * @param targetEditor
@@ -131,7 +131,7 @@ public class PrintAction extends Action implements IEditorActionDelegate {
 
     /**
      * TODO summary sentence for selectionChanged ...
-     * 
+     *
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
      * @param action
      * @param selection

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -15,8 +15,8 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.Rectangle;
 
 /**
- * Implementation of an A4 size Template in landscape mode. 
- * 
+ * Implementation of an A4 size Template in landscape mode.
+ *
  * @author Andrea Antonello (www.hydrologis.com)
  */
 public class A4LandscapeTemplate extends AbstractPrinterPageTemplate {

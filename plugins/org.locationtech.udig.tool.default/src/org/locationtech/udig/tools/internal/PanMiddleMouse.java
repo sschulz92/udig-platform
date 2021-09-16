@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -16,14 +16,14 @@ import org.locationtech.udig.project.ui.tool.IToolContext;
 
 /**
  * Tool for panning using the middle mouse.
- * 
+ *
  * @author Jesse
  */
 public class PanMiddleMouse extends PanTool {
 
 	public PanMiddleMouse() {
 	}
-	
+
 	@Override
 	public void setContext(IToolContext context) {
 		super.setContext(context);
@@ -38,7 +38,7 @@ public class PanMiddleMouse extends PanTool {
 			super.setActive(active);
 
 	}
-	
+
 	@Override
 	protected boolean validModifierButtonCombo(MapMouseEvent e) {
 		return e.buttons==MapMouseEvent.BUTTON2;

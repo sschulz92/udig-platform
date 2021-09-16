@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -28,7 +28,7 @@ import org.eclipse.swt.graphics.Path;
 /**
  * An adapter that allows uDig and plugin writers to write to AWT components and images or SWT
  * Drawable objects by using this common interface.
- * 
+ *
  * @author jeichar
  */
 public interface ViewportGraphics {
@@ -60,7 +60,7 @@ public interface ViewportGraphics {
      * Line drawing style for solid line with rounded ends lines (value is 6).
      */
     public static final int LINE_SOLID_ROUNDED = 6;
-    
+
     /** <code>ALIGN_TOP</code> field used to align text */
     public static final int ALIGN_TOP = 1;
     /** <code>ALIGN_MIDDLE</code> field used to align text */
@@ -78,7 +78,7 @@ public interface ViewportGraphics {
      * @param path the path to fill.
      */
     public void fillPath( Path path );
-    
+
     /**
      * Fills the interior of a <code>Shape</code> using the foreground color, clip & transform.
      * <p>
@@ -86,7 +86,7 @@ public interface ViewportGraphics {
      * using the settings of the <code>Graphics2D</code> context. The rendering attributes applied
      * include the <code>Clip</code>, <code>Transform</code>, <code>Paint</code>, and
      * <code>Composite</code>.
-     * 
+     *
      * @param s the <code>Shape</code> to be filled <bq>
      *        </p>
      * @param s the <code>Shape</code> to be rendered
@@ -106,7 +106,7 @@ public interface ViewportGraphics {
 
     /**
      * Fills a rectangle.
-     * 
+     *
      * @param x the starting x coordinate
      * @param y the starting y coordinate
      * @param width the width of the rectangle.
@@ -114,10 +114,10 @@ public interface ViewportGraphics {
      */
     public void fillRect( int x, int y, int width, int height );
 
-    
+
     /**
      * Fills the specified rectangle with the background color.
-     * 
+     *
      * @param x The starting corner's x-coordinate.
      * @param y The starting corner's y-coordinate.
      * @param width the width of the rectangle
@@ -127,7 +127,7 @@ public interface ViewportGraphics {
 
     /**
      * Draws the outline of the path using the color, clip and transform.
-     * 
+     *
      * @path the path to draw.
      */
     public void drawPath( Path path );
@@ -140,7 +140,7 @@ public interface ViewportGraphics {
      * applied include the <code>Clip</code>, <code>Transform</code>, <code>Paint</code>,
      * <code>Composite</code> and <code>Stroke</code> attributes. <bq>
      * </p>
-     * 
+     *
      * @param s the <code>Shape</code> to be rendered
      * @see fill
      */
@@ -148,7 +148,7 @@ public interface ViewportGraphics {
 
     /**
      * Draws a rectangle - only the boundary.
-     * 
+     *
      * @param x the starting x coordinate
      * @param y the starting y coordinate
      * @param width the width of the rectangle.
@@ -157,7 +157,7 @@ public interface ViewportGraphics {
     public void drawRect( int x, int y, int width, int height );
     /**
      * Draws a line from x1,y1 to x2,y2
-     * 
+     *
      * @param x1
      * @param y1
      * @param x2
@@ -174,11 +174,11 @@ public interface ViewportGraphics {
      * @param height the height of the Oval.
      */
     public void drawOval( int x, int y, int width, int height );
-    
+
     /**
      * Draws a string. Alignment parameters specify where the string should be located relative to
-     * coordinate (x,y).  
-     * 
+     * coordinate (x,y).
+     *
      * @param string The string to draw.
      * @param x the x coordinate of the location where the of the string will be placed.
      * @param y the y coordinate of the location where the of the string will be placed.
@@ -189,39 +189,39 @@ public interface ViewportGraphics {
 
     /**
      * Sets the foreground color to draw with.
-     * 
+     *
      * @param c The new color.
      */
     public void setColor( Color c );
     /**
      * Sets the background color to draw with.
-     * 
+     *
      * @param c The new color.
      */
     public void setBackground( Color c );
     /**
      * Sets the stroke color to draw with.
-     * 
+     *
      * @param strokeStyle The style of line to draw.
      * @param strokeWidth the width, in pixels, to draw lines with.
      */
     public void setStroke( int strokeStyle, int strokeWidth );
     /**
      * Sets the clip.
-     * 
+     *
      * @param r the rectangle to clip to.
      */
     public void setClip( Rectangle r );
     /**
      * Sets the draw offset.
-     * 
+     *
      * @param offset The amount the draw is offset in the graphics.
      */
     public void translate( Point offset );
 
     /**
      * Draws an image.
-     * 
+     *
      * @param image The image to draw.
      * @param x The x coordinate of the image top left corner of the image.
      * @param y The y coordinate of the image top left corner of the image.
@@ -229,7 +229,7 @@ public interface ViewportGraphics {
     public void drawImage( RenderedImage renderedImage, int x, int y );
     /**
      * Draws an {@link Image}.
-     * 
+     *
      * @param image The {@link Image} to draw.
      * @param x The x coordinate of the image top left corner of the image.
      * @param y The y coordinate of the image top left corner of the image.
@@ -238,7 +238,7 @@ public interface ViewportGraphics {
 
     /**
      * Draws a portion of the image to the target location on the viewport graphics.
-     * 
+     *
      * @param image {@link Image} to draw
      * @param dx1 - the x coordinate of the first corner of the destination rectangle.
      * @param dy1 - the y coordinate of the first corner of the destination rectangle.
@@ -275,7 +275,7 @@ public interface ViewportGraphics {
 
     /**
      * Draws an {@link org.eclipse.swt.graphics.Image}.
-     * 
+     *
      * @param image The {@link org.eclipse.swt.graphics.Image} to draw.
      * @param x The x coordinate of the image top left corner of the image.
      * @param y The y coordinate of the image top left corner of the image.
@@ -285,7 +285,7 @@ public interface ViewportGraphics {
     /**
      * Modifies the graphics so that further draws us minX,minY as the origin and maxX and maxY as
      * the width and height of the display area.
-     * 
+     *
      * @param minX The x-coord that will be used as the origin.
      * @param minY The y-coord that will be used as the origin.
      * @param width The width that will be used to draws.
@@ -296,14 +296,14 @@ public interface ViewportGraphics {
     /**
      * Gets the height of the current font TODO at some point maybe this could be broken out to
      * getFontMetrics(), and a create FontMetrics object that maps between SWT and AWT.
-     * 
+     *
      * @return the height of the current font
      */
     public int getFontHeight();
 
     /**
      * Returns the length in pixels of the given string, or -1 if this operation is not available.
-     * 
+     *
      * @param str
      * @return
      */
@@ -312,14 +312,14 @@ public interface ViewportGraphics {
     /**
      * Gets the <code>ascent</code> of the current font, which is the distance the font rises
      * above its <code>baseline</code>.
-     * 
+     *
      * @return
      */
     public int getFontAscent();
 
     /**
-     * Returns the bounds of a String. Does not expand tabs or newlines  
-     * 
+     * Returns the bounds of a String. Does not expand tabs or newlines
+     *
      * @param str
      * @return
      */
@@ -331,27 +331,27 @@ public interface ViewportGraphics {
      * Disposes of any resources the graphics might be hanging on to.
      */
     public void dispose();
-    
+
     /**
      * Gets the area that can be drawn in.
      *
      * @return the area that can be drawn in.
      */
     Shape getClip();
-    
+
     /**
      * Sets the clip area.
      *
      * @param newBounds new clip area
      */
     void setClipBounds(Rectangle newBounds);
-    
+
     /**
      * Gets the current Color value
      * @return the current Color value
      */
     Color getColor();
-    
+
     /**
      * Gets the current background color value
      * @return the current background color value
@@ -365,9 +365,9 @@ public interface ViewportGraphics {
      * @param y the y component of the upper left corner
      * @param width the width of the rectangle
      * @param height the height of the rectangle
-     * @param arcWidth the horizontal diameter of the arc 
+     * @param arcWidth the horizontal diameter of the arc
      *                    at the four corners.
-     * @param arcHeight the vertical diameter of the arc 
+     * @param arcHeight the vertical diameter of the arc
      *                    at the four corners
      */
     public void drawRoundRect( int x, int y, int width, int height, int arcWidth, int arcHeight );
@@ -378,9 +378,9 @@ public interface ViewportGraphics {
      * @param y the y component of the upper left corner
      * @param width the width of the rectangle
      * @param height the height of the rectangle
-     * @param arcWidth the horizontal diameter of the arc 
+     * @param arcWidth the horizontal diameter of the arc
      *                    at the four corners.
-     * @param arcHeight the vertical diameter of the arc 
+     * @param arcHeight the vertical diameter of the arc
      *                    at the four corners
      */
     public void fillRoundRect(  int x, int y, int width, int height, int arcWidth, int arcHeight );
@@ -392,12 +392,12 @@ public interface ViewportGraphics {
      * consider making use of the DPI setting.
      * <pre><code>
      * g.setLineWith( width ); // BEFORE
-     * g.setLineWith( (width * g.getDPI()) / 72 ); // AFTER 
+     * g.setLineWith( (width * g.getDPI()) / 72 ); // AFTER
      * </code></pre>
      * Where 72 is chosen because that is what a Java image resolutions
      * is assumed to be by default.
      *
-     * @param the new line width 
+     * @param the new line width
      */
     public void setLineWidth( int width );
 
@@ -407,7 +407,7 @@ public interface ViewportGraphics {
      * @param dash the pattern of dashes.
      */
     public void setLineDash( int[] dash );
-    
+
     /**
      * Sets the font; size is taken to be in DPI.
      * <p>
@@ -416,10 +416,10 @@ public interface ViewportGraphics {
      * mind in later versions of java but we cannot wait for them
      * to get there act together.
      * <p>
-     * @param the font new font 
+     * @param the font new font
      */
     public void setFont(Font font);
-    
+
     /**
      * Get the dots per inch, used to scale fonts, but you can scale
      * anything you want based on this value (for example a scalebar).
@@ -430,7 +430,7 @@ public interface ViewportGraphics {
 
     /**
      * Fills a rectangle using a gradient paint
-     * 
+     *
      * @param x the x component of the upper left corner
      * @param y the y component of the upper left corner
      * @param width the width of the rectangle
@@ -448,5 +448,5 @@ public interface ViewportGraphics {
      * @return  the requested graphics type or null.
      */
     public <T> T getGraphics(Class<T> adaptee);
-    
+
 }

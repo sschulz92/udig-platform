@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -40,7 +40,7 @@ import org.locationtech.jts.geom.Envelope;
  * <p>
  * Any changes to this content will be communicate by an event by the assocaited GeoResource.
  * </p>
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -56,7 +56,7 @@ public class IGeoResourceInfo {
     protected IGeoResourceInfo() {
         // for over-riding
     }
-    
+
     public IGeoResourceInfo( String title, String name, String description, URI schema,
             Envelope bounds, CoordinateReferenceSystem crs, String[] keywords, ImageDescriptor icon ) {
         this.title = title;
@@ -77,7 +77,7 @@ public class IGeoResourceInfo {
 
     /**
      * Returns the resource's title
-     * 
+     *
      * @return Readable title (in current local)
      */
     public String getTitle() {
@@ -92,7 +92,7 @@ public class IGeoResourceInfo {
      * <li> Maps to Dublin Core's Subject element
      * </ul>
      * </p>
-     * 
+     *
      * @return Keywords for use with search, or <code>null</code> unavailable.
      */
     public Set<String> getKeywords() { // aka Subject
@@ -113,7 +113,7 @@ public class IGeoResourceInfo {
      * <li>WMS GetCapabilities description
      * </ul>
      * </p>
-     * 
+     *
      * @return description of resource, or <code>null</code> if unavailable
      */
     public String getDescription() {
@@ -128,7 +128,7 @@ public class IGeoResourceInfo {
      * <li>Dublin Code Format element
      * </ul>
      * </p>
-     * 
+     *
      * @return namespace, used with getName() to identify resource
      */
     public URI getSchema() { // aka namespace
@@ -145,7 +145,7 @@ public class IGeoResourceInfo {
      * <li>WMS layer name
      * </ul>
      * </p>
-     * 
+     *
      * @return name of the data, used with getSchema() to identify resource
      */
     public String getName() { // aka layer/type name
@@ -160,18 +160,18 @@ public class IGeoResourceInfo {
      * </p>
      * <p>
      * This plug-in provides default based on resource type:
-     * 
+     *
      * <pre><code>
      *  &lt;b&gt;return&lt;/b&gt; ISharedImages.getImagesDescriptor( IGeoResoruce );
      * </code></pre>
-     * 
+     *
      * <ul>
      * <p>
      * Any LabelProvider should use the default image, a label decorator should be used to pick up
      * these images in a separate thread. This allows resources like WMS to make blocking request of
      * an external service.
      * </p>
-     * 
+     *
      * @return ImageDescriptor symbolizing this resource
      */
     public Icon getIcon() {
@@ -181,7 +181,7 @@ public class IGeoResourceInfo {
         if( icon==null ){
             return null;
         }
-        
+
         Icon awtIcon = AWTSWTImageUtils.imageDescriptor2awtIcon(icon);
         return awtIcon;
     }
@@ -195,12 +195,12 @@ public class IGeoResourceInfo {
         if( icon!=null ){
             return icon;
         }
-        
+
         Icon icon2 = getIcon();
         if( icon2 == null ){
             return null;
         }
-        
+
         return AWTSWTImageUtils.awtIcon2ImageDescriptor(icon2);
     }
 
@@ -219,7 +219,7 @@ public class IGeoResourceInfo {
      * <ul>
      * <li>1st part of the Dublin Core Coverage</li>
      * </ul>
-     * 
+     *
      * @return Lat Long bounding box of the resource
      */
     public ReferencedEnvelope getBounds() { // part of Coverage
@@ -234,7 +234,7 @@ public class IGeoResourceInfo {
      * <li>2nd part of the Dublin Core Coverage
      * </ul>
      * </p>
-     * 
+     *
      * @return CRS of the resource, or <code>null</code> if unknown.
      */
     public CoordinateReferenceSystem getCRS() { // part of Coverage

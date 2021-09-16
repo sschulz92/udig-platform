@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -27,7 +27,7 @@ import org.geotools.data.wfs.WFSDataStore;
 
 /**
  * Access a feature type in a wfs.
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -40,7 +40,7 @@ public class WFSGeoResourceImpl extends IGeoResource {
     }
     /**
      * Construct <code>WFSGeoResourceImpl</code>.
-     * 
+     *
      * @param parent
      * @param typename
      */
@@ -94,7 +94,7 @@ public class WFSGeoResourceImpl extends IGeoResource {
         if (adaptee.isAssignableFrom(SimpleFeatureSource.class)) {
             WFSDataStore wfs = parent.getDS(monitor);
             SimpleFeatureSource featureSource = wfs.getFeatureSource(typename);
-            return adaptee.cast(featureSource);            
+            return adaptee.cast(featureSource);
         }
         if (adaptee.isAssignableFrom(FeatureStore.class)) {
             WFSDataStore wfs = parent.getDS(monitor);

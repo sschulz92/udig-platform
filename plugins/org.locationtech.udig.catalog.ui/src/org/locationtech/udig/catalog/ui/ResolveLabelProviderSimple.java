@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -39,7 +39,7 @@ import org.eclipse.swt.widgets.Display;
  * <p>
  * Compare and contrast with ResovleLabelDecorator which is allowed to block.
  * </p>
- * 
+ *
  * @author jgarnett
  * @since 0.7.0
  */
@@ -75,7 +75,7 @@ public class ResolveLabelProviderSimple extends LabelProvider implements IResolv
      * Note this name is only used as a first try, the ResolveLabelDecorator is expected to provide
      * a label based on Name or Title information.
      * </p>
-     * 
+     *
      * @param element
      * @return label based on IResolve.getIdentifier
      */
@@ -86,7 +86,7 @@ public class ResolveLabelProviderSimple extends LabelProvider implements IResolv
                 if (resolve instanceof IGeoResource) {
                     IGeoResource resource = (IGeoResource) resolve;
                     String title = resource.getTitle();
-// This provider should be non-blocking                    
+// This provider should be non-blocking
 //                    if (title == null) {
 //                        IGeoResourceInfo info = resource.getInfo(new NullProgressMonitor());
 //                        if(info != null) {
@@ -147,7 +147,7 @@ public class ResolveLabelProviderSimple extends LabelProvider implements IResolv
      * To accomplish this quickly we simply make use of constants from CatalogUIPlugin. We need a
      * second pass that makes use of the real icon from the real resource.
      * </p>
-     * 
+     *
      * @param element is expected to be IResolve
      * @return the image used to label the element, or <code>null</code> if there is no image for
      *         the given object

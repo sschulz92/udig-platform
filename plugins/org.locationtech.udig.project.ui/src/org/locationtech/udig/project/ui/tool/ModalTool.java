@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -23,10 +23,10 @@ package org.locationtech.udig.project.ui.tool;
  * <ul>
  * <li><b>ToolConstants.DEFAULT_CURSOR_ID_KEY</b> - the cursor ID value from "toolCursorId"
  * attribute of "modalTool" extension</li>
- * 
+ *
  * </ul>
  * <p>
- * 
+ *
  * @see org.locationtech.udig.project.ui.tool.AbstractModalTool
  * @author Jesse Eichar
  * @version $Revision: 1.9 $
@@ -102,7 +102,7 @@ public interface ModalTool extends Tool {
      * The move cursor type.
      */
     public static final String MOVE_CURSOR = "move"; //$NON-NLS-1$
-    
+
     public static final String NO_CURSOR = "no"; //$NON-NLS-1$
 
     /**
@@ -123,55 +123,55 @@ public interface ModalTool extends Tool {
      *         }
      *     }</code></pre>
      * Use {@code getContext().getViewportPane() } to obtain the control to listen to.
-     * 
+     *
      * @param active if true the tool is Registered with the source Component so that it receives
      *        events and will begin operating. if false the tool is set as inactive and deregistered
      *        with the component.
      */
     public void setActive( boolean active );
-    
+
     /**
      * Returns true if the current tool is active.
      *
      * @return
      */
     public boolean isActive( );
-    
+
     /**
      * Returns current cursor ID of the modal tool.
-     * 
+     *
      * @return
      */
     public String getCursorID();
-    
+
     /**
      * Sets the current cursor ID for the modal tool. If it is needed
      * the actual updating of the mouse cursor is performed automatically.
-     * 
-     * 
+     *
+     *
      * @param id the cursor ID from <code>org.locationtech.udig.project.ui.tool.toolCursor</code>
      * extension or the constant from <code>ModalTool</code> interface.
-     * 
+     *
      */
     public void setCursorID(String id);
-    
-    
-    
+
+
+
     /**
      * Sets tool's selection provider.
      * <p>
      * Usually it is configured through extension point.
-     * 
+     *
      * @param selectionProvider
      */
     public void setSelectionProvider(IMapEditorSelectionProvider selectionProvider);
-    
+
     /**
      * Returns tool's selection provider.
      * <p>
-     * Now the modal tool may have 0..1 of selection providers. 
-     * 
-     * 
+     * Now the modal tool may have 0..1 of selection providers.
+     *
+     *
      * @return the modal tool's selection provider.
      */
     public IMapEditorSelectionProvider getSelectionProvider();

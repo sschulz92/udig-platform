@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -31,7 +31,7 @@ import org.locationtech.udig.style.sld.SLDContent;
 
 /**
  * The metrics object for the BasicFeatureRenderer
- * 
+ *
  * @author Jesse Eichar
  */
 public class BasicFeatureMetrics extends AbstractRenderMetrics {
@@ -45,13 +45,13 @@ public class BasicFeatureMetrics extends AbstractRenderMetrics {
         styleIds.add(ProjectBlackboardConstants.LAYER__DATA_QUERY);
         styleIds.add(ProjectBlackboardConstants.LAYER__STYLE_FILTER);
         styleIds.add("org.locationtech.udig.style.cache");
-        
+
         return styleIds;
     }
 
     public BasicFeatureMetrics( IRenderContext context, BasicFeatureMetricsFactory factory ) {
         super(context, factory, listExpectedStyleIds());
-        
+
         // RESOLUTION QUALITY VS SPEED TRADEOFFS
         IPreferenceStore store = ProjectPlugin.getPlugin().getPreferenceStore();
         boolean antiAliasing = store.getBoolean(PreferenceConstants.P_ANTI_ALIASING);
@@ -64,7 +64,7 @@ public class BasicFeatureMetrics extends AbstractRenderMetrics {
         // DATA SOURCE PERFORMANCE INDICATORS
         ID id = context.getGeoResource().getID();
         Boolean memory = (Boolean) context.getLayer().getStyleBlackboard().get("org.locationtech.udig.style.cache");
-        
+
         if( id.isMemory() ){
             this.latencyMetric = LATENCY_MEMORY;
             this.timeToDrawMetric = DRAW_DATA_MEMORY;
@@ -107,7 +107,7 @@ public class BasicFeatureMetrics extends AbstractRenderMetrics {
             return MinMaxScaleCalculator.getValidScaleRanges(style);
         }
         else {
-            System.out.println("Unexpected "+value.getClass()+" for "+SLDContent.ID+":"+value);            
+            System.out.println("Unexpected "+value.getClass()+" for "+SLDContent.ID+":"+value);
             return new HashSet<Range<Double>>();
         }
     }

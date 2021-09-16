@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -34,7 +34,7 @@ import org.eclipse.swt.widgets.Text;
 /**
  * Configures a "location style", which indicates that a particular layer can
  * be relocated, such as a scalebar or a legend.
- * 
+ *
  * @author Richard Gould
  * @since 0.6.0
  * @see LocationStyleContent
@@ -42,14 +42,14 @@ import org.eclipse.swt.widgets.Text;
 public final class LocationStyleConfigurator extends IStyleConfigurator implements SelectionListener {
 
     /** vertical alignment constants * */
-    private static final String TOP = Messages.ScalebarStyleConfigurator_top; 
-    private static final String MIDDLE = Messages.ScalebarStyleConfigurator_middle; 
-    private static final String BOTTOM = Messages.ScalebarStyleConfigurator_bottom; 
+    private static final String TOP = Messages.ScalebarStyleConfigurator_top;
+    private static final String MIDDLE = Messages.ScalebarStyleConfigurator_middle;
+    private static final String BOTTOM = Messages.ScalebarStyleConfigurator_bottom;
 
     /** horizontal alignment constants * */
-    private static final String LEFT = Messages.ScalebarStyleConfigurator_left; 
-    private static final String CENTER = Messages.ScalebarStyleConfigurator_center; 
-    private static final String RIGHT = Messages.ScalebarStyleConfigurator_right; 
+    private static final String LEFT = Messages.ScalebarStyleConfigurator_left;
+    private static final String CENTER = Messages.ScalebarStyleConfigurator_center;
+    private static final String RIGHT = Messages.ScalebarStyleConfigurator_right;
 
     /** ui widgets * */
     private Combo xCombo;
@@ -63,46 +63,46 @@ public final class LocationStyleConfigurator extends IStyleConfigurator implemen
      */
     public void createControl( Composite parent ) {
         parent.setLayout( new GridLayout( 2, false ));
-        
+
         GridData gridData;
-        
+
         Label xLabel = new Label(parent, SWT.RIGHT);
-        xLabel.setText(Messages.ScalebarStyleConfigurator_horizontalAlignment); 
+        xLabel.setText(Messages.ScalebarStyleConfigurator_horizontalAlignment);
 
         xCombo = new Combo(parent, SWT.DROP_DOWN);
         xCombo.setItems(new String[]{LEFT, CENTER, RIGHT});
         xCombo.select(0);
         xCombo.addSelectionListener(this);
         xCombo.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false));
-        
+
         Label yLabel = new Label(parent, SWT.RIGHT);
-        yLabel.setText(Messages.ScalebarStyleConfigurator_verticalAlignment); 
+        yLabel.setText(Messages.ScalebarStyleConfigurator_verticalAlignment);
 
         yCombo = new Combo(parent, SWT.DROP_DOWN);
         yCombo.setItems(new String[]{TOP, MIDDLE, BOTTOM});
         yCombo.select(0);
         yCombo.addSelectionListener(this);
         yCombo.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false));
-        
+
         gridData = new GridData();
         Label widthLabel = new Label(parent, SWT.NONE);
-        widthLabel.setText(Messages.LocationStyleConfigurator_width); 
+        widthLabel.setText(Messages.LocationStyleConfigurator_width);
         widthLabel.setLayoutData(gridData);
 
         gridData = new GridData(GridData.FILL_HORIZONTAL);
         widthText = new Text(parent, SWT.BORDER);
         widthText.setLayoutData(gridData);
-        
+
         gridData = new GridData();
         Label heightLabel = new Label(parent, SWT.NONE);
-        heightLabel.setText(Messages.LocationStyleConfigurator_height); 
+        heightLabel.setText(Messages.LocationStyleConfigurator_height);
         heightLabel.setLayoutData(gridData);
 
         gridData = new GridData(GridData.FILL_HORIZONTAL);
         heightText = new Text(parent, SWT.BORDER);
         heightText.setLayoutData(gridData);
     }
-    
+
 
 	public void init() {
 		// do nothing
@@ -128,14 +128,14 @@ public final class LocationStyleConfigurator extends IStyleConfigurator implemen
             xCombo.select(1);
         else if (isRight(rect))
             xCombo.select(2);
-        
-        if (isTop(rect)) 
+
+        if (isTop(rect))
             yCombo.select(0);
-        else if (isMiddle(rect)) 
+        else if (isMiddle(rect))
             yCombo.select(1);
-        else if (isBottom(rect)) 
+        else if (isBottom(rect))
             yCombo.select(2);
-        
+
         widthText.setText(Integer.toString(rect.width));
         heightText.setText(Integer.toString(rect.height));
     }
@@ -145,14 +145,14 @@ public final class LocationStyleConfigurator extends IStyleConfigurator implemen
 
         int width = Integer.parseInt(widthText.getText());
         int height = Integer.parseInt(heightText.getText());
-        
+
         StyleBlackboard styleBlackboard = getLayer().getStyleBlackboard();
         Rectangle rec = (Rectangle)styleBlackboard.get(LocationStyleContent.ID);
         styleBlackboard.setSelected(new String[]{LocationStyleContent.ID});
         rec.setSize(width, height);
         styleBlackboard.put(LocationStyleContent.ID, rec);
 	}
-	
+
     public boolean canStyle( Layer layer ) {
         return layer.hasResource(MapGraphic.class);
     }
@@ -173,7 +173,7 @@ public final class LocationStyleConfigurator extends IStyleConfigurator implemen
             blackboard.put(LocationStyleContent.ID, rect);
             ((StyleBlackboard) getStyleBlackboard()).setSelected(new String[]{LocationStyleContent.ID});
         }
-        
+
         //read object state from ui widgets
         switch (xCombo.getSelectionIndex()) {
             case 0:
@@ -184,9 +184,9 @@ public final class LocationStyleConfigurator extends IStyleConfigurator implemen
                 break;
             case 2:
                 setRight(rect);
-                
+
         }
-        
+
         switch(yCombo.getSelectionIndex()) {
             case 0:
                 setTop(rect);
@@ -198,7 +198,7 @@ public final class LocationStyleConfigurator extends IStyleConfigurator implemen
                 setBottom(rect);
         }
     }
-    
+
     /*
      * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
      */
@@ -206,7 +206,7 @@ public final class LocationStyleConfigurator extends IStyleConfigurator implemen
         //do nothing
     }
 
-    
+
     protected boolean isLeft( Rectangle rect ) {
         return rect.x == LocationStyleContent.XPAD_LEFT;
     }
@@ -274,7 +274,7 @@ public final class LocationStyleConfigurator extends IStyleConfigurator implemen
     protected void setBottom( Rectangle rect ) {
         rect.y = -LocationStyleContent.YPAD_BOTTOM;
     }
-    
+
     protected IMapDisplay getMapDisplay() {
         return getLayer().getMap().getRenderManager().getMapDisplay();
     }

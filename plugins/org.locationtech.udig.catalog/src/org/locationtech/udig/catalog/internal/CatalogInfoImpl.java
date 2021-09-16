@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -17,7 +17,7 @@ import org.locationtech.udig.catalog.ICatalogInfo;
 
 /**
  * Provides metadata for a catalog
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -29,7 +29,7 @@ public class CatalogInfoImpl extends ICatalogInfo {
 
     /**
      * Construct <code>CatalogInfoImpl</code>.
-     * 
+     *
      * @param title
      * @param description
      * @param source

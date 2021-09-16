@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -29,7 +29,7 @@ import org.geotools.data.oracle.OracleNGDataStoreFactory;
 
 /**
  * Oracle Service Extension implementation.
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -45,7 +45,7 @@ public class OracleServiceExtension extends AbstractDataStoreServiceExtension
      * Please note the OracleServiceImpl returned may not be able to connect; it depends on the
      * database actually being on, parameters being correct, etc...
      * </p>
-     * 
+     *
      * @see org.locationtech.udig.catalog.ServiceExtension#createService(java.net.URI, java.util.Map)
      * @param id
      * @param params
@@ -70,12 +70,12 @@ public class OracleServiceExtension extends AbstractDataStoreServiceExtension
         if( id == null ){
             String jdbc_url = getJDBCUrl( params );
             if( jdbc_url == null ){
-                return null; // parameters are not sufficent                 
+                return null; // parameters are not sufficent
             }
             try {
                 id = new URL(null, jdbc_url, CorePlugin.RELAXED_HANDLER);
             } catch (MalformedURLException e) {
-                return null; // parameters are not sufficent                 
+                return null; // parameters are not sufficent
             }
         }
         /*
@@ -102,7 +102,7 @@ public class OracleServiceExtension extends AbstractDataStoreServiceExtension
                             invalidParam);
                 }
                 return null; // parameters are not correct - params must be for a different service
-            }            
+            }
         }
         */
         return new OracleServiceImpl(id, params);
@@ -110,7 +110,7 @@ public class OracleServiceExtension extends AbstractDataStoreServiceExtension
 
     /**
      * This is a guess ...
-     * 
+     *
      * @see org.locationtech.udig.catalog.ServiceExtension#createParams(java.net.URL)
      * @param url
      * @return
@@ -134,7 +134,7 @@ public class OracleServiceExtension extends AbstractDataStoreServiceExtension
 
     /**
      * Holds onto the Oracle DataStoreFactorySPI for us.
-     * 
+     *
      * @return OracleNGDataStoreFactory instance
      */
     public synchronized static OracleNGDataStoreFactory getFactory() {
@@ -166,7 +166,7 @@ public class OracleServiceExtension extends AbstractDataStoreServiceExtension
             return null; // not for us then
         }
     }
-    
+
     /**
      * A couple quick checks on the url This should perhaps do more, but I can't think of a good
      * test that will tell me without a doubt that the url is an Oracle url.

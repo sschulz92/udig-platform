@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -25,7 +25,7 @@ import org.locationtech.udig.project.internal.StyleEntry;
 
 /**
  * Layer decorator that provides commit/revert on StyleBlackboard.
- * 
+ *
  * @author jgarnett
  * @since 0.7.0
  */
@@ -39,7 +39,7 @@ public class StyleLayer extends LayerDecorator {
 
     /**
      * Construct <code>StyleLayer</code>.
-     * 
+     *
      * @param layer
      */
     public StyleLayer(Layer layer) {
@@ -89,7 +89,7 @@ public class StyleLayer extends LayerDecorator {
  * <p>
  * This command is used to submit a change to the the Map.
  * </p>
- * 
+ *
  * @author jgarnett
  * @since 0.6.0
  */
@@ -102,7 +102,7 @@ class ApplyStyleCommand extends AbstractCommand implements UndoableCommand {
 
     /**
      * Construct <code>ApplyStyleCommand</code>.
-     * 
+     *
      * @param layer
      * @param oldStyleBlackboard
      * @param newStyleBlackboard
@@ -116,7 +116,7 @@ class ApplyStyleCommand extends AbstractCommand implements UndoableCommand {
 
     /*
      * overwrite with the original blackboard
-     * 
+     *
      * @see org.locationtech.udig.project.command.UndoableCommand#rollback()
      */
     public void rollback(IProgressMonitor monitor) throws Exception {

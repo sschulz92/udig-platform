@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -35,17 +35,17 @@ import org.opengis.filter.expression.Expression;
  * Remember that although Viewers are a wrapper around some SWT Control or Composite you still have
  * direct access using the getControl() method so that you can do your layout data thing.
  * </p>
- * 
+ *
  * @author Jody Garnett
  * @since 1.2.0
  */
 public class DefaultExpressionViewer extends CQLExpressionViewer {
-    
+
     /**
      * Factory used to hook this into filterViewer extension point.
-     * 
+     *
      * @see FilterViewer for details of programatic use
-     * 
+     *
      * @author Jody Garnett
      * @since 1.3.2
      */
@@ -93,7 +93,7 @@ public class DefaultExpressionViewer extends CQLExpressionViewer {
     private static final String MUL = "*"; //$NON-NLS-1$
     private static final String DIV = "/"; //$NON-NLS-1$
     private static final String[] OPERATORS = {ADD, SUB, MUL, DIV};
-    
+
     private SelectionAdapter comboListener = new SelectionAdapter() {
         @Override
         public void widgetSelected(SelectionEvent e) {
@@ -108,7 +108,7 @@ public class DefaultExpressionViewer extends CQLExpressionViewer {
             }
         }
     };
-    
+
     /**
      * Creates ExpressionViewer using the provided style.
      * <ul>
@@ -116,7 +116,7 @@ public class DefaultExpressionViewer extends CQLExpressionViewer {
      * <li>SWT.MULTI - viewer is able to assume additional vertical space is available</li>
      * <li>SWT.READ_ONLY - read only</li>
      * </ul>
-     * 
+     *
      * @param parent composite viewer is being added to
      * @param style used to layout the viewer
      */
@@ -130,10 +130,10 @@ public class DefaultExpressionViewer extends CQLExpressionViewer {
                 }
             }
         }, style);
-        
+
         control = text.getParent(); // refers to to the composite created above
         boolean isMultiline = (SWT.MULTI & style) != 0;
-        
+
         lblAttribute = null;
         if( isMultiline ){
             lblAttribute = new Label(control, SWT.NONE);
@@ -141,7 +141,7 @@ public class DefaultExpressionViewer extends CQLExpressionViewer {
         }
         attribute = new Combo(control, SWT.DROP_DOWN | SWT.READ_ONLY );
         attribute.addSelectionListener(comboListener);
-        
+
         lblOperation = null;
         if( isMultiline){
             lblOperation = new Label(control, SWT.NONE);
@@ -150,23 +150,23 @@ public class DefaultExpressionViewer extends CQLExpressionViewer {
         operation = new Combo(control, SWT.DROP_DOWN | SWT.READ_ONLY );
         operation.setItems(OPERATORS);
         operation.addSelectionListener(comboListener);
-        
+
         lblValue = null;
         if( isMultiline){
             lblValue = new Label(control, SWT.NONE);
             lblValue.setText(Messages.DefaultExpressionViewer_value);
-        }        
+        }
         value = new Combo(control, SWT.DROP_DOWN | SWT.READ_ONLY );
         value.addSelectionListener(comboListener);
         value.setEnabled(false);
-        
+
         setLayout(isMultiline);
-        
+
     }
-    
+
     /**
      * This sets the layout of the UI elements in the viewer.
-     * 
+     *
      * @param isMultiline
      */
     private void setLayout(boolean isMultiline) {
@@ -199,13 +199,13 @@ public class DefaultExpressionViewer extends CQLExpressionViewer {
      * This is the widget used to display the Filter; its parent has been provided in the
      * ExpressionViewer's constructor; but you may need direct access to it in order to set layout
      * data etc.
-     * 
+     *
      * @return control used to display the filter
      */
     public Control getControl() {
         return control;
     }
-    
+
     /**
      * This refreshes the viewer's UI elements (combo options, etc.) this should be called in
      * response to setting the input to re-populate the attribute and value drop downs.

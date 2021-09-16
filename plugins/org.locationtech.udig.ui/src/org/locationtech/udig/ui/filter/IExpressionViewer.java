@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -38,18 +38,18 @@ import org.opengis.filter.expression.Expression;
  * <li>{@link SWT#MULTI}: Viewer can take additional height</li>
  * <li>{@link SWT#READ_ONLY}</li>
  * </ul>
- 
+
  * @see ExpressionInput Used to provide context (such as feature type to suggest attribute names)
  * @author Jody Garnett
  * @since 1.3.2
  */
 public abstract class IExpressionViewer extends Viewer {
-    
+
     /**
      * Input provided to help when creating a Expression.
      */
     protected ExpressionInput input;
-    
+
     /**
      * Expression being edited.
      */
@@ -57,7 +57,7 @@ public abstract class IExpressionViewer extends Viewer {
 
     /**
      * Set the input for this Expression.
-     * 
+     *
      * @param input Expression, String or other data object to use as the input for this expression
      */
     public void setInput(Object expressionInput){
@@ -88,11 +88,11 @@ public abstract class IExpressionViewer extends Viewer {
      * Refreshes this viewer completely with information freshly obtained from {@link #input} and {@link #expression}.
      */
     public abstract void refresh();
-    
+
     /**
      * Direct access to the Expression being defined.
      * <p>
-     * 
+     *
      * @return Expression being defined
      */
     public Expression getExpression(){
@@ -101,7 +101,7 @@ public abstract class IExpressionViewer extends Viewer {
 
     /**
      * Returns the current selection for this provider.
-     * 
+     *
      * @return Current expression from {@link #getExpression()} or {@link StructuredSelection#EMPTY} if not defined
      */
     public ISelection getSelection(){
@@ -119,10 +119,10 @@ public abstract class IExpressionViewer extends Viewer {
      * @param expression
      */
     public abstract void setExpression( Expression expression );
-    
+
     /**
      * Used internally to update the expression and issue a {@link SelectionChangedEvent}.
-     * 
+     *
      * @param newExpression Expression used to update {@link #getExpression()} and the user interface components
      */
     protected void internalUpdate(Expression newExpression) {
@@ -134,14 +134,14 @@ public abstract class IExpressionViewer extends Viewer {
         if (!Utilities.equals(before, after)){
             this.expression = newExpression;
             feedback(); // clear any outstanding feedback as our value matches our display now
-            
+
             StructuredSelection selection = newExpression != null ? new StructuredSelection( newExpression) : StructuredSelection.EMPTY;
             fireSelectionChanged( new SelectionChangedEvent( this, selection ) );
         }
     }
     /**
      * Extracts a expression from the selection making use of {@link #setExpression(Expression)} to update the viewer.
-     * 
+     *
      * @param selection Selection defining Expression
      * @param reveal <code>true</code> if the selection is to be made visible, and
      *        <code>false</code> otherwise
@@ -157,7 +157,7 @@ public abstract class IExpressionViewer extends Viewer {
         }
         setExpression(Expression.NIL);
     }
-    
+
     //
     // Helper methods to assist implementors
     //
@@ -180,7 +180,7 @@ public abstract class IExpressionViewer extends Viewer {
         }
         feedback("Unable to display dynamic expression: \n" + cql + "\nEdit to replace expression.");
     }
-    
+
     /**
      * Provide warning feedback.
      * <p>
@@ -190,9 +190,9 @@ public abstract class IExpressionViewer extends Viewer {
     protected void feedback(String warning){
         if( input != null && input.getFeedback() != null ){
             ControlDecoration feedback = input.getFeedback();
-            
+
             feedback.setDescriptionText(warning);
-            
+
             FieldDecorationRegistry decorations = FieldDecorationRegistry.getDefault();
             FieldDecoration errorDecoration = decorations.getFieldDecoration(FieldDecorationRegistry.DEC_WARNING);
             feedback.setImage(errorDecoration.getImage());
@@ -213,9 +213,9 @@ public abstract class IExpressionViewer extends Viewer {
         if( isRequired ){
             if( input != null && input.getFeedback() != null ){
                 ControlDecoration feedback = input.getFeedback();
-                
+
                 feedback.setDescriptionText(warning);
-                
+
                 FieldDecorationRegistry decorations = FieldDecorationRegistry.getDefault();
                 if( isRequired ){
                     FieldDecoration requiredDecoration = decorations.getFieldDecoration(FieldDecorationRegistry.DEC_REQUIRED);
@@ -244,7 +244,7 @@ public abstract class IExpressionViewer extends Viewer {
     protected void feedback(String error, Throwable exception){
         if( input != null && input.getFeedback() != null ){
             ControlDecoration feedback = input.getFeedback();
-            
+
             feedback.setDescriptionText(error);
             FieldDecorationRegistry decorations = FieldDecorationRegistry.getDefault();
             FieldDecoration warningDecoration = decorations.getFieldDecoration(FieldDecorationRegistry.DEC_WARNING);
@@ -260,14 +260,14 @@ public abstract class IExpressionViewer extends Viewer {
 //  /**
 //   * Checks that the expression is valid using {@link IExpressionViewer#isValid()} and update the UI to
 //   * desplay any error messages using {@link IExpressionViewer#getValidationMessage()} if not valid.
-//   * 
+//   *
 //   * @return true if the expression is valid
 //   */
 //  public abstract boolean validate();
 //
 //  /**
 //   * Used to check for any validation messages (such as required field etc...)
-//   * 
+//   *
 //   * @return Validation message
 //   */
 //  public abstract String getValidationMessage();
@@ -279,7 +279,7 @@ public abstract class IExpressionViewer extends Viewer {
 //   * Note that the decision on whather ExpressionEditor canProcess() should be informed by the
 //   * presence of attributes it design to work with.
 //   * </p>
-//   * 
+//   *
 //   * @param input the imput that this expressionEditor will take
 //   * @return
 //   */

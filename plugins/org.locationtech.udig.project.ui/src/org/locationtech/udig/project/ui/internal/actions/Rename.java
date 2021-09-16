@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -22,7 +22,7 @@ import org.locationtech.udig.project.ui.internal.Messages;
 
 /**
  * An action for renaming objects in UDIG
- * 
+ *
  * @author jeichar
  * @since 0.6.0
  */
@@ -44,13 +44,13 @@ public class Rename extends UDIGGenericAction {
         if (layers != null)
             operate(layers[0]);
     }
-    
+
     @Override
     protected void operate( ProjectElement element, Object context ) {
         element.setName(getNewName(element.getName()));
         element.getProjectInternal().eResource().setModified(true);
     }
-    
+
     @Override
     protected void operate( Project project, Object context ) {
         project.setName(getNewName(project.getName()));
@@ -59,7 +59,7 @@ public class Rename extends UDIGGenericAction {
 
     /**
      * Opens a dialog asking the user for a new name.
-     * 
+     *
      * @return The new name of the element.
      */
     private String getNewName( String oldName ) {

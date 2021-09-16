@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -39,9 +39,9 @@ import org.opengis.feature.type.Name;
  * <p>
  * Any changes to these contents will be communicated by an event from the associated Process.
  * </p>
- * 
+ *
  * Based on IGeoResourceInfo
- * 
+ *
  * @author gdavis, Refractions Research
  */
 public class IProcessInfo {
@@ -59,11 +59,11 @@ public class IProcessInfo {
     }
 
     public IProcessInfo( String title, String name, String description, URI schema,
-            ProcessFactory pf, Name pn, String[] keywords, 
+            ProcessFactory pf, Name pn, String[] keywords,
             ImageDescriptor icon ) {
         this.processFactory = pf;
         this.processName = pn;
-        
+
         this.title = title;
         this.description = description;
         this.name = name;
@@ -80,26 +80,26 @@ public class IProcessInfo {
 
     /**
      * Returns the resource's title
-     * 
+     *
      * @return a readable title (in current local)
      */
     public String getTitle() {
         return title;
     }
-    
+
     /**
      * Returns the process factory
-     * 
+     *
      * @return the processFactory
      */
     public ProcessFactory getProcessFactory() {
         return this.processFactory;
-    }    
+    }
 
     public Name getProcessName(){
         return this.processName;
     }
-    
+
     /**
      * Returns the keywords assocaited with this resource
      * <p>
@@ -108,7 +108,7 @@ public class IProcessInfo {
      * <li> Maps to Dublin Core's Subject element
      * </ul>
      * </p>
-     * 
+     *
      * @return Keywords for use with search, or <code>null</code> unavailable.
      */
     public Set<String> getKeywords() { // aka Subject
@@ -125,7 +125,7 @@ public class IProcessInfo {
      * <li>WPS GetCapabilities description
      * </ul>
      * </p>
-     * 
+     *
      * @return description of resource, or <code>null</code> if unavailable
      */
     public String getDescription() {
@@ -140,7 +140,7 @@ public class IProcessInfo {
      * <li>Dublin Code Format element
      * </ul>
      * </p>
-     * 
+     *
      * @return namespace, used with getName() to identify resource
      */
     public URI getSchema() { // aka namespace
@@ -157,7 +157,7 @@ public class IProcessInfo {
      * <li>WMS layer name
      * </ul>
      * </p>
-     * 
+     *
      * @return name of the data, used with getSchema() to identify resource
      */
     public String getName() { // aka layer/type name
@@ -172,18 +172,18 @@ public class IProcessInfo {
      * </p>
      * <p>
      * This plug-in provides default based on resource type:
-     * 
+     *
      * <pre><code>
      *  &lt;b&gt;return&lt;/b&gt; ISharedImages.getImagesDescriptor( IGeoResoruce );
      * </code></pre>
-     * 
+     *
      * <ul>
      * <p>
      * Any LabelProvider should use the default image, a label decorator should be used to pick up
      * these images in a separate thread. This allows resources like WMS to make blocking request of
      * an external service.
      * </p>
-     * 
+     *
      * @return ImageDescriptor symbolizing this resource
      */
     public Icon getIcon() {
@@ -193,10 +193,10 @@ public class IProcessInfo {
         if( icon==null ){
             return null;
         }
-        
+
         Icon awtIcon = AWTSWTImageUtils.imageDescriptor2awtIcon(icon);
         return awtIcon;
-        
+
     }
 
     /**
@@ -208,12 +208,12 @@ public class IProcessInfo {
         if( icon!=null ){
             return icon;
         }
-        
+
         Icon icon2 = getIcon();
         if( icon2 == null ){
             return null;
         }
-        
+
         return AWTSWTImageUtils.awtIcon2ImageDescriptor(icon2);
     }
 

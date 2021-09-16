@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -23,15 +23,15 @@ public class AlternateMapPerspective implements IPerspectiveFactory {
 
 	/** <code>ID_PERSPECTIVE</code> field */
 	public static final String ID_PERSPECTIVE = "org.locationtech.udig.ui.alternateMapPerspective"; //$NON-NLS-1$
-    
+
     /**
      * Creates the initial layout for a page.
      * <p>
      * Implementors of this method may add additional views to a
      * perspective.  The perspective already contains an editor folder
-     * identified by the result of <code>IPageLayout.getEditorArea()</code>.  
-     * Additional views should be added to the layout using this value as 
-     * the initial point of reference.  
+     * identified by the result of <code>IPageLayout.getEditorArea()</code>.
+     * Additional views should be added to the layout using this value as
+     * the initial point of reference.
      * </p>
      *
      * @param layout the page layout
@@ -39,14 +39,14 @@ public class AlternateMapPerspective implements IPerspectiveFactory {
     public void createInitialLayout(IPageLayout layout) {
         // Get the editor area.
         String editorArea = layout.getEditorArea();
-        
+
         layout.addView( "org.locationtech.udig.project.ui.projectExplorer", IPageLayout.RIGHT, 0.65f, editorArea ); //$NON-NLS-1$
         layout.addView( "org.locationtech.udig.project.ui.layerManager", IPageLayout.BOTTOM, 0.25f, //$NON-NLS-1$
                 "org.locationtech.udig.project.ui.projectExplorer" ); //$NON-NLS-1$
-        
+
         layout.createPlaceholderFolder("bottom", IPageLayout.BOTTOM, 0.65f, editorArea);         //$NON-NLS-1$
         layout.addPerspectiveShortcut(MapPerspective.ID_PERSPECTIVE);
     }
-    
-     
+
+
 }

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -29,7 +29,7 @@ import org.locationtech.udig.project.ui.internal.tool.display.ModalToolCategory;
 
 /**
  * Creates a sub menu that permits the applicability of a layer to be set.
- * 
+ *
  * @author jeichar
  * @since 0.9.0
  */
@@ -50,7 +50,7 @@ public class LayerApplicabilityMenuCreator {
 
     /**
      * Gets the Applicability Menu
-     * 
+     *
      * @return
      */
     public MenuManager getMenuManager() {
@@ -75,7 +75,7 @@ public class LayerApplicabilityMenuCreator {
                     .getActiveWorkbenchWindow().getSelectionService().getSelection();
             for( Iterator iter = selection.iterator(); iter.hasNext(); ) {
                 Layer layer = (Layer) iter.next();
-                layer.setInteraction(Interaction.getInteraction(category.getId()), !menuItem.getSelection()); 
+                layer.setInteraction(Interaction.getInteraction(category.getId()), !menuItem.getSelection());
             }
         }
         /**

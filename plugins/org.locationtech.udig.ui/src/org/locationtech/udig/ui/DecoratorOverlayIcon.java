@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -36,9 +36,9 @@ import org.eclipse.swt.graphics.Rectangle;
  * new DecoratorOverlayIcon(base,
  *                 new ImageDescriptor[][]={
  *                     null,     // TOP_LEFT     unsure if we will use this
- *                     modified, // TOP_RIGHT    indicate content modified (w/ *) 
+ *                     modified, // TOP_RIGHT    indicate content modified (w/ *)
  *                     status,   // BOTTOM_LEFT  called the auxiliary overlay warn, error, success
- *                     cached,   // BOTTOM_RIGHT not yet defined, recommened cache status...  
+ *                     cached,   // BOTTOM_RIGHT not yet defined, recommened cache status...
  *                     null,     // UNDERLAY     not sure if we will use this
  *                 }
  * );
@@ -47,7 +47,7 @@ import org.eclipse.swt.graphics.Rectangle;
  */
 public class DecoratorOverlayIcon extends CompositeImageDescriptor {
     static final Point DEFAULT_SIZE = new Point(22,16);
-    
+
     // the base image
     private Image base;
 
@@ -66,7 +66,7 @@ public class DecoratorOverlayIcon extends CompositeImageDescriptor {
     public static final int BOTTOM_RIGHT = 3;
 
     public static final int UNDERLAY = 4;
-    
+
     /**
      * OverlayIcon constructor defaults to size of base image.
      * <p>
@@ -77,9 +77,9 @@ public class DecoratorOverlayIcon extends CompositeImageDescriptor {
      * new DecoratorOverlayIcon(base,
      *                 new ImageDescriptor[][]={
      *                     null,     // TOP_LEFT     unsure if we will use this
-     *                     modified, // TOP_RIGHT    indicate content modified (w/ *) 
+     *                     modified, // TOP_RIGHT    indicate content modified (w/ *)
      *                     status,   // BOTTOM_LEFT  called the auxiliary overlay warn, error, success
-     *                     cached,   // BOTTOM_RIGHT not yet defined, recommened cache status...  
+     *                     cached,   // BOTTOM_RIGHT not yet defined, recommened cache status...
      *                     null,     // UNDERLAY     not sure if we will use this
      *                 }
      * );
@@ -98,7 +98,7 @@ public class DecoratorOverlayIcon extends CompositeImageDescriptor {
         Rectangle bounds = baseImage.getBounds();
         this. size = new Point(bounds.width, bounds.height);
     }
-    
+
     /**
      * OverlayIcon constructor allowing explicit size.
      * <p>
@@ -109,9 +109,9 @@ public class DecoratorOverlayIcon extends CompositeImageDescriptor {
      * new DecoratorOverlayIcon(base,
      *                 new ImageDescriptor[][]={
      *                     null,     // TOP_LEFT     unsure if we will use this
-     *                     modified, // TOP_RIGHT    indicate content modified (w/ *) 
+     *                     modified, // TOP_RIGHT    indicate content modified (w/ *)
      *                     status,   // BOTTOM_LEFT  called the auxiliary overlay warn, error, success
-     *                     cached,   // BOTTOM_RIGHT not yet defined, recommened cache status...  
+     *                     cached,   // BOTTOM_RIGHT not yet defined, recommened cache status...
      *                     null,     // UNDERLAY     not sure if we will use this
      *                 },
      *                 new Point(22,16)
@@ -120,7 +120,7 @@ public class DecoratorOverlayIcon extends CompositeImageDescriptor {
      * </p>
      * @param base the base image
      * @param overlays the overlay images
-     * @param size the size, 22x16 if null 
+     * @param size the size, 22x16 if null
      */
     public DecoratorOverlayIcon(Image baseImage, ImageDescriptor[] overlaysArray, Point sizeValue) {
         this.base = baseImage;
@@ -142,7 +142,7 @@ public class DecoratorOverlayIcon extends CompositeImageDescriptor {
             ImageDescriptor overlay = overlaysArray[i];
             if (overlay == null)
                 continue;
-            
+
             ImageData overlayData = overlay.getImageData();
             //Use the missing descriptor if it is not there.
             if (overlayData == null)

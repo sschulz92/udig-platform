@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -29,7 +29,7 @@ import org.opengis.feature.simple.SimpleFeature;
 
 /**
  * Calls implemented operate method on the each element of selection.
- * 
+ *
  * @see Rename
  * @author jeichar
  * @since 0.6.0
@@ -44,16 +44,16 @@ public abstract class UDIGGenericAction extends WorkbenchWindowActionDelegate {
             return;
         }
         IStructuredSelection selection = (IStructuredSelection) sel;
-        
+
         /*
          * Optimization for a set of objects in selection of the same nature. The goal: run an
          * operation once over all selected objects.
          */
         ArrayList<Layer> layers = new ArrayList<Layer>(selection.size());
-        
+
         Object firstElem = selection.iterator().next();
-        
-        Object stateData; 
+
+        Object stateData;
         if (firstElem instanceof Project) {
             stateData = showErrorMessage(selection.size(), (Project) firstElem);
         } else if (firstElem instanceof IProjectElement) {
@@ -69,7 +69,7 @@ public abstract class UDIGGenericAction extends WorkbenchWindowActionDelegate {
         } else {
             stateData = null;
         }
-        
+
         for( Iterator<?> iter = selection.iterator(); iter.hasNext(); ) {
             Object element = iter.next();
 
@@ -163,7 +163,7 @@ public abstract class UDIGGenericAction extends WorkbenchWindowActionDelegate {
 
     /**
      * Operates on a SimpleFeature. Default Implementation does nothing.
-     * 
+     *
      * @param feature
      */
     protected void operate( SimpleFeature feature, Object context ) {
@@ -174,7 +174,7 @@ public abstract class UDIGGenericAction extends WorkbenchWindowActionDelegate {
      * Operates on an array of layers.
      * <p>
      * Default Implementation does nothing.
-     * 
+     *
      * @param layers
      */
     protected void operate( Layer[] layers, Object context ) {
@@ -183,7 +183,7 @@ public abstract class UDIGGenericAction extends WorkbenchWindowActionDelegate {
 
     /**
      * Operates on a IProjectElement. Default Implementation does nothing.
-     * 
+     *
      * @param element
      */
     protected void operate( ProjectElement element, Object context ) {
@@ -192,7 +192,7 @@ public abstract class UDIGGenericAction extends WorkbenchWindowActionDelegate {
 
     /**
      * Operates on a Project. Default Implementation does nothing.
-     * 
+     *
      * @param project
      */
     protected void operate( Project project, Object context ) {

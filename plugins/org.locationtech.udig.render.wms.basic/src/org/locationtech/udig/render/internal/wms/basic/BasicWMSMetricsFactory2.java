@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -31,7 +31,7 @@ import org.opengis.referencing.operation.MathTransform;
 
 /**
  * Creates Metrics for the BasicWMSRenderer
- * 
+ *
  * @author Richard Gould
  */
 public class BasicWMSMetricsFactory2 implements IRenderMetricsFactory {
@@ -39,15 +39,15 @@ public class BasicWMSMetricsFactory2 implements IRenderMetricsFactory {
     Map<String, CoordinateReferenceSystem> crsCache=new HashMap<String, CoordinateReferenceSystem>();
     Map<Pair,MathTransform> transformCache=new HashMap<Pair, MathTransform>();
     Map<Layer, Set<CoordinateReferenceSystem>> legalCRSCache=new HashMap<Layer, Set<CoordinateReferenceSystem>>();
-    
+
     public boolean canRender( IRenderContext toolkit ) {
         if( !toolkit.getLayer().hasResource(WebMapServer.class) ) {
             return false; // not a wms
         }
         CoordinateReferenceSystem crs = toolkit.getViewportModel().getCRS();
         if( crs == null ) {
-            return true; // we will assume our default            
-        }        
+            return true; // we will assume our default
+        }
         org.geotools.ows.wms.Layer layer;
         try {
             layer = toolkit.getLayer().getResource(org.geotools.ows.wms.Layer.class, null);
@@ -66,7 +66,7 @@ public class BasicWMSMetricsFactory2 implements IRenderMetricsFactory {
                 legalCRSCache.put(layer, crss);
             }
             crss.add(crs);
-            
+
             return true;
         }
         return false;
@@ -78,19 +78,19 @@ public class BasicWMSMetricsFactory2 implements IRenderMetricsFactory {
             try {
                 String epsgCode = (String) i.next();
                 CoordinateReferenceSystem rs = getCRS(epsgCode);
-                
+
                 if (rs.equals(crs)) {
                     return true;
                 }
-                
+
                 MathTransform transform = getMathTransform(crs, rs);
-                
+
                 if (transform != null) {
                     return true;
                 }
             }
             catch( Throwable t ) {
-                // could not create a object representation of this code 
+                // could not create a object representation of this code
             }
         }
 		return false; // we cannot handle crs

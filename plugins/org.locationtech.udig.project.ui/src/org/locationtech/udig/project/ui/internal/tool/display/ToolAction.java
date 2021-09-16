@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -15,7 +15,7 @@ import org.eclipse.jface.action.Action;
 
 /**
  * Wraps a ToolProxy.
- * 
+ *
  * @author jeichar
  * @since 0.9.0
  */
@@ -30,7 +30,7 @@ public class ToolAction extends Action {
         setId(tool.getId());
         setText(tool.getName());
         setToolTipText(tool.getToolTipText());
-        if( tool.getImageDescriptor()!=null) 
+        if( tool.getImageDescriptor()!=null)
             setImageDescriptor(tool.getImageDescriptor());
         if(tool.isToggleButton()) {
             checked = tool.isTogglingButtonEnabled();

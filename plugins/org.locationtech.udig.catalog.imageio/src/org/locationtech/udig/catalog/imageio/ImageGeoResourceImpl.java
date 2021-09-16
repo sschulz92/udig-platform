@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -26,12 +26,12 @@ import org.geotools.parameter.ParameterGroup;
 /**
  * Provides a handle to a MrSID resource allowing the service to be lazily
  * loaded.
- * 
+ *
  * @author mleslie
  * @author Daniele Romagnoli, GeoSolutions
  * @author Jody Garnett
  * @author Simone Giannecchini, GeoSolutions
- * 
+ *
  * @since 0.6.0
  */
 public class ImageGeoResourceImpl extends AbstractRasterGeoResource {
@@ -40,7 +40,7 @@ public class ImageGeoResourceImpl extends AbstractRasterGeoResource {
 
 	/**
 	 * Construct <code>ImageGeoResourceImpl</code>.
-	 * 
+	 *
 	 * @param service
 	 *            Service creating this resource.
 	 * @param name
@@ -50,7 +50,7 @@ public class ImageGeoResourceImpl extends AbstractRasterGeoResource {
 		super(service, name);
 		// System.out.println(service.getDescription());
 	}
-	
+
 	/**
 	 * Get metadata about a geoResource, represented by instance of
 	 * {@link ImageGeoResourceInfo}.
@@ -84,5 +84,5 @@ public class ImageGeoResourceImpl extends AbstractRasterGeoResource {
         return (ParameterGroup) ((AbstractGridFormat) ImageServiceExtension
                 .getFactory("HFA").createFormat()).getReadParameters(); //$NON-NLS-1$
     }
-	
+
 }

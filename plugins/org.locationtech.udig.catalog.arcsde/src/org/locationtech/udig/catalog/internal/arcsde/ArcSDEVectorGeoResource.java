@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -34,7 +34,7 @@ import org.opengis.feature.simple.SimpleFeatureType;
  * <p>
  * TODO Description
  * </p>
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -43,7 +43,7 @@ class ArcSDEVectorGeoResource extends IGeoResource {
 
     /**
      * Construct <code>PostGISGeoResource</code>.
-     * 
+     *
      * @param parent
      * @param typename
      */

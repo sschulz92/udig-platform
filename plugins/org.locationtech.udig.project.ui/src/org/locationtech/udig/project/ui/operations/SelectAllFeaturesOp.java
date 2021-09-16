@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -34,7 +34,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * Selects all features in the layer.
- * 
+ *
  * @author Andrea Antonello (www.hydrologis.com)
  */
 public class SelectAllFeaturesOp implements IOp {
@@ -49,24 +49,24 @@ public class SelectAllFeaturesOp implements IOp {
         IViewportModel viewportModel = ApplicationGIS.getActiveMap().getViewportModel();
         ReferencedEnvelope bounds = viewportModel.getBounds();
         CoordinateReferenceSystem dataCrs = schema.getCoordinateReferenceSystem();
-        
+
         if (dataCrs == null) {
         	dataCrs = viewportModel.getCRS();
         }
         ReferencedEnvelope newBounds = bounds.transform(dataCrs, true);
-        
+
         String name = geometryDescriptor.getLocalName();
         Filter bboxFilter = getBboxFilter(name, newBounds);
         SelectionCommandFactory cmdFactory = SelectionCommandFactory.getInstance();
         UndoableMapCommand selectCommand = cmdFactory.createSelectCommand(layer, bboxFilter);
-        
+
         IToolContext toolContext = ApplicationGIS.createContext(ApplicationGIS.getActiveMap());
         toolContext.sendASyncCommand(selectCommand);
     }
-    
+
     /**
      * Create a bounding box filter from a bounding box.
-     * 
+     *
      * @param attribute the geometry attribute or null in the case of default "the_geom".
      * @param bbox the {@link BoundingBox}.
      * @return the filter.
@@ -83,7 +83,7 @@ public class SelectAllFeaturesOp implements IOp {
 
     /**
      * Create a bounding box filter from the bounds coordinates.
-     * 
+     *
      * @param attribute the geometry attribute or null in the case of default "the_geom".
      * @param west western bound coordinate.
      * @param east eastern bound coordinate.

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -34,7 +34,7 @@ import org.geotools.data.DataStoreFactorySpi;
 
 /**
  * Arc SDE Service Extension Implementation.
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -104,7 +104,7 @@ public class ArcServiceExtension extends AbstractDataStoreServiceExtension
 
     /**
      * Factory describing ArcSDE connection parameters
-     * 
+     *
      * @return factory describing ArcSDE connection parameters
      */
     protected static ArcSDEDataStoreFactory getFactory() {

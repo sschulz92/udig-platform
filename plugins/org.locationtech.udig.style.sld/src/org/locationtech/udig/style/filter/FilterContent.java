@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -43,7 +43,7 @@ import org.opengis.filter.Filter;
  * These settings offer the ability to "filter" out content; or using Query pre process the columns
  * or sort information prior to the FeatureSource being used (this is accomplished using
  * ShowViewInterceptor).
- * 
+ *
  * @see ShowViewInterceptor
  */
 public final class FilterContent extends StyleContent {
@@ -114,7 +114,7 @@ public final class FilterContent extends StyleContent {
             }
             String aoi = memento.getString("aoiFilter"); //$NON-NLS-1$
             boolean isAOI = "true".equalsIgnoreCase(aoi);
-    
+
             if (isAOI) {
                 FilterStyle styleFilter = new FilterStyle();
                 styleFilter.setAoiFilter(true);

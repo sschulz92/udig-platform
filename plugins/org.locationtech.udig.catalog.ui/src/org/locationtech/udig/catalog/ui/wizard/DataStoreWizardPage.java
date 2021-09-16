@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -21,17 +21,17 @@ import org.geotools.data.DataStoreFactorySpi;
 
 /**
  * Extend this page to connect to your own DataStore.
- * 
+ *
  * @author dzwiers
  * @since 0.3
  */
 public abstract class DataStoreWizardPage extends AbstractUDIGImportPage /* extends WizardPage */{
     protected boolean canFlipToNextPage = false;
-    
+
     public DataStoreWizardPage( String name ) {
         super(name);
     }
-    
+
     /**
      * Return your connection parameters here.
      * <p>
@@ -39,7 +39,7 @@ public abstract class DataStoreWizardPage extends AbstractUDIGImportPage /* exte
      * to "connect" to a DataStore.
      */
     public abstract Map<String, Serializable> getParams();
-    
+
     /**
      * Return your factory here.
      * <p>
@@ -47,10 +47,10 @@ public abstract class DataStoreWizardPage extends AbstractUDIGImportPage /* exte
      * to "connect" to a DataStore.
      */
     protected abstract DataStoreFactorySpi getDataStoreFactorySpi();
-    
+
     @Override
     public abstract boolean isPageComplete();
-    
+
     @Override
     final public boolean canFlipToNextPage() {
         IWizardPage[] pages = getWizard().getPages();

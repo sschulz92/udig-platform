@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -33,7 +33,7 @@ import org.opengis.feature.simple.SimpleFeatureType;
 
 /**
  * A GeoResource implementation for {@link PostgisSchemaFolder}.  Resolves to a Featurestore
- * 
+ *
  * @author Jesse Eichar, Refractions Research
  * @since 1,2
  */
@@ -45,8 +45,8 @@ public class PostgisGeoResource2 extends IGeoResource {
     private final URL identifier;
     private final PostgisSchemaFolder parent;
     private Boolean readOnly = null; // we won't know until we try
-    
-    public PostgisGeoResource2( PostgisService2 service, PostgisSchemaFolder postgisSchemaFolder, TableDescriptor desc ) {        
+
+    public PostgisGeoResource2( PostgisService2 service, PostgisSchemaFolder postgisSchemaFolder, TableDescriptor desc ) {
             this.service = service;
             this.parent=postgisSchemaFolder;
             this.desc = desc;
@@ -91,21 +91,21 @@ public class PostgisGeoResource2 extends IGeoResource {
 
     /*
      * Required adaptions: <ul> <li>IGeoResourceInfo.class <li>IService.class </ul>
-     * 
+     *
      * @see org.locationtech.udig.catalog.IResolve#resolve(java.lang.Class,
      *      org.eclipse.core.runtime.IProgressMonitor)
      */
     public <T> T resolve( Class<T> adaptee, IProgressMonitor monitor ) throws IOException {
         if (adaptee == null)
             return null;
-        
+
         if (adaptee.isAssignableFrom(IGeoResourceInfo.class)){
             return adaptee.cast(createInfo(monitor));
         }
         if (adaptee.isAssignableFrom(IGeoResource.class)){
             return adaptee.cast(this);
         }
-        
+
         JDBCDataStore dataStore = parent.getDataStore();
         if (adaptee.isAssignableFrom(DataStore.class)){
             return adaptee.cast(dataStore);
@@ -151,7 +151,7 @@ public class PostgisGeoResource2 extends IGeoResource {
         } catch (Exception e) {
             PostgisPlugin.log("Error creating a PostgisInfo object", e);
             return null;
-        }      
+        }
     }
 
     /**
@@ -171,8 +171,8 @@ public class PostgisGeoResource2 extends IGeoResource {
      * @param message the new message.  May be null.
      */
     public void setStatus( Status status, Throwable message) {
-        this.status = status; 
+        this.status = status;
         this.message = message;
     }
-    
+
 }

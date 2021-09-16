@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -38,14 +38,14 @@ import org.locationtech.udig.project.ui.internal.Messages;
  * This action prompts the user for a project file (or directory?) and uses the
  * EMF Resource code to parse it in and recreate the onbjects. The resulting project
  * will be added to the project registery (so it can show up in the projects view).
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
 public class OpenProject implements IViewActionDelegate, IWorkbenchWindowActionDelegate {
     /** We maintain a single job used to open the project in the background*/
     private volatile Job job;
-    
+
     /** The path of the project file (or folder?) to load */
     private String path;
 
@@ -61,35 +61,35 @@ public class OpenProject implements IViewActionDelegate, IWorkbenchWindowActionD
      */
     public void run( IAction action ) {
         path=null;
-        
+
     	Shell activeShell = Display.getDefault().getActiveShell();
 
     	while(path==null){
     	    // prompt the user for the path
-    	    
+
 			DirectoryDialog dialog = new DirectoryDialog(activeShell);
-	        dialog.setFilterPath(Messages.OpenProject_newProject_filename); 
-	        dialog.setMessage(Messages.OpenProject_selectProject); 
-	        dialog.setText(Messages.OpenProject_openProject); 
+	        dialog.setFilterPath(Messages.OpenProject_newProject_filename);
+	        dialog.setMessage(Messages.OpenProject_selectProject);
+	        dialog.setText(Messages.OpenProject_openProject);
 	        path = dialog.open();
 	        if (path == null){
 	        	return; // user canceled
 	        }
-	        
+
 	        File projFile = new File(path+File.separator+ProjectRegistry.PROJECT_FILE);
 	        if( !projFile.exists() ){
 	        	String message = Messages.OpenProject_ErrorMessage;
 	        	message = MessageFormat.format(message, ProjectRegistry.PROJECT_FILE);
-                MessageDialog.openInformation(activeShell, Messages.OpenProject_ErrorTitle, 
+                MessageDialog.openInformation(activeShell, Messages.OpenProject_ErrorTitle,
 	        			message);
 	        	path = null;
 	        }
     	}
-        
+
         if (job == null) {
             synchronized (this) {
                 if (job == null) {
-                    job = new Job(Messages.OpenProject_openProject_title){ 
+                    job = new Job(Messages.OpenProject_openProject_title){
 
                         protected IStatus run( IProgressMonitor monitor ) {
                             ProjectPlugin.getPlugin().getProjectRegistry().getProject(path);

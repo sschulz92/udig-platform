@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -27,7 +27,7 @@ import org.locationtech.udig.project.ui.tool.IToolManager;
 
 /**
  * Representation of a category, this is a UI construct.
- * 
+ *
  * @author jeichar
  * @since 0.9.0
  */
@@ -50,7 +50,7 @@ public abstract class ToolCategory implements Iterable<ModalItem> {
 
     /**
      * Construct <code>ToolCategory</code>.
-     * 
+     *
      * @param element the configurationelement that declares the category
      * @param manager the containing manager
      */
@@ -67,13 +67,13 @@ public abstract class ToolCategory implements Iterable<ModalItem> {
 
     /**
      * Construct <code>ToolCategory2</code>.
-     * 
+     *
      * @param manager
      */
     public ToolCategory( IToolManager manager ) {
         this.manager = manager;
-        id = Messages.ToolCategory_other; 
-        name = Messages.ToolCategory_other_menu; 
+        id = Messages.ToolCategory_other;
+        name = Messages.ToolCategory_other_menu;
         icon = null;
         commandId = null;
     }
@@ -93,7 +93,7 @@ public abstract class ToolCategory implements Iterable<ModalItem> {
 
     /**
      * Add an item to the category
-     * 
+     *
      * @param item the new item
      */
     public void add( ModalItem item ) {
@@ -109,7 +109,7 @@ public abstract class ToolCategory implements Iterable<ModalItem> {
 
     /**
      * Sets the commandHandler for this category.
-     * @param ids 
+     * @param ids
      */
     public void setCommandHandlers( ICommandService service ) {
 
@@ -125,14 +125,14 @@ public abstract class ToolCategory implements Iterable<ModalItem> {
 
     /**
      * Gets the command handler for the category.
-     * 
+     *
      * @return the command handler for the category.
      */
     protected abstract IHandler getHandler();
 
     /**
      * Gets the icon for the category.
-     * 
+     *
      * @return the icon for the category.
      */
     public ImageDescriptor getIcon() {
@@ -140,7 +140,7 @@ public abstract class ToolCategory implements Iterable<ModalItem> {
     }
     /**
      * Returns the id of the category
-     * 
+     *
      * @return the id of the category
      */
     public String getId() {
@@ -148,7 +148,7 @@ public abstract class ToolCategory implements Iterable<ModalItem> {
     }
     /**
      * Returns the name of the category
-     * 
+     *
      * @return the name of the category
      */
     public String getName() {

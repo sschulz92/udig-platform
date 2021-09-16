@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -64,12 +64,12 @@ import org.opengis.feature.simple.SimpleFeature;
 
 /**
  * Deletes the selected elements from a project.
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
 public class Delete extends UDIGGenericAction {
-    
+
     /**
      * Indicates whether to run the commands synchronously or not.
      */
@@ -88,7 +88,7 @@ public class Delete extends UDIGGenericAction {
      * <p>
      * The ProjectExplorer view and LayerView make use of their own delete action and thus are
      * not effected here.
-     * 
+     *
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
     public void run( IAction action ) {
@@ -97,17 +97,17 @@ public class Delete extends UDIGGenericAction {
             return; // nothing selected to delete
         }
         IStructuredSelection selection = (IStructuredSelection) sel;
-        
+
         /*
          * Optimization for a set of objects in selection of the same nature. The goal: run an
          * operation once over all selected objects.
          */
         ArrayList<Layer> layers = new ArrayList<Layer>(selection.size());
-        
+
         Object firstElem = selection.iterator().next();
-        
-        Pair<Boolean, Integer> stateData; 
-        
+
+        Pair<Boolean, Integer> stateData;
+
         if (canDeleteProjectElements && firstElem instanceof Project) {
             stateData = showErrorMessage(selection.size(), (Project) firstElem);
         } else if (canDeleteProjectElements && firstElem instanceof IProjectElement) {
@@ -123,11 +123,11 @@ public class Delete extends UDIGGenericAction {
         } else {
             stateData = null;
         }
-        
+
         if( stateData == null || stateData.getRight() == Window.CANCEL ){
             return; // thanks for playing
         }
-        
+
         for( Iterator<?> iter = selection.iterator(); iter.hasNext(); ) {
             Object element = iter.next();
 
@@ -152,7 +152,7 @@ public class Delete extends UDIGGenericAction {
 
         // layers = null;
     }
-    
+
     /**
      * @see org.locationtech.udig.project.ui.UDIGGenericAction#operate(org.locationtech.udig.project.Layer)
      */
@@ -229,7 +229,7 @@ public class Delete extends UDIGGenericAction {
         int returnCode = pair.right();
         doDelete(element, deleteFiles, returnCode);
     }
-    
+
     @Override
     protected Pair<Boolean, Integer> showErrorMessage( int size, ILayer layer, AdaptingFilter firstElement ) {
         return new Pair<Boolean, Integer>(false,Window.OK);
@@ -238,7 +238,7 @@ public class Delete extends UDIGGenericAction {
     protected Pair<Boolean, Integer> showErrorMessage( int size, Layer firstElement ) {
         return new Pair<Boolean, Integer>(false,Window.OK);
     }
-    
+
     @Override
     protected Pair<Boolean, Integer> showErrorMessage( int size, SimpleFeature firstElement ) {
         return new Pair<Boolean, Integer>(false,Window.OK);
@@ -262,7 +262,7 @@ public class Delete extends UDIGGenericAction {
 
     private Pair<Boolean, Integer> dialog( int size, String deleteOne, String name, String deleteMany ) {
         String message;
-        
+
         if (size == 1) {
             message = MessageFormat.format(deleteOne, name);
         } else {
@@ -274,7 +274,7 @@ public class Delete extends UDIGGenericAction {
          *  there is a bug in the maps removal.
          *  The below should be fixed once the bug has been fixed.
          */
-        
+
         // START OLD CODE
             //        MessageDialogWithToggle dialog = MessageDialogWithToggle.openOkCancelConfirm(Display
             //                .getCurrent().getActiveShell(), Messages.Delete_delete, message,
@@ -285,13 +285,13 @@ public class Delete extends UDIGGenericAction {
             //        int returnCode = dialog.getReturnCode();
             //        if (returnCode == Window.OK) {
         // END OLD CODE
-        
+
         // START TEMPORARY NEW CODE
         boolean delete = MessageDialog.openConfirm( Display.getCurrent().getActiveShell(), Messages.Delete_delete, message );
         boolean deleteFiles = getDoDelete();
         // END TEMPORARY NEW CODE
-        
-        
+
+
         if( delete ){
             //if (deleteFiles != getDoDelete()) {
             //    setDoDelete(deleteFiles);
@@ -508,7 +508,7 @@ public class Delete extends UDIGGenericAction {
 
     /**
      * Determines whether the command executions should happen synchronously or not.
-     * 
+     *
      * @param runSync
      */
     public void setRunSync( boolean runSync ) {

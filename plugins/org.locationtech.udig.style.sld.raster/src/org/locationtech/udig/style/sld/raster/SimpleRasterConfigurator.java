@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -62,7 +62,7 @@ import org.opengis.parameter.ParameterValueGroup;
  * <p>
  * Currently this allows editing of the opacity, scale, and band selection.
  * </p>
- * 
+ *
  * @author mleslie
  * @author Emily Gouge (Refractions Research Inc.)
  * @since 1.0.
@@ -116,7 +116,7 @@ public class SimpleRasterConfigurator extends AbstractSimpleConfigurator {
     	if (aLayer.hasResource(WebMapServer.class)){
     		return true;
     	}
-    	
+
         if (aLayer.hasResource(GridCoverage.class)){
         	try{
         		GridCoverage gc = aLayer.getResource(GridCoverage.class, null);
@@ -140,9 +140,9 @@ public class SimpleRasterConfigurator extends AbstractSimpleConfigurator {
         Display.getCurrent().asyncExec(new Runnable(){
 
             public void run() {
-            	
+
             	boolean canStyle = canStyle(getLayer());
-            	
+
             	lblWarn.setVisible(!canStyle);
             	for (Control c : parent.getChildren()){
             		if (!c.equals(lblWarn)){
@@ -150,7 +150,7 @@ public class SimpleRasterConfigurator extends AbstractSimpleConfigurator {
             		}
             	}
             	if (!canStyle){return;}
-            	
+
                 Style style = getStyle();
                 RasterSymbolizer sym = SLD.rasterSymbolizer(style);
 
@@ -209,7 +209,7 @@ public class SimpleRasterConfigurator extends AbstractSimpleConfigurator {
         lblWarn = new Label(parent, SWT.WRAP);
         lblWarn.setText(Messages.SimpleRasterConfigurator_StyleUnavailable);
         lblWarn.setVisible(false);
-        
+
         KeyAdapter adapter = new KeyAdapter(){
             @Override
             public void keyReleased( KeyEvent e ) {
@@ -242,15 +242,15 @@ public class SimpleRasterConfigurator extends AbstractSimpleConfigurator {
     @Override
     public void synchronize() {
     	boolean canStyle = canStyle(getLayer());
-    	
+
     	lblWarn.setVisible(!canStyle);
     	for (Control c : parent.getChildren()){
     		if (!c.equals(lblWarn)){
     			c.setVisible(canStyle);
     		}
     	}
-    	
-    	
+
+
         // get the style off the blackboard and add/modify it
         Style s = (Style) getLayer().getStyleBlackboard().get(SLDContent.ID);
 
@@ -325,7 +325,7 @@ public class SimpleRasterConfigurator extends AbstractSimpleConfigurator {
      * Job of updating the histogram values.
      * <p>
      * </p>
-     * 
+     *
      * @author Emily Gouge
      * @since 1.1.0
      */

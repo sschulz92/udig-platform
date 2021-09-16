@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -41,7 +41,7 @@ import org.locationtech.jts.geom.Envelope;
 /**
  * A Georesource that lazily loads the "real" WFS or WMS resource.  GetInfo will return a placeholder until
  * the "real" resource is loaded.
- * 
+ *
  * @author David Zwiers, Refractions Research
  */
 abstract class GoogleResource extends IGeoResource {
@@ -49,40 +49,40 @@ abstract class GoogleResource extends IGeoResource {
     public static GoogleResource getResource(OGCLayer layer) {
         if (layer.getServertype().equalsIgnoreCase("WMS")) { //$NON-NLS-1$
             return getWMSResource(layer);
-        } 
+        }
         if (layer.getServertype().equalsIgnoreCase("WFS")) { //$NON-NLS-1$
             return getWFSResource(layer);
         }
         return null;
     }
-    
+
     public static GoogleResource getWMSResource(OGCLayer layer) {
         return new GoogleWMSResource(layer);
     }
     public static GoogleResource getWFSResource(OGCLayer layer) {
         return new GoogleWFSResource(layer);
     }
-    
+
     protected Throwable msg = null;
     private URL id = null;
-    
+
     public GoogleResource(OGCLayer layer) {
         service = null; // we do not have a service (you will need to connect first!)
         id = layer.getId();
-        info = new IGeoResourceInfo(layer.getTitle(), layer.getName(), layer.getDescription(), getSchema(), 
+        info = new IGeoResourceInfo(layer.getTitle(), layer.getName(), layer.getDescription(), getSchema(),
                 new Envelope(), null, new String[] {layer.getServertype(), layer.getName(), layer.getTitle()}, getIcon() );
     }
-    
+
     protected abstract URI getSchema();
     protected abstract ImageDescriptor getIcon();
-    
+
     /*
      * Required adaptions:
      * <ul>
      * <li>IGeoResourceInfo.class
      * <li>IService.class
      * </ul>
-     * 
+     *
      * @see org.locationtech.udig.catalog.IResolve#resolve(java.lang.Class, org.eclipse.core.runtime.IProgressMonitor)
      */
     public <T> T resolve( Class<T> adaptee, IProgressMonitor monitor ) throws IOException{
@@ -91,10 +91,10 @@ abstract class GoogleResource extends IGeoResource {
 
         if(real != null)
             return real.resolve(adaptee,monitor);
-        
+
         if(adaptee.isAssignableFrom(IGeoResourceInfo.class))
             return adaptee.cast( this.createInfo(monitor));
-        
+
         loadReal(monitor);
         if(real != null)
             return real.resolve(adaptee,monitor);
@@ -108,14 +108,14 @@ abstract class GoogleResource extends IGeoResource {
     }
     protected IGeoResource real = null;
     protected abstract void loadReal(IProgressMonitor monitor) throws IOException;
-    
+
     /*
      * @see org.locationtech.udig.catalog.IResolve#canResolve(java.lang.Class)
      */
     public <T> boolean canResolve( Class<T> adaptee ) {
         if(adaptee == null)
             return false;
-        return (adaptee.isAssignableFrom(IGeoResourceInfo.class) || 
+        return (adaptee.isAssignableFrom(IGeoResourceInfo.class) ||
                 adaptee.isAssignableFrom(IService.class))||
                 super.canResolve(adaptee);
     }
@@ -170,7 +170,7 @@ static class GoogleWMSResource extends GoogleResource{
     protected ImageDescriptor getIcon() {
         return null;
     }
-    
+
     @Override
     public <T> boolean canResolve( Class<T> adaptee ) {
         if(adaptee == null)
@@ -179,7 +179,7 @@ static class GoogleWMSResource extends GoogleResource{
             adaptee.isAssignableFrom(WebMapServer.class) ||
             adaptee.isAssignableFrom(org.geotools.ows.wms.Layer.class)||
             super.canResolve(adaptee);
-        
+
     }
 
     /*
@@ -189,11 +189,11 @@ static class GoogleWMSResource extends GoogleResource{
         createInfo(monitor); // load me
         if(info == null || url == null|| info.getName() == null)
             return;
-        
+
         URL id = getIdentifier();
         if(id==null)
             return;
-        
+
         if(service == null){
         	List<IService> services = CatalogPlugin.getDefault().getServiceFactory().createService(url);
         	Iterator<IService> srv = services.iterator();
@@ -267,11 +267,11 @@ static class GoogleWFSResource extends GoogleResource{
         createInfo(monitor); // load me
         if(info == null || url == null|| info.getName() == null)
             return;
-        
+
         URL id = getIdentifier();
         if(id==null)
             return;
-        
+
         if(service == null){
 
         	List<IService> services = CatalogPlugin.getDefault().getServiceFactory().createService(url);

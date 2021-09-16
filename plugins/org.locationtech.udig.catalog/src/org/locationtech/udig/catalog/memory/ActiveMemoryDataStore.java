@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -29,7 +29,7 @@ import org.opengis.feature.simple.SimpleFeatureType;
  * of MemoryDataStore for use in the MemoryService extension
  * should sub-class this class, as that will permit the Catalog
  * to be notified by events.
- * 
+ *
  * @author mleslie
  * @author rgould
  * @since 0.6.0
@@ -72,33 +72,33 @@ public class ActiveMemoryDataStore extends MemoryDataStore {
     public ActiveMemoryDataStore( FeatureReader<SimpleFeatureType, SimpleFeature> reader ) throws IOException {
         super(reader);
     }
-    
+
     /**
      * TODO summary sentence for addFeatureListener ...
-     * 
+     *
      * @param listener
      */
     public void addListener(MemoryServiceListener listener) {
         this.list.add(listener);
     }
-    
+
     /**
      * TODO summary sentence for removeFeatureListener ...
-     * 
+     *
      * @param listener
      * @return true if removed
      */
     public boolean removeListener(MemoryServiceListener listener) {
         return this.list.remove(listener);
     }
-    
+
     public void createSchema(SimpleFeatureType featureType) throws IOException {
        super.createSchema(featureType);
        for(MemoryServiceListener listener : this.list) {
            listener.schemaChanged();
        }
     }
-    
+
     public void removeSchema( String typeName ) {
         try {
 			super.removeSchema(typeName);

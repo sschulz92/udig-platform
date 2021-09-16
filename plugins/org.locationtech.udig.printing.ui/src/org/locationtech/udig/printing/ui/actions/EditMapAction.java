@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -30,7 +30,7 @@ import org.eclipse.ui.IWorkbenchPart;
  * @since 0.3
  */
 public class EditMapAction extends SelectionAction {
-    
+
     public static final String EDIT_MAP_REQUEST = "EDIT_MAP"; //$NON-NLS-1$
     public static final String EDIT_MAP = EDIT_MAP_REQUEST;
     private Request request;
@@ -43,15 +43,15 @@ public class EditMapAction extends SelectionAction {
     public EditMapAction( IWorkbenchPart part ) {
         super(part);
         request = new Request(EDIT_MAP_REQUEST);
-        setText(Messages.EditMapAction_action_text); 
+        setText(Messages.EditMapAction_action_text);
         setId(EDIT_MAP);
-        setToolTipText(Messages.EditMapAction_action_tooltip); 
-        
+        setToolTipText(Messages.EditMapAction_action_tooltip);
+
     }
 
     /**
      * TODO summary sentence for calculateEnabled ...
-     * 
+     *
      * @see org.eclipse.gef.ui.actions.WorkbenchPartAction#calculateEnabled()
      * @return
      */
@@ -70,7 +70,7 @@ public class EditMapAction extends SelectionAction {
     	}
     	return true;
     }
-    
+
     private Command getCommand() {
     	List editparts = getSelectedObjects();
     	CompoundCommand cc = new CompoundCommand();
@@ -84,9 +84,9 @@ public class EditMapAction extends SelectionAction {
 
     /**
      * TODO summary sentence for run ...
-     * 
+     *
      * @see org.eclipse.jface.action.IAction#run()
-     * 
+     *
      */
     public void run() {
         execute(getCommand());

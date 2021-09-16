@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -17,7 +17,7 @@ import org.locationtech.udig.catalog.IResolveDelta;
 
 /**
  * Everything change change change ...
- * 
+ *
  * @author jgarnett
  * @since 0.6.0
  */
@@ -29,7 +29,7 @@ public class ResolveChangeEvent implements IResolveChangeEvent {
 
     /**
      * Construct <code>CatalogChangeEvent</code>.
-     * 
+     *
      * @param source Source of event, in case you care
      * @param type Type constant from ICatalogChangeEvent
      * @param delta Describes the change

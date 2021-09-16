@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -47,14 +47,14 @@ import org.eclipse.swt.widgets.Display;
  * handle for a new kind of <i>API</i>.
  * <ol>
  * <li>New method:
- * 
+ *
  * <pre>
  * <code>
  *  public API getAPI( ProgressMonitor monitor){
  *      if (monitor == null) monitor = new NullProgressMonitor();
- *      
+ *
  *      monitor.beingTask("Connect to API",2);
- *      try {            
+ *      try {
  *          String server = getConnectionParams().get("server");
  *          monitor.worked(1);
  *          return new API( s );
@@ -64,10 +64,10 @@ import org.eclipse.swt.widgets.Display;
  *      }
  *  }
  * </pre>
- * 
+ *
  * </code> (note the use of NullProgressMonitor)</li>
  * <li>Optional: Customize resolve method to advertise your new API "dynamically"
- * 
+ *
  * <pre>
  * <code>
  * public &lt;T&gt; boolean canResolve( Class&lt;T&gt; adaptee ) {
@@ -75,10 +75,10 @@ import org.eclipse.swt.widgets.Display;
  *             &amp;&amp; (adaptee.isAssignableFrom(API.class) || super.canResolve(adaptee));
  * }
  * public &lt;T&gt; T resolve( Class&lt;T&gt; adaptee, IProgressMonitor monitor ) throws IOException {
- *     if (monitor == null) monitor = new NullProgressMonitor(); 
+ *     if (monitor == null) monitor = new NullProgressMonitor();
  *     if (adaptee == null)
  *         throw new NullPointerException("No adaptor specified" );
- *         
+ *
  *     if (adaptee.isAssignableFrom(API.class)) {
  *         return adaptee.cast(getAPI(monitor));
  *     }
@@ -86,21 +86,21 @@ import org.eclipse.swt.widgets.Display;
  * }
  * </code>
  * </pre>
- * 
+ *
  * (note the call to super)</li>
  * <li>Optional: cache your API as the "connection"
- * 
+ *
  * <pre>
  * <code>
  *  API api = null;
  *  Throwable msg = null;
  *  public synchronized API getAPI( ProgressMonitor monitor){
  *      if( api != null ) return api;
- *      
+ *
  *      if (monitor == null) monitor = new NullProgressMonitor();
- *      
+ *
  *      monitor.beingTask("Connect to API",2);
- *      try {            
+ *      try {
  *          String server = getConnectionParams().get("server");
  *          monitor.worked(1);
  *          api = new API( s );
@@ -126,10 +126,10 @@ import org.eclipse.swt.widgets.Display;
  *  }
  * </code>
  * </pre>
- * 
+ *
  * (Note the use of getMessage and getStatus)</li>
  * </ol>
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  * @version 1.2
@@ -142,7 +142,7 @@ public abstract class IService implements IResolve {
      * where we were unable to connect to a service using createInfo.
      */
     protected static IServiceInfo INFO_UNAVAILABLE = new IServiceInfo();
-    
+
     /**
      * Use when implementing {@link #getStatus()}.
      */
@@ -151,14 +151,14 @@ public abstract class IService implements IResolve {
      * Used to save persisted properties; please see {@link ServiceParameterPersister} for details.
      */
     private Map<String, Serializable> properties = Collections.synchronizedMap(new HashMap<String, Serializable>());
-    
+
     /**
      * Used to save persisted properties for child resources; please see {@link ServiceParameterPersister} for details.
      * <p>
      * IGeoResource makes use of {@link #getPersistentProperties(ID)} for direct access to these maps.
      */
     Map<ID,Map<String, Serializable>> resourceProperties =  Collections.synchronizedMap(new HashMap<ID,Map<String, Serializable>>() );
-    
+
     /**
      * This is a protected field; that is laziy created when getInfo is called.
      */
@@ -182,14 +182,14 @@ public abstract class IService implements IResolve {
      * May Block.
      * <p>
      * Example implementation:
-     * 
+     *
      * <pre>
      * <code>
      * public &lt;T&gt; T resolve( Class&lt;T&gt; adaptee, IProgressMonitor monitor ) throws IOException {
-     *     if (monitor == null) monitor = new NullProgressMonitor(); 
+     *     if (monitor == null) monitor = new NullProgressMonitor();
      *     if (adaptee == null)
      *         throw new NullPointerException("No adaptor specified" );
-     *         
+     *
      *     if (adaptee.isAssignableFrom(API.class)) {
      *         return adaptee.cast(getAPI(monitor));
      *     }
@@ -197,7 +197,7 @@ public abstract class IService implements IResolve {
      * }
      * </code>
      * </pre>
-     * 
+     *
      * @param adaptee
      * @param monitor
      * @return instance of adaptee, or null if unavailable (IServiceInfo and List<IGeoResource> must
@@ -242,7 +242,7 @@ public abstract class IService implements IResolve {
      * </ul>
      * <p>
      * Here is an implementation example (for something that can adapt to DataStore):
-     * 
+     *
      * <pre>
      * <code>
      * public &lt;T&gt; boolean canResolve( Class&lt;T&gt; adaptee ) {
@@ -297,7 +297,7 @@ public abstract class IService implements IResolve {
 
     /**
      * Responsible for creation of an appropriate IServiceInfo object.
-     * 
+     *
      * @return IServiceInfo resolve(IServiceInfo.class, IProgressMonitor monitor);
      * @throws IOException
      */
@@ -328,7 +328,7 @@ public abstract class IService implements IResolve {
      */
     public IServiceInfo getInfo( IProgressMonitor monitor ) throws IOException {
         if( isDisposed ){
-            return null; 
+            return null;
         }
         if (info == null) { // lazy creation
             synchronized (this) {
@@ -361,7 +361,7 @@ public abstract class IService implements IResolve {
         if (info == INFO_UNAVAILABLE) {
             return null; // info was not available
         }
-        return info;        
+        return info;
     }
 
     public ID getID() {
@@ -371,7 +371,7 @@ public abstract class IService implements IResolve {
     /**
      * hide user password from the layer ID if it exists and returns
      * ID as String.
-     * 
+     *
      * @param layer
      * @return
      */
@@ -384,7 +384,7 @@ public abstract class IService implements IResolve {
         }
         return getID().toString();
     }
-	
+
     /**
      * Map of parameters used to create this entry. There is no guarantee that these params created
      * a usable service (@see getStatus() ). These params may have been modified within the factory
@@ -393,21 +393,21 @@ public abstract class IService implements IResolve {
      * <p>
      * <b>IMPORTANT:</b> Because of the serialization currently used only types that can be
      * reconstructed from their toString() representation can be used. For example:
-     * 
+     *
      * <pre>
      * <code>
      * valueThatIsSaved=url.toString().
      * URL restoredValue=new URL(valueThatIsSaved);
      * </code>
      * </pre>
-     * 
+     *
      * Also only classes that this plugin can load can be loaded so custom classes from downstream
      * plugins cannot be used. It is recommended that only "normal" types be used like Integer, URL,
      * Float, etc...
      * </p>
      * This restriction will be lifted in the future. (Except for the loading issue that is a design
      * issue that we will live with.)
-     * 
+     *
      * @see IServiceFactory
      * @return
      */
@@ -415,7 +415,7 @@ public abstract class IService implements IResolve {
 
     /**
      * Map of servies's persistent properties (may be empty).
-     * 
+     *
      * @see ServiceParameterPersister for restrictions of values that can be stored
      * @return The map containing the persistent properties for this service.
      */
@@ -425,7 +425,7 @@ public abstract class IService implements IResolve {
     /**
      * Map of indicated resource's persistent properties. Returns an empty map if
      * this resource has no persistent properties.
-     * 
+     *
      * @see ServiceParameterPersister for restrictions of values that can be stored
      * @param child ID of child properties requested
      * @return The map containing the persistent properties where the key is the
@@ -448,7 +448,7 @@ public abstract class IService implements IResolve {
      * Retrieves the title from the IService cache, or from the ServiceInfo object iff it is
      * present. Returns null if either of these are not available. If the title is fetched from
      * ServiceInfo, it is added to the cache before returning.
-     * 
+     *
      * @returns the service title or null if non is readily available
      */
     public String getTitle() {
@@ -469,7 +469,7 @@ public abstract class IService implements IResolve {
 
     /**
      * This should represent the identifier
-     * 
+     *
      * @see Object#equals(java.lang.Object)
      * @param obj
      * @return
@@ -484,7 +484,7 @@ public abstract class IService implements IResolve {
     }
     /**
      * This should represent the identified
-     * 
+     *
      * @see Object#hashCode()
      * @return
      */
@@ -499,7 +499,7 @@ public abstract class IService implements IResolve {
 
     /**
      * Indicate class and id.
-     * 
+     *
      * @return string representing this IResolve
      */
     public String toString() {
@@ -512,7 +512,7 @@ public abstract class IService implements IResolve {
         buf.append(")"); //$NON-NLS-1$
         return buf.toString();
     }
-    
+
     /**
      * Quick partial implementation for IService implementors.
      * <p>
@@ -542,19 +542,19 @@ public abstract class IService implements IResolve {
         }
         super.finalize();
     }
-    
+
     /**
      * Calls dispose on each member (when connected).
      * <p>
      * Subclasses
-     * 
+     *
      */
     public void dispose( IProgressMonitor monitor ) {
         if( isDisposed ){
             throw new IllegalStateException("IService.dispose() called, for the second time"); // downgrade to warning?
         }
         monitor.beginTask(Messages.IService_dispose, 100);
-        
+
         if (getStatus() == Status.CONNECTED) {
             try {
                 // only ask for members if we are connected

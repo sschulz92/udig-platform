@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -27,7 +27,7 @@ import org.eclipse.core.runtime.Status;
 
 /**
  * A utility class to assist in processing extensions
- * 
+ *
  * @see org.locationtech.udig.core.internal.ExtensionPointProcessor
  * @author Jesse Eichar
  * @version $Revision: 1.9 $
@@ -37,7 +37,7 @@ public class ExtensionPointUtil {
     /**
      * Finds all the Extension or the Extension point identified by the xpid method and calls a
      * callback method on the processor class for processing of the extension.
-     * 
+     *
      * @see org.locationtech.udig.core.internal.ExtensionPointProcessor#process(IExtension,
      *      IConfigurationElement)
      * @param xpid The id of the ExtensionPoint for which the extensions are to be processed
@@ -51,7 +51,7 @@ public class ExtensionPointUtil {
     /**
      * Finds all the Extension or the Extension point identified by the xpid method and calls a
      * callback method on the processor class for processing of the extension.
-     * 
+     *
      * @see org.locationtech.udig.core.internal.ExtensionPointProcessor#process(IExtension,
      *      IConfigurationElement)
      * @param plugin plugin processing this extention point
@@ -85,7 +85,7 @@ public class ExtensionPointUtil {
                                             0,
                                             MessageFormat
                                                     .format(
-                                                            "Error processing extension {0}", new Object[]{exception}), exception)); //$NON-NLS-1$                    
+                                                            "Error processing extension {0}", new Object[]{exception}), exception)); //$NON-NLS-1$
                 }
             }
         }
@@ -95,7 +95,7 @@ public class ExtensionPointUtil {
      * Process extentionpoint with an itemCreator.
      * <p>
      * Example Use:
-     * 
+     *
      * <pre><code>
      *  List&lt;Thingy&gt; stuff = ExtentionPointUtil.list( new ExtentionPointProcessor2(){
      *     public Object process( IExtention extention, IConfigurationElement element ){
@@ -103,9 +103,9 @@ public class ExtensionPointUtil {
      *     }
      *  }
      * </code></pre>
-     * 
+     *
      * </p>
-     * 
+     *
      * @param xpid
      * @param itemCreator Used to process extention points into items for a list
      * @return List

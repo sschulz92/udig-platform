@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -33,7 +33,7 @@ public class LayerSelectionListener implements ISelectionListener {
 
     /**
      * Construct <code>LayerSelectionListener</code>.
-     * 
+     *
      * @param callback The callback used when a layer or layers have been added.
      */
     public LayerSelectionListener( Callback callback ) {

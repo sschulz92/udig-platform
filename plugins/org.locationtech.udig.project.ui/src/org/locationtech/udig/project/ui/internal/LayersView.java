@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -125,7 +125,7 @@ public class LayersView extends ViewPart
         if (currentMap != null) {
             currentMap.removeDeepAdapter(checkboxContextListener);
 
-            IViewportModel viewportModel = currentMap.getViewportModel();    
+            IViewportModel viewportModel = currentMap.getViewportModel();
             if (viewportModel != null) {
                 viewportModel.removeViewportModelListener(zoomListener);
             }
@@ -272,7 +272,7 @@ public class LayersView extends ViewPart
      * TODO Seems we don't really need that LayersView listens selection changing. To display layers
      * we need to listen only activating of MapEditor. Also it solves some problems and bugs with
      * listeners hell during LayersView closing and opening multiple times.
-     * 
+     *
      * @author Vitalus
      */
     private class MapEditorListener implements IPartListener, ISelectionChangedListener {
@@ -757,7 +757,7 @@ public class LayersView extends ViewPart
 
     /**
      * Updates the viewer with new selected layer.
-     * 
+     *
      * @param newSelection
      */
     protected void updateSelection( final ILayer newSelection ) {
@@ -782,11 +782,11 @@ public class LayersView extends ViewPart
      */
     private void setGlobalActions() {
         IActionBars actionBars = getViewSite().getActionBars();
-        
+
         IToolManager toolManager = ApplicationGIS.getToolManager();
         toolManager.contributeGlobalActions(this, actionBars);
         toolManager.registerActionsWithPart(this);
-        
+
         IKeyBindingService keyBindings = getSite().getKeyBindingService();
         IAction delAction = getDeleteAction();
         actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), delAction);
@@ -796,7 +796,7 @@ public class LayersView extends ViewPart
     /**
      * This is how the framework determines which interfaces we implement. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param key The desired class
      * @return An object of type key or null;
      */
@@ -875,7 +875,7 @@ public class LayersView extends ViewPart
 
     /**
      * Creates a context menu
-     * 
+     *
      * @param viewer2
      */
     private void createContextMenuFor( final Viewer viewer2 ) {

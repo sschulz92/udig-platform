@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -26,7 +26,7 @@ import org.locationtech.udig.ui.graphics.ViewportGraphics;
 
 /**
  * Draws the outline of a shape on the Acetate layer.
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
@@ -52,7 +52,7 @@ public class DrawPathCommand extends AbstractDrawCommand {
 
     /**
      * Creates a new instance of DrawShapeCommand
-     * 
+     *
      * @param path The path to draw
      * @param color The paint to draw the shape with.
      * @param lineStyle the line style to use for the shape outline
@@ -67,7 +67,7 @@ public class DrawPathCommand extends AbstractDrawCommand {
 
     /**
      * Creates a new instance of DrawShapeCommand
-     * 
+     *
      * @param path The path to draw
      * @param color The paint to draw the shape with.
      * @param lineStyle the line style to use for the shape outline
@@ -87,9 +87,9 @@ public class DrawPathCommand extends AbstractDrawCommand {
 		if( path==null )
 			return;
 		fill();
-            
+
         draw();
-        
+
         close();
     }
 
@@ -141,7 +141,7 @@ public class DrawPathCommand extends AbstractDrawCommand {
      */
     public void setPath( Device device, PathIterator path ) {
         this.path=AWTSWTImageUtils.createPath(path, device);
-        
+
     }
     /**
      * @return Returns the line style.
@@ -158,7 +158,7 @@ public class DrawPathCommand extends AbstractDrawCommand {
 
     /**
      * Sets the line style
-     * 
+     *
      * @param lineStyle the style of the line
      * @param lineWidth the width of the line
      */
@@ -168,9 +168,9 @@ public class DrawPathCommand extends AbstractDrawCommand {
     }
 
     /**
-     * Sets the color that the shape will be filled with.  
+     * Sets the color that the shape will be filled with.
      * If fill is null then no fill will be applied.
-     *  
+     *
      * @param fillColor a color to be used to fill the shapeor null.
      */
     public void setFill( Color fillColor ) {
@@ -206,10 +206,10 @@ public class DrawPathCommand extends AbstractDrawCommand {
             super.setValid(true);
         }
     }
-    
+
     /**
      * if this is called then a line is also drawn from (x1,y1) to (x2,y2).  This would be used to make the path appear to be closed.  Actually closing
-     * the path is problematic because it cannot be undone.  So this is a method to simulate it.  Obviously if the path is not going to need to be re-opened 
+     * the path is problematic because it cannot be undone.  So this is a method to simulate it.  Obviously if the path is not going to need to be re-opened
      * then this method does not need to be called.
      *
      */

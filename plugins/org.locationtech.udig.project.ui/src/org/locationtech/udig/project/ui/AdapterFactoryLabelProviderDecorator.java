@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -33,7 +33,7 @@ import org.locationtech.udig.project.internal.provider.LoadingPlaceHolder;
  *     PlatformUI.getWorkbench().getDecoratorManager()
  * )
  * </code></pre>
- * 
+ *
  * @author jones
  * @since 0.6.0
  */
@@ -73,7 +73,7 @@ public class AdapterFactoryLabelProviderDecorator extends DecoratingLabelProvide
             return super.getImage(element);
         return null;
     }
-    
+
     @Override
     public void dispose() {
         getLabelProvider().dispose();
@@ -117,9 +117,9 @@ public class AdapterFactoryLabelProviderDecorator extends DecoratingLabelProvide
             }
             return null;
         }
-        
-        
-        
+
+
+
     }
-    
+
 }

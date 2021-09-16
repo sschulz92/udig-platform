@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -54,7 +54,7 @@ import org.locationtech.udig.ui.ProgressManager;
 
 /**
  * Quickly create a new empty map with a default name.
- * 
+ *
  * @author rgould
  * @since 0.9.0
  */
@@ -100,7 +100,7 @@ public class AddToNewMap
      * service has more than 1 child the user is queried to determine which services should be added
      * to the returned collection. Services with only a single child are added to result
      * automatically.
-     * 
+     *
      * @param collection the collection of {@link IService}s and {@link IGeoResource}s to process.
      * @return the chosen resources.
      */
@@ -126,13 +126,13 @@ public class AddToNewMap
                         resources.add(members.get(0));
                     else{
                         needsUserInput=true;
-                    }   
+                    }
                 }
             } catch (IOException e) {
                 ProjectUIPlugin.log("", e); //$NON-NLS-1$
             }
         }
-        
+
         if( needsUserInput ){
             IWorkbench workbench = PlatformUI.getWorkbench();
             IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -31,7 +31,7 @@ public class GridCoverageReaderMetricsFactory implements IRenderMetricsFactory {
 
     /**
      * Ensures that we can get an AbstractGridCoverage2DReader out of this class.
-     * 
+     *
      * @see org.locationtech.udig.project.render.RenderMetricsFactory#canRender(org.locationtech.udig.project.render.RenderTools)
      * @param context
      * @return true if we can render the provided context using BasicGridCoverageRenderer
@@ -49,7 +49,7 @@ public class GridCoverageReaderMetricsFactory implements IRenderMetricsFactory {
 
     /**
      * Strategy object used to indicate how well a renderer can draw.
-     * 
+     *
      * @see org.locationtech.udig.project.render.RenderMetricsFactory#createMetrics(org.locationtech.udig.project.render.RenderTools)
      * @param context
      * @return render metrics for the provided context

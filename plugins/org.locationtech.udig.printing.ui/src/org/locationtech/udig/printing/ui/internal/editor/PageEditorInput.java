@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -26,7 +26,7 @@ public class PageEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for exists ...
-     * 
+     *
      * @see org.eclipse.ui.IEditorInput#exists()
      * @return
      */
@@ -36,7 +36,7 @@ public class PageEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for getImageDescriptor ...
-     * 
+     *
      * @see org.eclipse.ui.IEditorInput#getImageDescriptor()
      * @return
      */
@@ -46,7 +46,7 @@ public class PageEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for getPersistable ...
-     * 
+     *
      * @see org.eclipse.ui.IEditorInput#getPersistable()
      * @return
      */
@@ -56,7 +56,7 @@ public class PageEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for getToolTipText ...
-     * 
+     *
      * @see org.eclipse.ui.IEditorInput#getToolTipText()
      * @return
      */
@@ -66,7 +66,7 @@ public class PageEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for getAdapter ...
-     * 
+     *
      * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
      * @param adapter
      * @return
@@ -77,7 +77,7 @@ public class PageEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for getName ...
-     * 
+     *
      * @see org.eclipse.ui.IEditorInput#getName()
      * @return
      */

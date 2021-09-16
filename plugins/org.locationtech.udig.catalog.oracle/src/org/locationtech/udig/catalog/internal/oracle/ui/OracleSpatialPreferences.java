@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -33,7 +33,7 @@ public class OracleSpatialPreferences extends AbstractProprietaryJarPreferencePa
      * @param image
      */
     public OracleSpatialPreferences() {
-        super(Messages.OraclePreferences_title); 
+        super(Messages.OraclePreferences_title);
     }
 
     public OracleSpatialPreferences( String file ) {
@@ -57,7 +57,7 @@ public class OracleSpatialPreferences extends AbstractProprietaryJarPreferencePa
     protected boolean installed() {
         return isInstalled();
     }
-    
+
     public static boolean isInstalled() {
         OracleNGDataStoreFactory factory = OracleServiceExtension.getFactory();
         return factory != null && factory.isAvailable();

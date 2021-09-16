@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -94,7 +94,7 @@ import org.opengis.coverage.grid.GridCoverage;
 /**
  * A facade into udig to simplify operations such as getting the active map and
  * openning a map editor.
- * 
+ *
  * @author jeichar
  * @since 0.9.0
  */
@@ -105,7 +105,7 @@ public class ApplicationGIS {
 
     /**
      * Obtains the current project.
-     * 
+     *
      * @return The current active project
      */
     public static IProject getActiveProject() {
@@ -121,7 +121,7 @@ public class ApplicationGIS {
 
     /**
      * Return all Projects. The list is unmodifiable.
-     * 
+     *
      * @return all Projects.
      */
     public static List<? extends IProject> getProjects() {
@@ -132,7 +132,7 @@ public class ApplicationGIS {
 
     /**
      * Returns the active map.  Returns {@link #NO_MAP} if there is no open map.
-     * 
+     *
      * @return the map contained by the current MapEditor or null if the active editor is not a map
      *         editor.
      */
@@ -170,7 +170,7 @@ public class ApplicationGIS {
     /**
      * Opens a Map editor for the provided map, This is a non-blocking call.
      * Equivalent to openMap(map, false);
-     * 
+     *
      * @param map
      *            the map to open. Must be an instance of Map.
      */
@@ -180,7 +180,7 @@ public class ApplicationGIS {
 
     /**
      * Opens a Map editor for the provided map.
-     * 
+     *
      * @param map
      *            the map to open. Must be an instance of Map.
      * @param wait
@@ -193,7 +193,7 @@ public class ApplicationGIS {
 
     /**
      * creates a map and opens an editor for the map.
-     * 
+     *
      * @param a
      *            list of IGeoResources. Each resource will be a layer in the
      *            created map.
@@ -206,7 +206,7 @@ public class ApplicationGIS {
 
     /**
      * creates a map and opens an editor for the map.
-     * 
+     *
      * @param a
      *            list of IGeoResources. Each resource will be a layer in the
      *            created map.
@@ -221,10 +221,10 @@ public class ApplicationGIS {
         getActiveProject().sendSync(command);
         openMap(command.getCreatedMap());
     }
-    
+
     /**
      * creates a map and opens an editor for the map.
-     * 
+     *
      * @param a
      *            list of IGeoResources. Each resource will be a layer in the
      *            created map.
@@ -246,7 +246,7 @@ public class ApplicationGIS {
     /**
      * Gets a reference to a view. If the view has not been opened previously
      * then the view will be opened.
-     * 
+     *
      * @param show
      *            whether to show the view or not.
      * @param id
@@ -297,7 +297,7 @@ public class ApplicationGIS {
     /**
      * Returns an editor input for the type passed in. Processes the
      * editorInputs extension point.
-     * 
+     *
      * @param type
      * @return an editor input for the type passed in.
      */
@@ -354,18 +354,18 @@ public class ApplicationGIS {
 
     /**
      * Returns the ToolManager singleton.
-     * 
+     *
      * @return the ToolManager singleton.
      */
     public static IToolManager getToolManager() {
         synchronized (ToolManager.class) {
             if (toolManager == null) {
-                
+
                 String prefConstant = IToolManager.P_TOOL_MANAGER;
                 String xpid = IToolManager.XPID;
                 String idField = IToolManager.ATTR_ID;
                 String classField = IToolManager.ATTR_CLASS;
-                
+
                 IToolManager result = (IToolManager) UiPlugin.lookupConfigurationObject(
                         IToolManager.class, ProjectUIPlugin.getDefault().getPreferenceStore(),
                         ProjectUIPlugin.ID,
@@ -382,7 +382,7 @@ public class ApplicationGIS {
 
     /**
      * Returns the IEditorInput instance that wraps the element argument.
-     * 
+     *
      * @return the IEditorInput instance that wraps the element argument.
      */
     public static UDIGEditorInput getInput(IProjectElement element) {
@@ -398,7 +398,7 @@ public class ApplicationGIS {
 
     /**
      * Creates a Tools Context out of Map.
-     * 
+     *
      * @param map
      *            that the context interacts with
      * @return a ToolContext
@@ -421,7 +421,7 @@ public class ApplicationGIS {
      * used (see {@link #getActiveMap()} or a new map will be created if that is
      * null.
      * </p>
-     * 
+     *
      * @param map
      *            the map to add the layers to. If null the current active map
      *            will be used or a new one will be created
@@ -441,7 +441,7 @@ public class ApplicationGIS {
     /**
      * Make layers from the resourceList, creates a new map, adds layers to map
      * and adds map to the project.
-     * 
+     *
      * @param project
      *            project that new map should be added to
      * @param resourceList
@@ -450,7 +450,7 @@ public class ApplicationGIS {
      *            z-position of the layers to add. if -1 it will be added to the
      *            top of the map (0 is the bottom of the map and
      *            map.getMapLayer.size() is the top of the map).
-     * 
+     *
      * @return layers that were added.
      */
     public static List<? extends ILayer> addLayersToMap(IProject project,
@@ -465,7 +465,7 @@ public class ApplicationGIS {
      * used (see {@link #getActiveMap()} or a new map will be created if that is
      * null.
      * </p>
-     * 
+     *
      * @param map
      *            the map to add the layers to. If null the current active map
      *            will be used or a new one will be created
@@ -494,7 +494,7 @@ public class ApplicationGIS {
      * used (see {@link #getActiveMap()} or a new map will be created if that is
      * null.
      * </p>
-     * 
+     *
      * @param map
      *            the map to add the layers to. If null the current active map
      *            will be used or a new one will be created
@@ -515,7 +515,7 @@ public class ApplicationGIS {
     public static List<? extends ILayer> addLayersToMap(IMap map2,
             List<IGeoResource> resourceList, int startPosition2,
             IProject project2, boolean wait) {
-        
+
         IMap map = map2;
         if (map == null && project2 == null)
             map = (IMap) getActiveMap();
@@ -523,7 +523,7 @@ public class ApplicationGIS {
         if(map==NO_MAP){
             map = null;
         }
-        
+
         IProject project = project2;
         if (project == null) {
             if (map == null)
@@ -533,7 +533,7 @@ public class ApplicationGIS {
                 project = map.getProject();
         }
         List<? extends ILayer> layers;
-        
+
         /*
          * Check or not for duplicate layers in context of the map where georesources are added.
          */
@@ -543,7 +543,7 @@ public class ApplicationGIS {
         }else{
             cleanedGeoResources = resourceList;
         }
-        
+
         if (map == null) {
             CreateMapCommand cmCommand = new CreateMapCommand(null, cleanedGeoResources, project);
             project.sendSync(cmCommand);
@@ -564,7 +564,7 @@ public class ApplicationGIS {
     /**
      * Loads the project element indicated by the url and adds the map to the
      * provided project.
-     * 
+     *
      * @param url
      *            the project element to load
      * @param project
@@ -606,10 +606,10 @@ public class ApplicationGIS {
 
         return elem;
     }
-   
+
     /**
      * Opens a {@link IProjectElement} for editing/viewing.
-     * 
+     *
      * @param obj
      *            object to open
      * @param wait
@@ -626,9 +626,9 @@ public class ApplicationGIS {
     /**
      * Parameter class for
      * {@link ApplicationGIS#drawMap(org.locationtech.udig.project.ui.ApplicationGIS.DrawMapParameter)}
-     * 
+     *
      * @author jesse
-     * 
+     *
      * @see ApplicationGIS#drawMap(org.locationtech.udig.project.ui.ApplicationGIS.DrawMapParameter)
      */
     public static class DrawMapParameter {
@@ -644,7 +644,7 @@ public class ApplicationGIS {
 
         /**
          * New instance
-         * 
+         *
          * @param graphics The graphics to draw to
          * @param destinationSize the size of the area to draw to
          * @param toDraw the map to draw.
@@ -671,10 +671,10 @@ public class ApplicationGIS {
             this.selectionStyle=selectionStyle;
             this.transparent = transparent;
         }
-        
+
         /**
          * New instance
-         * 
+         *
          * @param graphics The graphics to draw to
          * @param destinationSize the size of the area to draw to
          * @param toDraw the map to draw.
@@ -686,19 +686,19 @@ public class ApplicationGIS {
         public DrawMapParameter(Graphics2D graphics, Dimension destinationSize,
                 IMap toDraw, BoundsStrategy boundsStrategy, int dpi, SelectionStyle selectionStyle,
                 IProgressMonitor monitor) {
-            this(graphics, 
-                    destinationSize, 
-                    toDraw, 
-                    boundsStrategy, 
-                    dpi, 
-                    selectionStyle, 
-                    monitor, 
+            this(graphics,
+                    destinationSize,
+                    toDraw,
+                    boundsStrategy,
+                    dpi,
+                    selectionStyle,
+                    monitor,
                     false, false);
         }
 
         /**
          * Create a new instance with a DPI of 90 (OGC default).
-         * 
+         *
          * @param graphics the graphics to draw on.
          * @param destinationSize the destination size.
          * @param toDraw the map to draw
@@ -706,12 +706,12 @@ public class ApplicationGIS {
          */
         public DrawMapParameter(Graphics2D graphics, Dimension destinationSize,
                 IMap toDraw, IProgressMonitor monitor) {
-            this(graphics, destinationSize, toDraw, new BoundsStrategy(toDraw.getViewportModel().getScaleDenominator()), 90, SelectionStyle.OVERLAY, monitor);            
+            this(graphics, destinationSize, toDraw, new BoundsStrategy(toDraw.getViewportModel().getScaleDenominator()), 90, SelectionStyle.OVERLAY, monitor);
         }
-        
+
         /**
          * Create a new instance with the given DPI
-         * 
+         *
          * @param graphics the graphics to draw on.
          * @param destinationSize the destination size.
          * @param toDraw the map to draw
@@ -720,18 +720,18 @@ public class ApplicationGIS {
          */
         public DrawMapParameter(Graphics2D graphics, Dimension destinationSize,
                 IMap toDraw, int dpi, IProgressMonitor monitor) {
-            this(graphics, 
-                    destinationSize, 
-                    toDraw, 
-                    new BoundsStrategy(toDraw.getViewportModel().getScaleDenominator()), 
-                    dpi, 
-                    SelectionStyle.OVERLAY, 
-                    monitor);            
+            this(graphics,
+                    destinationSize,
+                    toDraw,
+                    new BoundsStrategy(toDraw.getViewportModel().getScaleDenominator()),
+                    dpi,
+                    SelectionStyle.OVERLAY,
+                    monitor);
         }
-        
+
         /**
          * Create a new instance with a DPI of 90 (OGC default).
-         * 
+         *
          * @param graphics the graphics to draw on.
          * @param destinationSize the destination size.
          * @param toDraw the map to draw
@@ -740,7 +740,7 @@ public class ApplicationGIS {
          */
         public DrawMapParameter(Graphics2D graphics, Dimension destinationSize,
                 IMap toDraw, IProgressMonitor monitor, boolean transparent) {
-            this(graphics, destinationSize, toDraw, new BoundsStrategy(toDraw.getViewportModel().getScaleDenominator()), 90, SelectionStyle.OVERLAY, monitor, transparent, false);            
+            this(graphics, destinationSize, toDraw, new BoundsStrategy(toDraw.getViewportModel().getScaleDenominator()), 90, SelectionStyle.OVERLAY, monitor, transparent, false);
         }
 
         /**
@@ -753,33 +753,33 @@ public class ApplicationGIS {
                     params2.boundsStrategy, params2.dpi,  params2.selectionStyle,
                     params2.monitor,params2.transparent, params2.doBufferedImageForGrids);
         }
-        
+
     }
-    
+
     /**
      * Renders the provided map on to the provided graphics2D object.
      * @param params parameters that describe how and where to draw the map
-     * 
+     *
      * @throws RenderException
      *             Thrown if an error occurs such as a unreachable server.
-     *             
+     *
      * @return the map that was rendered.  It will not be saved or and is not part of any project.
      */
     public static IMap drawMap(final DrawMapParameter drawMapParams) throws RenderException {
         final DrawMapParameter params = new DrawMapParameter( drawMapParams );
         IProgressMonitor monitor = params.monitor;
-        
+
         final Map map = (Map) EcoreUtil.copy((EObject) params.toDraw);
-        
+
         map.getBlackboard().addAll(drawMapParams.toDraw.getBlackboard());
-        
+
         for (int i = 0; i < map.getMapLayers().size(); i++) {
             ILayer source = params.toDraw.getMapLayers().get(i);
             Layer dest = map.getLayersInternal().get(i);
             dest.setFilter(source.getFilter());
             dest.getBlackboard().addAll(source.getBlackboard());
         }
-        
+
         IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
             public void run(IProgressMonitor monitor)
@@ -790,14 +790,14 @@ public class ApplicationGIS {
                 for (ILayer layer : layers) {
                     layer.getGeoResources();
                 }
-                
+
                 Color background = (Color) map.getBlackboard().get(ProjectBlackboardConstants.MAP__BACKGROUND_COLOR);
                 params.graphics.setBackground(background);
                 if (!drawMapParams.transparent) {
                     params.graphics.clearRect(0, 0, params.destinationSize.width, params.destinationSize.height);
                 }
                 List<Layer> layersToRender = params.selectionStyle.handleSelection(map.getLayersInternal());
-                
+
                 ProjectUIPlugin
                         .trace(
                                 ApplicationGIS.class,
@@ -806,7 +806,7 @@ public class ApplicationGIS {
                 ReferencedEnvelope bounds = (ReferencedEnvelope) params.toDraw.getViewportModel().getBounds();
                 ReferencedEnvelope boundsCopy = new ReferencedEnvelope(bounds);
                 RenderContext tools = configureMapForRendering(map, params.destinationSize, params.dpi, params.boundsStrategy, boundsCopy);
-                
+
                 RendererCreator decisive = new RendererCreatorImpl();
                 decisive.setContext(tools);
 
@@ -823,14 +823,14 @@ public class ApplicationGIS {
                     IProgressMonitor monitor, RendererCreator decisive,
                     SortedSet<RenderContext> sortedContexts)
                     throws InvocationTargetException {
-                
+
                 monitor.beginTask("Rendering map", sortedContexts.size());
                 RenderContext mainContext = decisive.getContext();
 
                 ILabelPainter labelPainter = mainContext.getLabelPainter();
                 labelPainter.clear();
                 labelPainter.start();
-                
+
                 Dimension displaySize = params.destinationSize;
                 Iterator<RenderContext> iter = sortedContexts.iterator();
                 while (iter.hasNext()) {
@@ -874,7 +874,7 @@ public class ApplicationGIS {
                             }else{
                                 renderer.render(graphics, monitor);
                             }
-                            
+
                         } catch (RenderException e) {
                             throw new InvocationTargetException(e);
                         }
@@ -910,11 +910,11 @@ public class ApplicationGIS {
     }
 
     /**
-     * Creates a ViewportModel and RenderManager; configures them correctly and sets them on the RenderContext.  
+     * Creates a ViewportModel and RenderManager; configures them correctly and sets them on the RenderContext.
      * The layer and the georesource still must be set on the context.
-     * Returns the Context. 
+     * Returns the Context.
      *
-     * @param map the map 
+     * @param map the map
      * @param destinationSize the size of the destination area
      * @param dpi the dpi of the destination
      * @param boundsStrategy the strategy to use for setting the bounds on the viewport model
@@ -973,7 +973,7 @@ public class ApplicationGIS {
                                 destinationSize.height)));
 
         boundsStrategy.setBounds(model, baseMapBounds);
-        
+
         return tools;
 
     }
@@ -993,7 +993,7 @@ public class ApplicationGIS {
     }
 
     public static final Map NO_MAP = ProjectFactory.eINSTANCE.createMap();
-    
+
 
     /**
      * Performs a deep copy of a map.
@@ -1016,11 +1016,11 @@ public class ApplicationGIS {
             Layer dest = copy.getLayersInternal().get(i);
             dest.setFilter(source.getFilter());
             dest.getBlackboard().addAll(source.getBlackboard());
-            
+
             dest.setStyleBlackboard((StyleBlackboard)dest.getStyleBlackboard().clone());
-            
+
         }
-        
+
         return copy;
     }
 
@@ -1029,15 +1029,15 @@ public class ApplicationGIS {
      *
      * This is part of the mechanism for adding custom items to a Project without needing to learn
      * the EMF framework.  See the org.locationtech.udig.project.element Extension Point.
-     * 
+     *
      * If the typeToCreate is NOT the same or a superclass of the object created or if an object cannot
-     * be created a {@link IllegalArgumentException} will be thrown 
-     * @param project 
-     * 
+     * be created a {@link IllegalArgumentException} will be thrown
+     * @param project
+     *
      * @param typeToCreate The type of object that is expected to be created.  This is provided as a
      * check to ensure that the correct type is returned.
      * @param extensionId the extension to use to create a new instance.
-     * 
+     *
      * @return A {@link ProjectElementAdapter} that wraps/adapts the object created using the extension
      */
     public static ProjectElementAdapter createGeneralProjectElement(
@@ -1050,15 +1050,15 @@ public class ApplicationGIS {
      *
      * This is part of the mechanism for adding custom items to a Project without needing to learn
      * the EMF framework.  See the org.locationtech.udig.project.element Extension Point.
-     * 
+     *
      * If the typeToCreate is NOT the same or a superclass of the object created or if an object cannot
-     * be created a {@link IllegalArgumentException} will be thrown 
+     * be created a {@link IllegalArgumentException} will be thrown
      * @param project the project to add the newly created adapter to
      * @param elementName the name of the project to create
      * @param typeToCreate The type of object that is expected to be created.  This is provided as a
      * check to ensure that the correct type is returned.
      * @param extensionId the extension to use to create a new instance.
-     * 
+     *
      * @return A {@link ProjectElementAdapter} that wraps/adapts the object created using the extension
      */
     public static ProjectElementAdapter createGeneralProjectElement(

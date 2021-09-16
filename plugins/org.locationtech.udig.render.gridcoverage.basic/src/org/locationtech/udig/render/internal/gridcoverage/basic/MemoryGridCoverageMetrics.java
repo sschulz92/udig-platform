@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -31,7 +31,7 @@ import org.geotools.util.Range;
 
 /**
  * Creates a Metrics object for the basic gridcoverage renderer
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
@@ -46,7 +46,7 @@ public class MemoryGridCoverageMetrics extends AbstractRenderMetrics {
         styleIds.add("org.locationtech.udig.style.cache");
         return styleIds;
     }
-    
+
     /**
      * Construct <code>BasicGridCoverageMetrics</code>.
      *
@@ -56,16 +56,16 @@ public class MemoryGridCoverageMetrics extends AbstractRenderMetrics {
     public MemoryGridCoverageMetrics( IRenderContext context2, MemoryGridCoverageMetricsFactory factory) {
         super( context2, factory, listExpectedStyleIds());
         this.resolutionMetric = RES_DENSE; // reads more then is required for the screen!
-        
+
         ID id = context.getGeoResource().getID();
-        //Boolean memory = (Boolean) context.getLayer().getStyleBlackboard().get("org.locationtech.udig.style.cache");        
+        //Boolean memory = (Boolean) context.getLayer().getStyleBlackboard().get("org.locationtech.udig.style.cache");
         if( id.isMemory() ){
             // we would not really want to use GridCoverageLoader on an in memory image
             this.latencyMetric = LATENCY_MEMORY;
             this.timeToDrawMetric = DRAW_IMAGE_MEMORY;
         }
         else {
-            this.latencyMetric = LATENCY_MEMORY_CACHE;        
+            this.latencyMetric = LATENCY_MEMORY_CACHE;
             this.timeToDrawMetric = DRAW_IMAGE_MEMORY;
         }
     }
@@ -105,7 +105,7 @@ public class MemoryGridCoverageMetrics extends AbstractRenderMetrics {
         }
         // although we expect SLDContent; we are willing to work with any Style
         //
-        if( value != null && value instanceof Style){              
+        if( value != null && value instanceof Style){
             Style style = (Style) value;
             return SLDs.rasterSymbolizer( style ) != null;
         }
@@ -126,7 +126,7 @@ public class MemoryGridCoverageMetrics extends AbstractRenderMetrics {
             return MinMaxScaleCalculator.getValidScaleRanges(style);
         }
         else {
-            System.out.println("Unexpected "+value.getClass()+" for "+SLDContent.ID+":"+value);            
+            System.out.println("Unexpected "+value.getClass()+" for "+SLDContent.ID+":"+value);
             return new HashSet<Range<Double>>();
         }
     }

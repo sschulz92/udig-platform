@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -149,7 +149,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
             }
         } finally {
             Thread.currentThread().setContextClassLoader(current);
-        }        
+        }
     }
 
     @Override
@@ -166,22 +166,22 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
     public synchronized void render( Graphics2D destination, ReferencedEnvelope bounds,
             IProgressMonitor monitor ) throws RenderException {
 
-        
+
         int endLayerStatus = ILayer.DONE;
         try {
             if (bounds == null || bounds.isNull()) {
                 bounds = getContext().getImageBounds();
             }
-            
+
             if (monitor.isCanceled())
                 return;
 
             getContext().setStatus(ILayer.WAIT);
 
             WebMapServer wms = getWMS();
-            
+
             GetMapRequest request = wms.createGetMapRequest();
-            
+
             // put in default exception format we understand as a client
             // (if suppoted by the server)
             WMSCapabilities capabilities = wms.getCapabilities();
@@ -239,13 +239,13 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
                 endLayerStatus = ILayer.WARNING;
                 return;
             }
-            
+
             // figure out request CRS
             CoordinateReferenceSystem viewportCRS = getViewportCRS();
             IMap map = getContext().getMap();
-            
+
             String requestCRScode = findRequestCRS(wmsLayers, viewportCRS, map);
-            
+
             // TODO: make findRequestCRS more efficient (we are running CRS.decode at *least* twice)
             CoordinateReferenceSystem requestCRS = CRS.decode(requestCRScode);
 
@@ -267,7 +267,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
             Envelope backprojectedBBox = null; // request bbox projected to the viewport crs
 //            viewport = new ReferencedEnvelope(viewportBBox, viewportCRS);
 //            requestBBox = calculateRequestBBox(wmsLayers, viewport, requestCRS);
-            
+
             requestBBox = calculateRequestBBox(wmsLayers, bounds, requestCRS, capabilities.getVersion() );
 
             // check that a request is needed (not out of a bounds, invalid, etc)
@@ -304,11 +304,11 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
             request.setDimensions(imageDimensions.width + "", imageDimensions.height + ""); //$NON-NLS-1$ //$NON-NLS-2$
             // epsg could be under identifiers or authority.
             Set<ReferenceIdentifier> identifiers = requestCRS.getIdentifiers();
-            String srs = identifiers.isEmpty() ? EPSG_4326 : identifiers.iterator().next().toString();            
+            String srs = identifiers.isEmpty() ? EPSG_4326 : identifiers.iterator().next().toString();
             request.setSRS(srs); // EPSG_4326
             request.setBBox( requestBBox );
             // request.setBBox(requestBBox.getMinX() + "," + requestBBox.getMinY()+ "," + requestBBox.getMaxX()+ "," + requestBBox.getMaxY());
-            
+
             if (monitor.isCanceled())
                 return;
 
@@ -418,10 +418,10 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
 
         AffineTransform worldToScreen = RendererUtilities.worldToScreenTransform(envelope, screenSize, destinationCRS);
 		GridCoverageRenderer paint = new GridCoverageRenderer( destinationCRS, envelope, screenSize, worldToScreen  );
-                     
+
         RasterSymbolizer symbolizer = CommonFactoryFinder.getStyleFactory(null).createRasterSymbolizer();
-                        
-        paint.paint( graphics, coverage, symbolizer );  
+
+        paint.paint( graphics, coverage, symbolizer );
 
     }
     private GridCoverage2D convertImageToGridCoverage( ReferencedEnvelope requestBBox,
@@ -516,7 +516,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
                 }
             }
         }
-        
+
         if( exception[0]!=null )
             throw exception[0];
         return image[0];
@@ -539,7 +539,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
     /**
      * Determines the dimensions of the image to request, usually 1:1 to display, but sometimes more
      * (too fuzzy) or less (image too large) when reprojecting.
-     * 
+     *
      * @param maxDimensions TODO
      * @param viewport
      * @param request
@@ -583,7 +583,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
      * Using the viewport bounds and combined wms layer extents, determines an appropriate bounding
      * box by projecting the viewport into the request CRS, intersecting the bounds, and returning
      * the result.
-     * 
+     *
      * @param wmsLayers all adjacent wms layers we are requesting
      * @param viewport map editor bounds and crs
      * @param requestCRS coordinate reference system supported by the server
@@ -734,14 +734,14 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
         double max0 = envelope.getUpperCorner().getOrdinate(0);
         double max1 = envelope.getUpperCorner().getOrdinate(1);
         ReferencedEnvelope swap = new ReferencedEnvelope( min1,max1,min0,max0,envelope.getCoordinateReferenceSystem());
-        
+
         return swap;
     }
-    
+
     public static ReferencedEnvelope getLayersBoundingBox( CoordinateReferenceSystem crs, List<Layer> layers,String version ) {
         ReferencedEnvelope envelope = null;
         for( Layer layer : layers ) {
-            GeneralEnvelope temp = layer.getEnvelope(crs);            
+            GeneralEnvelope temp = layer.getEnvelope(crs);
             if (temp != null) {
                 ReferencedEnvelope jtsTemp = ReferencedEnvelope.reference( temp );
 //              if( version != null && version.startsWith("1.3")){
@@ -763,7 +763,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
      * can figure out how to make the *exact* same request in order
      * to a getInfo operation. We should really store the last request
      * on the layer blackboard for this intra module communication.
-     * 
+     *
      * @return SRS code
      */
     public static String findRequestCRS( List<Layer> layers, CoordinateReferenceSystem viewportCRS, IMap map ) {
@@ -780,15 +780,15 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
                 return match;
             }
         }
-        
+
         if( matchEPSG(layers, CRS_84) ){
             return CRS_84;    // preferred default
         }
-        
+
         if( matchEPSG(layers, EPSG_4326) ){
             return EPSG_4326; // recommended from WMS specification
         }
-        
+
         // Why prefer NAD84?
         if ( matchEPSG(layers, EPSG_4269)) {
             return EPSG_4269; // similar to CRS_84
@@ -809,7 +809,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
             } catch (FactoryException e) {
                 e.printStackTrace(); // internal trouble :(
             }
-            
+
             if (matchEPSG(layers, epsgCode)) {
                 requestCRS = epsgCode;
                 return requestCRS;
@@ -842,7 +842,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
             codes.add(CRS_84);
             codes.add(EPSG_4326);
             return codes;
-        }        
+        }
         codes.addAll(CRSUtil.extractAuthorityCodes(crs));
 
         final String DONT_FIND = "DONT_FIND";
@@ -888,7 +888,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
         }
         return codes;
     }
-	
+
 
     private static void dontFind( final IMap map, final String DONT_FIND ) {
         map.getBlackboard().put(EPSG_CODE,
@@ -896,7 +896,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
     }
     /**
      * Quickly check provided layers to ensure they have the provided epsgCode in common.
-     * 
+     *
      * @param layers
      * @param epsgCode
      * @return
@@ -982,7 +982,7 @@ public class BasicWMSRenderer2 extends RendererImpl implements IMultiLayerRender
 
     /**
      * Determine whether the image needs to be refreshed
-     * 
+     *
      * @return Whether the image needs to be refreshed
      */
     protected boolean needRefresh() {

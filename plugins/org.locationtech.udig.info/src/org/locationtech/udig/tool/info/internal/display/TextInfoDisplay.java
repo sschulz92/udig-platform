@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -23,7 +23,7 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * Nested browser used to display LayerPointInfo.
- * 
+ *
  * @author Jody Garnett
  * @since 0.3
  */
@@ -33,25 +33,25 @@ public class TextInfoDisplay extends InfoDisplay {
     protected Text text;
     //private Text location;
     //private ViewForm viewForm;
-    
+
     /**
-     * Nested viewForm containing text, and locationbar 
+     * Nested viewForm containing text, and locationbar
      * @return Control maintained by this display
      */
     public Control getControl() {
         return text; //viewForm;
     }
-    
+
     public void createDisplay( Composite parent ) {
         /*
-        viewForm= new ViewForm( parent, SWT.NONE);        
+        viewForm= new ViewForm( parent, SWT.NONE);
         GridLayout gridLayout = new GridLayout();
         gridLayout.numColumns = 2;
         viewForm.setLayout(gridLayout);
-        
+
         Label labelAddress = new Label(viewForm, SWT.NONE);
         labelAddress.setText("A&ddress");
-        
+
         location = new Text(viewForm, SWT.BORDER);
         GridData data = new GridData();
         data = new GridData();
@@ -68,9 +68,9 @@ public class TextInfoDisplay extends InfoDisplay {
         data.grabExcessHorizontalSpace = true;
         data.grabExcessVerticalSpace = true;
         text.setLayoutData(data);
-        */              
+        */
     }
-    
+
     public void setInfo( LayerPointInfo info ) {
         if( info == null ){
             text.setText( "" );             //$NON-NLS-1$
@@ -91,6 +91,6 @@ public class TextInfoDisplay extends InfoDisplay {
                 text.setToolTipText( info.getMimeType() );
             }
         }
-    }    
-    
+    }
+
 }

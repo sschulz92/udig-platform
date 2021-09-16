@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -28,18 +28,18 @@ import org.locationtech.udig.project.ui.internal.ProjectUIPlugin;
 
 /**
  * Wizard for exporting a project, its maps and all associated data to a project.
- * 
+ *
  * @author Jesse
  */
 public class ExportProjectWizard extends Wizard implements IExportWizard, IRunnableWithProgress {
 
     private String destinationDirectory = "";
     private IStructuredSelection selection;
-    
+
     /** prompts the user about what to export; select projects to export, and directory to export */
     private ExportSelectionPage selectionPage;
-    
-    ImageDescriptor wizardPageIconDescriptor = 
+
+    ImageDescriptor wizardPageIconDescriptor =
         ProjectUIPlugin.imageDescriptorFromPlugin(ProjectUIPlugin.ID, "icons/wizban/exportproject_wiz.png");
 
     /* (non-Javadoc)
@@ -62,7 +62,7 @@ public class ExportProjectWizard extends Wizard implements IExportWizard, IRunna
         boolean canFinish = true;
         if(!selectionPage.isPageComplete()){
             canFinish = false;
-        } 
+        }
         return canFinish;
     }
 

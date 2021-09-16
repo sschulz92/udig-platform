@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -20,12 +20,12 @@ import org.eclipse.core.commands.ExecutionException;
 
 /**
  * Handles the pan right,left,up and down commands
- * 
+ *
  * @author jeichar
  * @since 0.6.0
  */
 public class PanHandler extends AbstractHandler implements IToolHandler {
-    
+
     private static PanTool TOOL;
     private String id;
     private static final String LEFT = "org.locationtech.udig.tools.panLeftCommand"; //$NON-NLS-1$
@@ -33,7 +33,7 @@ public class PanHandler extends AbstractHandler implements IToolHandler {
     private static final String UP = "org.locationtech.udig.tools.panUpCommand"; //$NON-NLS-1$
     private static final String DOWN = "org.locationtech.udig.tools.panDownCommand"; //$NON-NLS-1$
     private static NavigationUpdateThread PANNER=NavigationUpdateThread.getUpdater();
-    
+
     public void setTool( Tool tool ) {
         TOOL=(PanTool) tool;
     }
@@ -56,6 +56,6 @@ public class PanHandler extends AbstractHandler implements IToolHandler {
             PANNER.down(TOOL.getContext(), 1000);
         return null;
     }
-    
+
 
 }

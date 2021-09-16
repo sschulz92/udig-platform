@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -30,7 +30,7 @@ import org.locationtech.udig.ui.graphics.ViewportGraphics;
 
 /**
  * Draws the outline of a shape on the Acetate layer.
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
@@ -52,7 +52,7 @@ public class DrawShapeCommand extends AbstractDrawCommand {
 
     /**
      * Creates a new instance of DrawShapeCommand
-     * 
+     *
      * @param shape The shape to draw
      * @param color The paint to draw the shape with.
      * @param lineStyle the line style to use for the shape outline
@@ -76,7 +76,7 @@ public class DrawShapeCommand extends AbstractDrawCommand {
             graphics.setColor(fill);
             graphics.fill(shape);
         }
-            
+
         if (paint != null)
             graphics.setColor(paint);
         if (style > -1)
@@ -87,18 +87,18 @@ public class DrawShapeCommand extends AbstractDrawCommand {
     private void doDraw() {
         if( shape instanceof Rectangle2D ){
             Rectangle2D rect=(Rectangle2D) shape;
-            graphics.drawRect((int)rect.getX(), (int)rect.getY(), 
+            graphics.drawRect((int)rect.getX(), (int)rect.getY(),
                     (int)rect.getWidth(), (int)rect.getHeight() );
             return;
         }
-        
+
         if( shape instanceof Ellipse2D){
             Ellipse2D ellipse=(Ellipse2D) shape;
-            graphics.drawOval((int)ellipse.getMinX(), (int)ellipse.getMinY(), 
+            graphics.drawOval((int)ellipse.getMinX(), (int)ellipse.getMinY(),
                     (int)ellipse.getWidth(), (int)ellipse.getHeight());
             return;
         }
-        
+
         if( graphics instanceof SWTGraphics ){
 	        if( path==null || path.isDisposed() )
 	            path=AWTSWTImageUtils.createPath(shape.getPathIterator(new AffineTransform()),
@@ -149,7 +149,7 @@ public class DrawShapeCommand extends AbstractDrawCommand {
 
     /**
      * Sets the line style
-     * 
+     *
      * @param lineStyle the style of the line
      * @param lineWidth the width of the line
      */
@@ -159,9 +159,9 @@ public class DrawShapeCommand extends AbstractDrawCommand {
     }
 
     /**
-     * Sets the color that the shape will be filled with.  
+     * Sets the color that the shape will be filled with.
      * If fill is null then no fill will be applied.
-     *  
+     *
      * @param fillColor a color to be used to fill the shapeor null.
      */
     public void setFill( Color fillColor ) {
@@ -173,12 +173,12 @@ public class DrawShapeCommand extends AbstractDrawCommand {
             return null;
         return shape.getBounds();
     }
-    
+
     @Override
     public void setValid( boolean valid ) {
         super.setValid(valid);
      }
-    
+
     @Override
     public void dispose() {
         if( path!=null && !path.isDisposed() )

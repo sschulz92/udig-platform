@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -29,7 +29,7 @@ import org.locationtech.udig.catalog.shp.internal.Messages;
 
 /**
  * Service Extension implementation for Shapefiles.
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -39,7 +39,7 @@ public class ShpServiceExtension extends AbstractDataStoreServiceExtension imple
     //shp service creation. Should be defined as a system variable during startup
     public static String SHP_CHARSET_PARAM_NAME = "shp.encoding";
 
-    // this is for backwards compatibility with 1.1.x.  The parameter key was 
+    // this is for backwards compatibility with 1.1.x.  The parameter key was
     // changed in geotools since 2.2
     private static final String OLD_URLP_KEY = "shapefile url"; //$NON-NLS-1$
     private static ShapefileDataStoreFactory shpDSFactory;
@@ -49,7 +49,7 @@ public class ShpServiceExtension extends AbstractDataStoreServiceExtension imple
             shpDSFactory = new ShapefileDataStoreFactory();
         return shpDSFactory;
     }
-    
+
     public IService createService( URL id, Map<String,Serializable> params ) {
         if( params.containsKey(OLD_URLP_KEY)){
             params.put(ShapefileDataStoreFactory.URLP.key, params.get(OLD_URLP_KEY));
@@ -62,7 +62,7 @@ public class ShpServiceExtension extends AbstractDataStoreServiceExtension imple
             if(params.get(ShapefileDataStoreFactory.URLP.key) == null) {
                 return null;
             } else if (params.get(ShapefileDataStoreFactory.URLP.key) instanceof URL){
-            
+
                 url = (URL)params.get(ShapefileDataStoreFactory.URLP.key);
             }else{
                 try {
@@ -80,7 +80,7 @@ public class ShpServiceExtension extends AbstractDataStoreServiceExtension imple
                     .endsWith(".dbf"))) {
                 return null;
             }
-            
+
             if( getSHPDSFactory().canProcess(params)){
                 if (id == null) {
                     return new ShpServiceImpl(url,params);
@@ -98,11 +98,11 @@ public class ShpServiceExtension extends AbstractDataStoreServiceExtension imple
            return null;
         }
         URL cleanedShapeURL = toShpURL( url );
-        
+
         if( cleanedShapeURL==null ){
             return null; // file did not exist or was not valid
         }
-        
+
         if(getSHPDSFactory().canProcess(cleanedShapeURL)){
             // shape file
             File file = URLUtils.urlToFile( cleanedShapeURL );
@@ -110,14 +110,14 @@ public class ShpServiceExtension extends AbstractDataStoreServiceExtension imple
                 return null; // file does not exist?
             }
             HashMap<String,Serializable> params = new HashMap<String,Serializable>();
-            params.put(ShapefileDataStoreFactory.URLP.key,cleanedShapeURL);          
-            
+            params.put(ShapefileDataStoreFactory.URLP.key,cleanedShapeURL);
+
             //set the charset to be used for the shapefile during loading
             Charset charset = getCharsetParam();
             if (charset != null) {
                 params.put(ShapefileDataStoreFactory.DBFCHARSET.key, charset.name());
             }
-   
+
             return params;
         }
         return null;
@@ -130,7 +130,7 @@ public class ShpServiceExtension extends AbstractDataStoreServiceExtension imple
         return (file.endsWith(".shp") || file.endsWith(".shx") ||file.endsWith(".qix")  //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
                 || file.endsWith(".dbf")); //$NON-NLS-1$
     }
-    
+
     /**
      * Has a go at cleaning the provided URL and ensuring it is a file
      */
@@ -143,7 +143,7 @@ public class ShpServiceExtension extends AbstractDataStoreServiceExtension imple
         // previous approach tries to duplicate the functionality of URLUtils above; using it as a fallback
         String authority = url.getAuthority();
         String path = url.getPath();
-        
+
         if (authority != null && authority.length() != 0) {
             path = "//"+authority+path; //$NON-NLS-1$
         }
@@ -191,8 +191,8 @@ public class ShpServiceExtension extends AbstractDataStoreServiceExtension imple
     }
 
     /**
-     * Sets the charset to be used during service creation. 
-     * 
+     * Sets the charset to be used during service creation.
+     *
      * @param params
      */
     private Charset getCharsetParam() {

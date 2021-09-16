@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -24,7 +24,7 @@ import org.locationtech.udig.catalog.IResolveDeltaVisitor;
 
 /**
  * Catalog delta.
- * 
+ *
  * @author jgarnett
  * @since 0.6.0
  */
@@ -63,20 +63,20 @@ public class ResolveDelta implements IResolveDelta {
         this.children = Collections.unmodifiableList(changes);
         this.handle = handle;
         if (kind == Kind.REPLACED) {
-            throw new IllegalArgumentException(Messages.ResolveDelta_error_newHandleRequired); 
+            throw new IllegalArgumentException(Messages.ResolveDelta_error_newHandleRequired);
         }
         newHandle = null;
         newValue=oldValue=null;
     }
-    /** 
-     * Simple change used for Add and Remove with no children 
+    /**
+     * Simple change used for Add and Remove with no children
      */
     public ResolveDelta( IResolve handle, Kind kind ) {
         this.kind = kind;
         this.children = NO_CHILDREN;
         this.handle = handle;
         if (kind == Kind.REPLACED) {
-            throw new IllegalArgumentException(Messages.ResolveDelta_error_newHandleRequired); 
+            throw new IllegalArgumentException(Messages.ResolveDelta_error_newHandleRequired);
         }
         newHandle = null;
         newValue=oldValue=null;
@@ -90,7 +90,7 @@ public class ResolveDelta implements IResolveDelta {
         this.children = Collections.unmodifiableList(changes2);
         this.handle = handle;
         if (kind == Kind.REPLACED) {
-            throw new IllegalArgumentException(Messages.ResolveDelta_error_newHandleRequired); 
+            throw new IllegalArgumentException(Messages.ResolveDelta_error_newHandleRequired);
         }
         newHandle = null;
         newValue=oldValue=null;
@@ -115,8 +115,8 @@ public class ResolveDelta implements IResolveDelta {
     }
 
     /**
-     * Indicates a IResolve has changed.  (Kind==Kind.CHANGED).  
-     * 
+     * Indicates a IResolve has changed.  (Kind==Kind.CHANGED).
+     *
      * @param handle resolve that has changed
      * @param oldValue old value before change
      * @param newValue new value after change

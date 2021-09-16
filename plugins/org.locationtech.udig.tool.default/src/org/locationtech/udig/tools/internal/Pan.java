@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -61,7 +61,7 @@ public class Pan extends AbstractModalTool implements ModalTool {
      * @see org.locationtech.udig.project.ui.tool.AbstractTool#mousePressed(org.locationtech.udig.project.render.displayAdapter.MapMouseEvent)
      */
     public void mousePressed(MapMouseEvent e) {
-    	
+
         if (validModifierButtonCombo(e)) {
         	((ViewportPane)context.getMapDisplay()).enableDrawCommands(false);
             dragging = true;
@@ -96,7 +96,7 @@ public class Pan extends AbstractModalTool implements ModalTool {
             //clear any events before we try to pan.  This dramatically reduces the number
             //of images drawn to the screen in the wrong spot
             ((ViewportPane) getContext().getMapDisplay()).update();
-            
+
             context.sendASyncCommand(new PanAndInvalidate(finalPan, command));
 
             dragging = false;
@@ -138,7 +138,7 @@ public class Pan extends AbstractModalTool implements ModalTool {
             expire.setValid(false);
 
             command.run(monitor);
-           
+
         }
 
         public void setViewportModel( ViewportModel model ) {

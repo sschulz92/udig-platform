@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -38,7 +38,7 @@ import com.lowagie.text.PageSize;
 
 /**
  * Implementation of a Template at its most basic. Contains a title bar and a map.
- * 
+ *
  * @author Richard Gould
  * @author Andrea Antonello (www.hydrologis.com)
  */
@@ -74,7 +74,7 @@ public abstract class AbstractPrinterPageTemplate extends AbstractTemplate {
 
     /**
      * Populates the templates two boxes with a title and map
-     * 
+     *
      * @param page the parent(owner) page
      * @param map the Map to be drawn
      */
@@ -196,7 +196,7 @@ public abstract class AbstractPrinterPageTemplate extends AbstractTemplate {
         mapBox.setID("Standard Map Box"); //$NON-NLS-1$
         mapBox.setBoxPrinter(mapBoxPrinter);
         mapBoxPrinter.setMap(map);
-        
+
 
         Rectangle mapBounds = new Rectangle(xPos, yPos, mapWidth, mapHeight);
         mapBox.setSize(new Dimension(mapBounds.width, mapBounds.height));

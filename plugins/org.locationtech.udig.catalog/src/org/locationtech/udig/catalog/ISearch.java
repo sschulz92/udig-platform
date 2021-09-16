@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -24,9 +24,9 @@ import org.locationtech.jts.geom.Envelope;
  * <p>
  * The specific metadata to be searched is arbitrary; we are providing a limited
  * search based on plain text and an extent.
- * 
+ *
  * @author Jody Garnett (Lisasoft)
- * 
+ *
  * @since 1.2.0
  * @see ICatalog
  * @see IRepository
@@ -34,7 +34,7 @@ import org.locationtech.jts.geom.Envelope;
 public abstract class ISearch implements IResolve {
 	/**
 	 * ISearch does not have a parent so null is returned.
-	 * 
+	 *
 	 * @return null as catalogs do not have a parent
 	 */
 	public IResolve parent(IProgressMonitor monitor) {
@@ -51,7 +51,7 @@ public abstract class ISearch implements IResolve {
 	 * <p>
 	 * You can use this method to make specific registry access APIs availble;
 	 * perhaps based on the WRS or CAT service?
-	 * 
+	 *
 	 * @param adaptee
 	 * @param monitor
 	 *            Used to report progress when connecting
@@ -68,7 +68,7 @@ public abstract class ISearch implements IResolve {
 	 * This is functionally equivalent to:
 	 * <core>resolve(ICatalogInfo.class,monitor)</code>
 	 * </p>
-	 * 
+	 *
 	 * @see ISearch#resolve(Class, IProgressMonitor)
 	 * @return ICatalogInfo resolve(ICatalogInfo.class,IProgressMonitor
 	 *         monitor);
@@ -85,7 +85,7 @@ public abstract class ISearch implements IResolve {
 	 * appropriate; you may need to try some of the other values (if for example
 	 * the first service is unavailable).
 	 * <p>
-	 * 
+	 *
 	 * @param resource
 	 *            used to match resolves
 	 * @param monitor
@@ -96,7 +96,7 @@ public abstract class ISearch implements IResolve {
 
 	/**
 	 * Check for an exact match with provided id.
-	 * 
+	 *
 	 * @param type
 	 *            Type of IResolve if known
 	 * @param id
@@ -105,7 +105,7 @@ public abstract class ISearch implements IResolve {
 	 * @return Resolve or null if not found
 	 */
 	public abstract <T extends IResolve> T getById(Class<T> type, ID id, IProgressMonitor monitor);
-    
+
 	/**
 	 * Performs a search on this catalog based on the specified inputs.
 	 * <p>
@@ -121,7 +121,7 @@ public abstract class ISearch implements IResolve {
 	 * The bbox provided shall be in Lat - Long, or null if the search is not to
 	 * be contained within a specified area.
 	 * </p>
-	 * 
+	 *
 	 * @param pattern
 	 *            Search pattern (see above)
 	 * @param bbox
@@ -135,7 +135,7 @@ public abstract class ISearch implements IResolve {
 
 	/**
 	 * Indicate class and id.
-	 * 
+	 *
 	 * @return string representing this IResolve
 	 */
 	public String toString() {
@@ -155,11 +155,11 @@ public abstract class ISearch implements IResolve {
 	public List<IResolve> members(IProgressMonitor monitor) throws IOException {
 		return Collections.emptyList();
 	}
-	
+
 	/**
 	 * Clean up any resources or connections used to support
 	 * the operation of the ISearch.
 	 */
-    public void dispose(IProgressMonitor monitor) {    
+    public void dispose(IProgressMonitor monitor) {
     }
 }

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -124,7 +124,7 @@ public class Messages extends NLS {
     public static  String SaveProject_Overwrite;
     public static  String SaveProject_Success;
     public static  String SaveProject_Fail;
-	
+
     public static String AddLayerItemsCommand_name;
     public static String AddLayerItemCommand_Name;
     public static String AddFolderItemCommand_Name;
@@ -133,7 +133,7 @@ public class Messages extends NLS {
 
     public static String DeleteLayerItemsCommand_Name;
     public static String DeleteFolderItemCommand_Name;
-    
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

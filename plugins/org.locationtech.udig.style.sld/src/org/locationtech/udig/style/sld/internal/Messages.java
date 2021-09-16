@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -173,7 +173,7 @@ public class Messages extends NLS {
     public static String StylingConstants_tooltip_anchor;
     public static String StylingConstants_label_displacement;
     public static String StylingConstants_tooltip_displacement;
-    
+
     public static String ClassifyDialog_BreaksLabel;
 	public static String ClassifyDialog_ClassificationFunctionLabel;
 	public static String ClassifyDialog_ComputeBreaksJobName;

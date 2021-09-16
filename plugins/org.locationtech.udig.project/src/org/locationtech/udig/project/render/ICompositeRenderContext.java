@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -30,7 +30,7 @@ import org.locationtech.udig.project.ILayer;
  * versions</li>
  * </ul>
  * </p>
- * 
+ *
  * @author Jesse
  * @since 0.5
  * @see IRenderContext
@@ -50,13 +50,13 @@ public interface ICompositeRenderContext extends IRenderContext {
      * <p>
      * The method iterates throught the list of contexts and collects all the Layers
      * </p>
-     * 
+     *
      * @return List <ILayer>The list of Layers
      * @see ILayer
      * @see List
      */
     List<ILayer> getLayers();
-    
+
     public ICompositeRenderContext copy();
 
 }

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -15,17 +15,17 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.locationtech.udig.style.sld.raster.internal.messages"; //$NON-NLS-1$
-	
+
     public static String SimpleRasterConfigurator_BandDelimiter;
     public static String SimpleRasterConfigurator_BlueChannelLabel;
     public static String SimpleRasterConfigurator_GreenChannelLabel;
     public static String SimpleRasterConfigurator_RedChannelLabel;
     public static String SimpleRasterConfigurator_ScaleGroup;
 	public static String SimpleRasterConfigurator_StyleUnavailable;
-   
+
 	public static String SLDRasterEditorPart_rasterOpactity_label;
 
-    
+
     public static String ClassifyDialog_BreaksLabel;
 	public static String ClassifyDialog_ClassificationFunctionLabel;
 	public static String ClassifyDialog_ComputeBreaksJobName;

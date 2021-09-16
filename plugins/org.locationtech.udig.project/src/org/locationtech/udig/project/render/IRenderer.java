@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -62,7 +62,7 @@ import org.locationtech.jts.geom.Envelope;
  * can receive notices of when the data changes. If another method of recieving update is required
  * then the renderer is held responsible.</li>
  * </ul>
- * 
+ *
  * @author jeichar
  * @since 0.1
  */
@@ -71,8 +71,8 @@ public interface IRenderer {
     /** The name of the Extension Point for Renderers */
     public static final String RENDER_EXT = "org.locationtech.udig.project.renderer"; //$NON-NLS-1$
 
-    
-    
+
+
     /** Indicates that the renderer has been reset and does not have anything to show */
     public static final int NEVER = 0x01;
 
@@ -88,10 +88,10 @@ public interface IRenderer {
 
     /** Indicates that the renderer has been disposed and can no longer be used */
     public static final int DISPOSED = 0x01 << 3;
-    
+
     /** Indicates that the renderer has started rendering but does not have data to be displayed */
     public static final int STARTING = 0x01 << 5;
-    
+
     /** Indicates that the renderer has been cancelled rendering */
     public static final int CANCELLED = 0x01 << 6;
 
@@ -103,7 +103,7 @@ public interface IRenderer {
      * <p> {@link #setRenderBounds(Envelope)} can be called to set the area that needs to be rendered}
      */
     public static final int RENDER_REQUEST = 0x01 << 4;
-    
+
     /**
      * Returns the current state of rendering.
      * <p>
@@ -116,7 +116,7 @@ public interface IRenderer {
      * <li>{@linkplain #NEVER}</li>
      * <li>{@linkplain #DISPOSED}</li>
      * </ul>
-     * 
+     *
      * @return the current state of rendering.
      */
     public int getState();
@@ -126,9 +126,9 @@ public interface IRenderer {
      * <p>
      * Since this method will be performing IO to access data it is expected to block; we ask
      * that any exception be wrapped up in an RenderException to communicate the problem
-     * to the user. 
+     * to the user.
      * </p>
-     * 
+     *
      * @param destination The objects that the Renderer will use for rendering
      * @throws RenderException
      */
@@ -136,15 +136,15 @@ public interface IRenderer {
 
     /**
      * Ask the renderer to update the internal image using the smaller of getRenderBounds() or ViewportBounds.
-     * 
+     *
      * <h2>Render State</h2>
-     * 
+     *
      * Normally the RenderManager will update the screen every second.  However if the renderer has data that must be displayed then
      * it can call setState(RENDERING) and the Screen will be updated immediately.  This should be called with care however since many
      * such calls can cause performance problems.
-     * 
+     *
      * <h2>Internal Image</h2>
-     * 
+     *
      * The RenderContext maintains an "internal image" that you can access using getContext().getGraphics();
      * you can use Image.createGraphics() to retrive a Graphics2d to draw with.
      *
@@ -153,11 +153,11 @@ public interface IRenderer {
      *     if( monitor == null ) monitor = NullProgressMonitor();
      *     Graphics2D g = getContext().getImage().createGraphics();
      *     render(g, monitor);
-     * }   
+     * }
      * </code></pre>
-     * 
+     *
      * <h2>Updating a Portion of the Screen</h2>
-     * 
+     *
      * When the envelope (ie getRenderBounds()) is smaller than the ViewportBounds, the rendered area
      * <b>DOES NOT TAKE UP THE WHOLE MapDisplay</b>. It only takes up the area that the envelope
      * would map to. The purpose of this functionality is to allows only a small area of the
@@ -168,7 +168,7 @@ public interface IRenderer {
      * <li>getRenderBounds() - an Envelope in your CRS
      * <li>viewPortBounds()
      * </ul>
-     * 
+     *
      * </p>
      * @see #getContext()
      * @see IRenderContext#getImage()
@@ -186,7 +186,7 @@ public interface IRenderer {
 
     /**
      * Returns the renderer's context object
-     * 
+     *
      * @return the the renderer's context object
      * @see IRenderContext
      */
@@ -196,15 +196,15 @@ public interface IRenderer {
      * Informs the renderer to dispose of resources
      */
     public void dispose();
-    
+
     /**
      * Indicates whether the framework is permitted to cache the results of the renderer.
-     * 
+     *
      * @return true if the framework may cache the resulting image and only request the new dirty
      * areas.
      */
     public boolean isCacheable();
-    
+
     /**
      * Called to set the area that will be rendered.
      * <p>
@@ -212,18 +212,18 @@ public interface IRenderer {
      * although you may be able to pass in a ReferencedEnevelope).
      */
     public void setRenderBounds(Envelope boundsToRender);
-    
+
     /**
      * Gets the area that will be rendered next.
-     * 
-     * @return bounds to be drawn next 
+     *
+     * @return bounds to be drawn next
      */
     public Envelope getRenderBounds();
 
     /**
      * Similar to render(Envelope) except the area is defined in screen coordinates. Performs the
      * screen to world transformation and calls render(Envelope).
-     * 
+     *
      * @param screenArea the area of the screen to re-render.
      */
     public void setRenderBounds( Rectangle screenArea );

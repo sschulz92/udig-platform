@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -47,7 +47,7 @@ import org.locationtech.jts.geom.Envelope;
  * preferences.
  * <p>
  * There are three strateies avaialble {@link Pan}, {@link Scroll}, {@link FixedScale}.
- * 
+ *
  * @author Jesse Eichar
  * @version $Revision: 1.9 $
  */
@@ -57,11 +57,11 @@ public class PanTool extends AbstractModalTool implements ModalTool {
             Button check = new Button(parent,  SWT.CHECK );
             check.setText("Scale");
             addField( NavigationToolPreferencePage.SCALE, check );
-         
+
             Button tiled = new Button(parent,  SWT.CHECK );
             tiled.setText("Tiled");
             addField( NavigationToolPreferencePage.TILED, tiled );
-            
+
             return ToolsPlugin.getDefault().getPreferenceStore();
         }
     };
@@ -112,14 +112,14 @@ public class PanTool extends AbstractModalTool implements ModalTool {
         else {
             strategy = new Pan();
         }
-        
+
     }
     /**
      * Used to recognise a mouse event and pan accodingly.
      * <p>
      * This functionality is overridden by PanMiddleMouse in order to allow the middle mouse button
      * to provide the Pan functionality for any ModalTool.
-     * 
+     *
      * @param e
      */
     protected boolean validModifierButtonCombo( MapMouseEvent e ) {
@@ -351,7 +351,7 @@ public class PanTool extends AbstractModalTool implements ModalTool {
      * change resolution as the MapViewport tries to maintain the current scale (as you move north
      * and south). Emily reports that the strategy does not actually do this properly.
      * </p>
-     * 
+     *
      * @author Emily Gouge
      * @since 1.2.0
      */

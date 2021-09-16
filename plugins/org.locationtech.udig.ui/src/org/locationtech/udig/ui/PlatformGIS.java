@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -42,7 +42,7 @@ import org.geotools.brewer.color.ColorBrewer;
 
 /**
  * A facade into udig to simplify operations relating to performing platform operations.
- * 
+ *
  * @author jeichar
  * @since 1.1
  * @version 1.2.3
@@ -70,7 +70,7 @@ public class PlatformGIS {
         RunnableAndProgress runnable = new RunnableAndProgress(request, monitorToUse);
         runner.setRequest(runnable);
         runner.schedule();
-        
+
     }
 
     /**
@@ -83,7 +83,7 @@ public class PlatformGIS {
      * runnable, and we will take over the {@link Display#readAndDispatch()} cycle while waiting
      * for the background runable to complete. When completed normal display thread execution will
      * resume.
-     * 
+     *
      * @param runnable The runnable(operation) to run
      * @param monitor the progress monitor to update.
      * @throws InvocationTargetException
@@ -179,7 +179,7 @@ public class PlatformGIS {
 
         /**
          * Add a runnable object to be run.
-         * 
+         *
          * @param runnable
          */
         public void setRequest( Object runnable ) {
@@ -208,10 +208,10 @@ public class PlatformGIS {
         }
 
         @Override
-        protected IStatus run( IProgressMonitor monitor ) {   
+        protected IStatus run( IProgressMonitor monitor ) {
             if (!PlatformUI.getWorkbench().isClosing()) {
                 if (runnable != null) {
-    
+
                     if (runnable instanceof ISafeRunnable) {
                         run((ISafeRunnable) runnable);
                     } else if (runnable instanceof IRunnableWithProgress) {
@@ -238,7 +238,7 @@ public class PlatformGIS {
         IRunnableWithProgress runnable;
         IProgressMonitor monitor;
     }
-    
+
     public static ColorBrewer getColorBrewer() {
         synchronized (ColorBrewer.class) {
             if (colorBrewer == null) {
@@ -254,7 +254,7 @@ public class PlatformGIS {
      * executed. So this method uses Display.asyncExec and patiently waits for the result to be
      * returned. Can be called from display thread or non-display thread. Runnable should not be
      * blocking or it will block the display thread.
-     * 
+     *
      * @param runnable runnable to execute
      */
     public static void syncInDisplayThread( final Runnable runnable ) {
@@ -267,7 +267,7 @@ public class PlatformGIS {
     /**
      * Run in the display thread at the next reasonable opportunity, current thread will
      * wait for the runnable to complete.
-     * 
+     *
      * @param display
      * @param runnable
      */
@@ -300,7 +300,7 @@ public class PlatformGIS {
     /**
      * Waits for the condition to become true. Will call Display#readAndDispatch() if currently in
      * the display thread.
-     * 
+     *
      * @param interval the time to wait between testing of condition, in milliseconds. Must be a
      *        positive number and is recommended to be larger than 50
      * @param timeout maximum time to wait. Will throw an {@link InterruptedException} if reached.
@@ -341,7 +341,7 @@ public class PlatformGIS {
      * Runs a blocking task in a ProgressDialog. It is ran in such a way that even if the task
      * blocks it can be cancelled. This is unlike the normal ProgressDialog.run(...) method which
      * requires that the {@link IProgressMonitor} be checked and the task to "nicely" cancel.
-     * 
+     *
      * @param dialogTitle The title of the Progress dialog
      * @param showRunInBackground if true a button added to the dialog that will make the job be ran
      *        in the background.
@@ -414,7 +414,7 @@ public class PlatformGIS {
 
     /**
      * Runs the runnable in the display thread but asynchronously.
-     * 
+     *
      * @param runnable the runnable to execute
      * @param executeIfInDisplay if true and the current thread is the display thread then the
      *        runnable will just be executed.
@@ -429,7 +429,7 @@ public class PlatformGIS {
 
     /**
      * Runs the runnable in the display thread but asynchronously.
-     * 
+     *
      * @param display the display in which to run the runnable
      * @param runnable the runnable to execute
      * @param executeIfInDisplay if true and the current thread is the display thread then the
@@ -443,7 +443,7 @@ public class PlatformGIS {
             display.asyncExec(runnable);
         }
     }
-    
+
     /**
      * Gets the Area of Interest workbench service
      * @return
@@ -452,5 +452,5 @@ public class PlatformGIS {
         IWorkbench workbench = PlatformUI.getWorkbench();
         return (IAOIService) workbench.getService(IAOIService.class);
     }
-    
+
 }

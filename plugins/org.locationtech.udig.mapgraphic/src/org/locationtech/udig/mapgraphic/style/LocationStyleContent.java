@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -56,33 +56,33 @@ public class LocationStyleContent extends StyleContent {
     private static final String Y = "y"; //$NON-NLS-1$
     /** Magic key used to record x screen coordinate in our IMemento */
     private static final String X = "x";  //$NON-NLS-1$
-    
+
     /** extension id */
     public static final String ID = "org.locationtech.udig.printing.ui.locationStyle"; //$NON-NLS-1$
-    
+
     /** padding constants */
     public static final int YPAD_BOTTOM = 5;
     public static final int YPAD_TOP = 15;
     public static final int XPAD_LEFT = 15;
     public static final int XPAD_RIGHT = 15;
-    
+
     /**
      * Location style holding a rectangle.
      */
     public LocationStyleContent(){
         super( ID );
     }
-    
+
     public Class<?> getStyleClass() {
         return Rectangle.class;
     }
-    
+
     public Object load( IMemento memento ) {
         int x = memento.getInteger(X);
         int y = memento.getInteger(Y);
         int width = memento.getInteger(W);
         int height = memento.getInteger(H);
-        
+
         return new Rectangle(x, y, width, height);
     }
 
@@ -93,7 +93,7 @@ public class LocationStyleContent extends StyleContent {
         memento.putInteger(W, rectangle.width);
         memento.putInteger(H, rectangle.height);
     }
-    
+
     public Object createDefaultStyle(IGeoResource resource, Color colour,  IProgressMonitor monitor) throws IOException {
         if( !resource.canResolve(MapGraphic.class))
             return null;
@@ -105,10 +105,10 @@ public class LocationStyleContent extends StyleContent {
                 return rectangle;
             }
         }
-        
+
         return createDefaultStyle();
 	}
-	
+
     public Object load( URL url, IProgressMonitor monitor) throws IOException {
         return null;
     }
@@ -116,5 +116,5 @@ public class LocationStyleContent extends StyleContent {
     public static Rectangle createDefaultStyle() {
         return new Rectangle( XPAD_LEFT, YPAD_TOP, 500, 10 );
     }
-    
+
 }

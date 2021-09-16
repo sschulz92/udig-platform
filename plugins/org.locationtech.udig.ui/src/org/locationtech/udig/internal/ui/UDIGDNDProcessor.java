@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -75,7 +75,7 @@ public class UDIGDNDProcessor {
 				throws Exception {
 			Transfer[] tmp = ((TransferFactory) element.createExecutableExtension("class")).getTransfers(); //$NON-NLS-1$
 			for (Transfer transfer : tmp) {
-				transfers.add(transfer);  				
+				transfers.add(transfer);
 			}
 		}
 	}
@@ -93,37 +93,37 @@ public class UDIGDNDProcessor {
                 return -1;
             if( o2 instanceof UDIGTransfer)
                 return 1;
-            
+
             return -1;
         }
 
     }
     public static class DropActionProcessor implements ExtensionPointProcessor {
-    
+
     	Object data;
     	UDIGDropHandler handler;
     	List<IDropAction> actions;
         private DropTargetEvent event;
-    	
+
     	DropActionProcessor(Object data, UDIGDropHandler handler, DropTargetEvent event) {
     		this.data = data;
     		this.handler = handler;
             this.event=event;
     		actions = new ArrayList<IDropAction>();
     	}
-    	
-    	public void process(IExtension extension, IConfigurationElement element) 
+
+    	public void process(IExtension extension, IConfigurationElement element)
     		throws Exception {
     	    EnablesFor enablesFor=new EnablesFor(element);
     	    if( enablesFor.minimum<1 && !enablesFor.expandable )
                 return;
-            
+
             //first find a matching target
     		Object concreteTarget=findTarget(element);
 
-    		if (concreteTarget == null) 
+    		if (concreteTarget == null)
     			return;
-            
+
             //next find a matching type
             List<Object> concreteData = findData(element);
             if (!concreteData.isEmpty()) {
@@ -132,7 +132,7 @@ public class UDIGDNDProcessor {
                 } catch(Throwable t) {
                     String msg = "Error validating drop action"; //$NON-NLS-1$
                     String ns = element.getNamespaceIdentifier();
-                    
+
                     Status s = new Status(IStatus.WARNING,ns,0,msg,t);
                     UiPlugin.getDefault().getLog().log(s);
                 }
@@ -147,7 +147,7 @@ public class UDIGDNDProcessor {
                 addAction(element, concreteTarget, concreteData);
                 return;
             }
-            
+
             if( enablesFor.expandable && enablesFor.minimum<concreteData.size() ){
                 addAction(element, concreteTarget, concreteData);
                 return;
@@ -165,7 +165,7 @@ public class UDIGDNDProcessor {
                         data.add(object);
                     }
                 }
-                
+
                 if( data.size()==enablesFor.minimum ){
                     addAction(element, concreteTarget, data);
                 }
@@ -197,26 +197,26 @@ public class UDIGDNDProcessor {
         private List<Object> findData( IConfigurationElement element ) {
             IConfigurationElement[] acceptedTypes = element.getChildren("acceptedType"); //$NON-NLS-1$
             List<Object> data=new ArrayList<Object>(Arrays.asList((Object[])this.data));
-            
+
             Class<? extends Object> c = null;
     		final List<Object> concreteData = new ArrayList<Object>();
-            
+
 
             for (int i = 0; i < acceptedTypes.length && !data.isEmpty(); i++) {
     			IConfigurationElement acceptedType = acceptedTypes[i];
-    
+
     			try {
-    
+
     				String clazz = acceptedType.getAttribute("class"); //$NON-NLS-1$
-                    
+
     				c = loadClass(clazz,true);
-    				
+
     				if (c == null)
     					continue;
 
                     String adapt=acceptedType.getAttribute("adapt"); //$NON-NLS-1$
                     boolean doAdapt = "true".equals(adapt); //$NON-NLS-1$
-                    
+
                     concreteData.addAll(processArray(data, c, doAdapt));
     			}
     			catch(ClassNotFoundException e) {
@@ -224,7 +224,7 @@ public class UDIGDNDProcessor {
     				continue;
     			}
     		}
-            
+
             return concreteData;
         }
 
@@ -244,16 +244,16 @@ public class UDIGDNDProcessor {
         }
 
         private List<Object> processArray( List<Object> data, Class< ? extends Object> c, boolean doAdapt ) {
-               
+
             List<Object> tmp=new ArrayList<Object>(data.size());
             for( Object obj:data) {
                 Object d=getConcreteObject(obj, c, doAdapt);
-                
+
                 if( d!=null ){
                     tmp.add(d);
                 }
             }
-            
+
             data.removeAll(tmp);
             return tmp;
         }
@@ -266,21 +266,21 @@ public class UDIGDNDProcessor {
          */
         private Object findTarget(IConfigurationElement element) {
             IConfigurationElement[] targets = element.getChildren("destination"); //$NON-NLS-1$
-            Object concreteTarget = null; 
+            Object concreteTarget = null;
             ClassLoader dloader = getClassLoader(handler.getTarget());
             Class<? extends Object> c = null;
-            
+
             for (int i = 0; i < targets.length && c == null; i++) {
                 IConfigurationElement target = targets[i];
-                
+
                 try {
                     String clazz = target.getAttribute("class"); //$NON-NLS-1$
                     c = dloader.loadClass(clazz);
-                    
+
                     if (c == null)
                         continue;
                     String adapt=target.getAttribute("adapt"); //$NON-NLS-1$
-                    
+
                     concreteTarget = getConcreteObject(handler.getTarget(), c , "true".equals(adapt)); //$NON-NLS-1$
                     if (concreteTarget==null){
                         c = null;
@@ -291,7 +291,7 @@ public class UDIGDNDProcessor {
                     continue;
                 }
             }
-    
+
             return concreteTarget;
         }
 
@@ -305,7 +305,7 @@ public class UDIGDNDProcessor {
         }
 
         private Object getConcreteObject( Object obj, Class< ? extends Object> desiredClass, boolean adapt ) {
- 
+
             if( desiredClass.isAssignableFrom(obj.getClass()) )
                 return obj;
             if( !adapt )
@@ -322,23 +322,23 @@ public class UDIGDNDProcessor {
     public static List<IDropAction> process(Object data, UDIGDropHandler handler, DropTargetEvent event) {
     	if (data == null || handler == null || handler.getTarget() == null)
     		return new ArrayList<IDropAction>();
-    	
+
     	//process to see if anyone cares
     	DropActionProcessor d = new DropActionProcessor(data, handler, event);
     	ExtensionPointUtil.process(UiPlugin.getDefault(), IDropAction.XPID, d);
-    	
+
     	return d.actions;
     }
-    
+
     private static class EnablesFor{
 
         int minimum;
         boolean expandable;
-        
+
         public EnablesFor( IConfigurationElement element ) {
             String enablesFor=element.getAttribute("enablesFor"); //$NON-NLS-1$
             minimum=1;
-            expandable=false; 
+            expandable=false;
             if( enablesFor!=null ){
                 if( enablesFor.contains("+") ){ //$NON-NLS-1$
                     expandable=true;

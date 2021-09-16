@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -29,7 +29,7 @@ import org.locationtech.jts.geom.Geometry;
 
 /**
  * Nested browser used to display LayerPointInfo.
- * 
+ *
  * @author Jody Garnett
  * @since 0.3
  */
@@ -39,25 +39,25 @@ public class FeatureDisplay extends InfoDisplay {
     protected Text text;
     //private Text location;
     //private ViewForm viewForm;
-    
+
     /**
-     * Nested viewForm containing text, and locationbar 
+     * Nested viewForm containing text, and locationbar
      * @return Control maintained by this display
      */
     public Control getControl() {
         return text; //viewForm;
     }
-    
+
     public void createDisplay( Composite parent ) {
         /*
-        viewForm= new ViewForm( parent, SWT.NONE);        
+        viewForm= new ViewForm( parent, SWT.NONE);
         GridLayout gridLayout = new GridLayout();
         gridLayout.numColumns = 2;
         viewForm.setLayout(gridLayout);
-        
+
         Label labelAddress = new Label(viewForm, SWT.NONE);
         labelAddress.setText("A&ddress");
-        
+
         location = new Text(viewForm, SWT.BORDER);
         GridData data = new GridData();
         data = new GridData();
@@ -74,9 +74,9 @@ public class FeatureDisplay extends InfoDisplay {
         data.grabExcessHorizontalSpace = true;
         data.grabExcessVerticalSpace = true;
         text.setLayoutData(data);
-        */              
+        */
     }
-    
+
     public void setInfo( SimpleFeature feature ) {
         text.setToolTipText( null );
         if( feature == null ) {
@@ -84,14 +84,14 @@ public class FeatureDisplay extends InfoDisplay {
             return;
         }
         SimpleFeatureType type = feature.getFeatureType();
-        
+
         StringBuffer buf = new StringBuffer();
         buf.append( feature.getID() );
         buf.append( ": (" ); //$NON-NLS-1$
         buf.append( type.getName().getNamespaceURI() );
         buf.append( ":" ); //$NON-NLS-1$
         buf.append( type.getName().getLocalPart() );
-        
+
         for( int i=0; i<feature.getAttributeCount(); i++ ) {
             AttributeDescriptor attribute = type.getDescriptor( i );
             Object value = feature.getAttribute( i );
@@ -104,8 +104,8 @@ public class FeatureDisplay extends InfoDisplay {
             else {
                 buf.append( value );
             }
-        }                
-        text.setText( buf.toString() );                    
+        }
+        text.setText( buf.toString() );
     }
     public void setInfo( LayerPointInfo info ) {
         if( info == null ){
@@ -115,7 +115,7 @@ public class FeatureDisplay extends InfoDisplay {
             SimpleFeature feature;
             try {
                 feature = (SimpleFeature) info.acquireValue();
-                setInfo( feature );                
+                setInfo( feature );
             } catch (IOException noValue) {
                 text.setText( noValue.getLocalizedMessage() );
             }
@@ -128,6 +128,6 @@ public class FeatureDisplay extends InfoDisplay {
                 text.setToolTipText( info.getMimeType() );
             }
         }
-    }    
-    
+    }
+
 }

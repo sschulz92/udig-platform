@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -29,7 +29,7 @@ import org.locationtech.udig.project.internal.Project;
 
 /**
  * Helper class that does project exporting.
- * 
+ *
  * @author Andrea Antonello (www.hydrologis.com)
  */
 public class ExportProjectUtils {
@@ -73,7 +73,7 @@ public class ExportProjectUtils {
     /**
      * It looks like this method collects all the contents of the project (maps and pages and other)
      * and some how adds them to a single resource defined by the dest file path.
-     * 
+     *
      * @param projectResource Contains the selected project we want to write out
      * @param dest the file path used to write out the resources
      * @return Resource used to store everything
@@ -110,7 +110,7 @@ public class ExportProjectUtils {
      * <p>
      * Handy tip - the project resource itself is one of the resources that must be included
      * in the list! (along with all the contents of the project).
-     * 
+     *
      * @param projectResource
      * @return list of resources for projectResoruce
      */
@@ -127,7 +127,7 @@ public class ExportProjectUtils {
      * <p>
      * At the end of this method the resource list will contain an entry
      * for every resource.
-     * 
+     *
      * @param resources
      */
     private static void addReferencedResourcesToList( List<Resource> resources ) {

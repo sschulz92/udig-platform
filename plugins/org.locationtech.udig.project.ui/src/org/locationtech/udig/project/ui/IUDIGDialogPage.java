@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -21,7 +21,7 @@ import org.opengis.feature.simple.SimpleFeature;
  * A "Page" that will have a ToolContext object set each time an the active MapEditor changes. If
  * the current editor is not a map editor the the context will be null otherwise it will be a
  * context that will operate against the map contained by the map editor.
- * 
+ *
  * @author jeichar
  * @since 0.9.0
  */
@@ -33,7 +33,7 @@ public interface IUDIGDialogPage {
 
     /**
      * Returns the current context object
-     * 
+     *
      * @return the current context object
      */
     IToolContext getContext();
@@ -56,7 +56,7 @@ public interface IUDIGDialogPage {
 
     /**
      * Called before createControl is called.
-     * 
+     *
      * @param feature
      */
     void setFeature( SimpleFeature feature );

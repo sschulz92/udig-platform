@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -41,7 +41,7 @@ import org.opengis.util.CodeList;
 /**
  * An adapter that allows features to act as a property source for a property sheet. The sheet
  * allows the victim's attributes to be edited and viewed.
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
@@ -50,23 +50,23 @@ public class FeaturePropertySource implements IPropertySource2 {
     private static final String DEFAULT_GEOM = "DEFAULT_GEOM"; //$NON-NLS-1$
     private static final String BOUNDING_BOX = "BOUNDING_BOX"; //$NON-NLS-1$
     private static final String FEATURE = "FEATURE"; //$NON-NLS-1$
-    
+
     private SimpleFeature feature = null;
     private SimpleFeature old = null;
-    
+
     private Map<Geometry, Object> geomProperties = new HashMap<Geometry, Object>();
     private Map<AttributeDescriptor,Object> attrProperties = new HashMap<AttributeDescriptor,Object>();
     private List<AttributeDescriptor> attrs;
     private IPropertyDescriptor[] descriptors;
     private boolean attribute;
-    
-    /** Are the attributes editable in cell editors. */ 
+
+    /** Are the attributes editable in cell editors. */
     private boolean editable = true;
     private IMap map;
 
     /**
      * Creates a new instance of FeaturePropertySource
-     * 
+     *
      * @param feature The feature that this property source refers to.
      */
     public FeaturePropertySource( SimpleFeature feature ) {
@@ -74,7 +74,7 @@ public class FeaturePropertySource implements IPropertySource2 {
     }
     /**
      * Creates a new instance of FeaturePropertySource
-     * 
+     *
      * @param feature2
      * @param attribute
      */
@@ -82,7 +82,7 @@ public class FeaturePropertySource implements IPropertySource2 {
         boolean editable=false;
         if( feature2 instanceof IAdaptable ){
             IAdaptable adaptable = (IAdaptable)feature2;
-            if( adaptable.getAdapter(ILayer.class)!=null 
+            if( adaptable.getAdapter(ILayer.class)!=null
                     || adaptable.getAdapter(IMap.class)!=null ){
                 editable=true;
             }
@@ -90,11 +90,11 @@ public class FeaturePropertySource implements IPropertySource2 {
     	init( feature2, attribute, editable);
 
     }
-    
+
     public FeaturePropertySource( SimpleFeature feature2, boolean attribute, boolean editable ){
         init(feature2, attribute, editable);
     }
-    
+
     private void init( SimpleFeature feature2, boolean attribute, boolean editable ) {
         this.feature = feature2;
         try {
@@ -118,14 +118,14 @@ public class FeaturePropertySource implements IPropertySource2 {
 
         }
     }
-    
+
     /**
      * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
      */
     public Object getEditableValue() {
         return ""; //$NON-NLS-1$
     }
-    
+
     /**
      * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
      */
@@ -134,14 +134,14 @@ public class FeaturePropertySource implements IPropertySource2 {
             boolean hasAttrs = false;
             List<IPropertyDescriptor> descrps = new ArrayList<IPropertyDescriptor>();
             PropertyDescriptor d = new PropertyDescriptor(ID, "ID"); //$NON-NLS-1$
-            d.setCategory(Messages.FeaturePropertySource_feature); 
+            d.setCategory(Messages.FeaturePropertySource_feature);
             descrps.add(d);
-            d = new GeometryPropertyDescriptor(DEFAULT_GEOM, 
+            d = new GeometryPropertyDescriptor(DEFAULT_GEOM,
             		Messages.FeaturePropertySource_defaultGeometry);
-            d.setCategory(Messages.FeaturePropertySource_geometries); 
+            d.setCategory(Messages.FeaturePropertySource_geometries);
             descrps.add(d);
-            d = new PropertyDescriptor(BOUNDING_BOX, Messages.FeaturePropertySource_bounds); 
-            d.setCategory(Messages.FeaturePropertySource_feature); 
+            d = new PropertyDescriptor(BOUNDING_BOX, Messages.FeaturePropertySource_bounds);
+            d.setCategory(Messages.FeaturePropertySource_feature);
             d.setLabelProvider(new LabelProvider(){
                 /**
                  * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
@@ -171,8 +171,8 @@ public class FeaturePropertySource implements IPropertySource2 {
                     if ( at instanceof GeometryDescriptor ) {
                         if (feature.getAttribute(at.getLocalName()) != feature.getDefaultGeometry()) {
                             d = new GeometryPropertyDescriptor(Integer.valueOf(i), name
-                                    + Messages.FeaturePropertySource_geometry); 
-                            d.setCategory(Messages.FeaturePropertySource_geometries); 
+                                    + Messages.FeaturePropertySource_geometry);
+                            d.setCategory(Messages.FeaturePropertySource_geometries);
                             descrps.add(d);
                         }
                     } else {
@@ -197,11 +197,11 @@ public class FeaturePropertySource implements IPropertySource2 {
                         // d.setValidator(new AttributeValidator(at));
 
                         if (name.equalsIgnoreCase("name")) { //$NON-NLS-1$
-                            d.setCategory(Messages.FeaturePropertySource_feature); 
+                            d.setCategory(Messages.FeaturePropertySource_feature);
                             descrps.add(0, d);
                         } else {
                             hasAttrs = true;
-                            d.setCategory(Messages.FeaturePropertySource_featureAttributes); 
+                            d.setCategory(Messages.FeaturePropertySource_featureAttributes);
                             descrps.add(d);
                         }
                     }
@@ -210,7 +210,7 @@ public class FeaturePropertySource implements IPropertySource2 {
             if (!hasAttrs) {
                 d = new PropertyDescriptor(
                         "", Messages.FeaturePropertySource_noOtherAttributes);   //$NON-NLS-1$
-                d.setCategory(Messages.FeaturePropertySource_featureAttributes); 
+                d.setCategory(Messages.FeaturePropertySource_featureAttributes);
                 descrps.add(d);
             }
             descriptors = new IPropertyDescriptor[descrps.size()];
@@ -241,7 +241,7 @@ public class FeaturePropertySource implements IPropertySource2 {
         if (id instanceof Integer) {
             Integer i = (Integer) id;
             AttributeDescriptor attrType = attrs.get(i.intValue());
-            if ( attrType instanceof GeometryDescriptor ) 
+            if ( attrType instanceof GeometryDescriptor )
                 return getGeomProperty((Geometry) feature.getAttribute(i.intValue()));
             if (Collection.class.isAssignableFrom(attrType.getType().getBinding()))
                 return getAttrProperty(attrType, feature.getAttribute(i.intValue()));
@@ -266,11 +266,11 @@ public class FeaturePropertySource implements IPropertySource2 {
         }
         return null;
     }
-    
+
     public SimpleFeature getFeature() {
         return feature;
     }
-    
+
     /**
      * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
      */
@@ -335,8 +335,8 @@ public class FeaturePropertySource implements IPropertySource2 {
                     feature.setAttribute(i, Boolean.valueOf(((Integer) value).intValue() == 0
                             ? true : false));
                 } else if (attr == null) {
-                    //if attr value is initially null the feature.getAttribute(i) 
-                    //will return null. In this case, set the value by obtaining its name 
+                    //if attr value is initially null the feature.getAttribute(i)
+                    //will return null. In this case, set the value by obtaining its name
                     //from the AttributeDescriptor list
                     feature.setAttribute(attrs.get(i).getName().getLocalPart(), value);
                 }
@@ -362,7 +362,7 @@ public class FeaturePropertySource implements IPropertySource2 {
         }
         return true;
     }
-    
+
     private Object getGeomProperty( Geometry id ) {
         Object geom = geomProperties.get(id);
         if (geom == null) {

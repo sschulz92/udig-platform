@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -24,11 +24,11 @@ import org.eclipse.ui.IMemento;
 public class LegendStyleContent extends StyleContent {
 
     public static final String ID = "org.locationtech.udig.legend.legendStyle"; //$NON-NLS-1$
-    
+
     public LegendStyleContent() {
         super(ID);
     }
-    
+
     @Override
     public Class<?> getStyleClass() {
         return LegendStyle.class;
@@ -54,24 +54,24 @@ public class LegendStyleContent extends StyleContent {
             return null;
         return createDefault();
     }
-    
+
     /**
      * Creates the default legend style
      * @return
      */
     public static LegendStyle createDefault() {
         LegendStyle style = new LegendStyle();
-        
-        style.verticalMargin = 3; 
-        style.horizontalMargin = 2; 
-        style.verticalSpacing = 5; 
-        style.horizontalSpacing = 3; 
+
+        style.verticalMargin = 3;
+        style.horizontalMargin = 2;
+        style.verticalSpacing = 5;
+        style.horizontalSpacing = 3;
         style.indentSize = 10;
         style.imageHeight = 16;
         style.imageWidth = 16;
-               
+
         style.backgroundColour = Color.WHITE;
-                
+
         return style;
     }
 }

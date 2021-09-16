@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -27,7 +27,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * Displays a summary of the layer in a dialog.
- * 
+ *
  * @author jeichar
  * @since 0.6.0
  */
@@ -38,13 +38,13 @@ public class LayerSummary implements IOp {
      */
     public void op( final Display display, Object target, IProgressMonitor monitor )
             throws Exception {
-        
+
         final Layer layer = (Layer) target;
         final CoordinateReferenceSystem layerCRS = layer.getCRS();
         final Envelope bounds = layer.getBounds(monitor, layerCRS);
-        
+
         final List<SummaryData> data=new ArrayList<SummaryData>();
-        
+
         data.add(new SummaryData(Messages.LayerSummary_name, layer.getName()));
         data.add(new SummaryData(Messages.LayerSummary_id,layer.getID()));
         data.add(new SummaryData(Messages.LayerSummary_zorder,layer.getZorder()));
@@ -54,27 +54,27 @@ public class LayerSummary implements IOp {
 
         display.asyncExec(new Runnable(){
             public void run() {
-                SummaryDialog d=new SummaryDialog( display.getActiveShell(), Messages.LayerSummary_title 
+                SummaryDialog d=new SummaryDialog( display.getActiveShell(), Messages.LayerSummary_title
                         + layer.getName(), data );
-                
+
                 d.setBlockOnOpen(true);
                 d.open();
             }
         });
     }
-    
+
     public static String parseBounds( Envelope env ){
         String minx = chopDouble( env.getMinX() );
         String maxx = chopDouble( env.getMaxX() );
         String miny = chopDouble( env.getMinY() );
         String maxy = chopDouble( env.getMaxY() );
         return MessageFormat.format(Messages.LayerSummary_boundsFormat,
-        		new Object[] { 
+        		new Object[] {
         			minx, miny,
         			maxx, maxy
         		});
     }
-    
+
     private static String chopDouble( double d ){
         String s=String.valueOf(d);
         int end=s.indexOf('.')+2;

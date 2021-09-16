@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -28,7 +28,7 @@ import java.net.URLDecoder;
  * </p>
  * <p>
  * Example:
- * 
+ *
  * <pre><code>
  * class MyClass {
  *     public ImageDescriptor example() {
@@ -36,7 +36,7 @@ import java.net.URLDecoder;
  *     }
  * }
  * </code></pre>
- * 
+ *
  * Where:
  * <ul>
  * <li>MyClass.java
@@ -48,7 +48,7 @@ import java.net.URLDecoder;
  * <p>
  * By convention you should try and locate data near the class that uses it.
  * </p>
- * 
+ *
  * @author Jody Garnett
  * @since 0.7.0
  */
@@ -56,7 +56,7 @@ public class Data {
     /**
      * Provided a {@link BufferedReader} for named test data. It is the caller responsability to
      * close this reader after usage.
-     * 
+     *
      * @param caller The class of the object associated with named data.
      * @param name of test data to load.
      * @return The reader, or <code>null</code> if the named test data are not found.
@@ -74,7 +74,7 @@ public class Data {
     /**
      * Provided a {@link BufferedReader} for named test data. It is the caller responsability to
      * close this reader after usage.
-     * 
+     *
      * @param host Object associated with named data
      * @param name of test data to load
      * @return The reader, or <code>null</code> if the named test data are not found.
@@ -87,7 +87,7 @@ public class Data {
 
     /**
      * Locate named test-data resource for caller.
-     * 
+     *
      * @param caller Class used to locate test-data.
      * @param name name of test-data.
      * @return URL or null of named test-data could not be found.
@@ -99,7 +99,7 @@ public class Data {
 
     /**
      * Locate named test-data resource for caller.
-     * 
+     *
      * @param caller Object used to locate test-data
      * @param name name of test-data
      * @return URL or null of named test-data could not be found
@@ -112,13 +112,13 @@ public class Data {
     /**
      * Access to <code>url(caller, path)</code> as a {@link File}.
      * <p>
-     * 
+     *
      * <pre><code>
      * Data.file(this, null)
      * </code></pre>
-     * 
+     *
      * </p>
-     * 
+     *
      * @param caller Calling object used to locate data
      * @param path Path to file in testdata
      * @return File
@@ -138,13 +138,13 @@ public class Data {
     /**
      * Access to <code>url(caller, path)</code> as a {@link File}.
      * <p>
-     * 
+     *
      * <pre><code>
      * Data.file(this, null)
      * </code></pre>
-     * 
+     *
      * </p>
-     * 
+     *
      * @param caller Calling class used to locate data
      * @param path Path to file in testdata
      * @return File
@@ -164,7 +164,7 @@ public class Data {
 
     /**
      * Creates a temporary file with the given name.
-     * 
+     *
      * @param caller
      * @param name
      * @return File if available for name

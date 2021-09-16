@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -41,7 +41,7 @@ import org.opengis.filter.FilterFactory2;
 public class MakeHole implements IOp {
 
     /**
-     * Calls a command which makes a spatial filter and puts it on the 
+     * Calls a command which makes a spatial filter and puts it on the
      * styleBlackboard
      */
     public void op( Display display, Object target, IProgressMonitor monitor ) throws Exception {
@@ -50,10 +50,10 @@ public class MakeHole implements IOp {
 
         //get all selected features
         Query query = new Query(layer.getSchema().getTypeName(), layer.getFilter());
-        
-        FeatureSource<SimpleFeatureType, SimpleFeature> featureSource = layer.getResource(FeatureSource.class, new SubProgressMonitor(monitor, 1)); 
+
+        FeatureSource<SimpleFeatureType, SimpleFeature> featureSource = layer.getResource(FeatureSource.class, new SubProgressMonitor(monitor, 1));
         FeatureCollection<SimpleFeatureType, SimpleFeature>  features = featureSource.getFeatures(query);
-        
+
         //combine them into one large polygon
         final Geometry union[] = new Geometry[1];
         features.accepts( new FeatureVisitor(){
@@ -66,13 +66,13 @@ public class MakeHole implements IOp {
                 else {
                     union[0] = union[0].union( geometry );
                 }
-            }                    
+            }
         }, GeoToolsAdapters.progress(monitor) );
-        
+
         final Geometry hole = union[0];
-        
+
         MapCommand drillHoleCommand = new AbstractCommand(){
-            
+
             public void run( IProgressMonitor monitor ) throws Exception {
                 for( Layer targetLayer : getMap().getLayersInternal() ){
                     //make hole filter for target layer
@@ -85,10 +85,10 @@ public class MakeHole implements IOp {
                         continue;
                     }
                     String targetGeomName = targetType.getGeometryDescriptor().getLocalName();
-    
+
                     FilterFactory2 ff = CommonFactoryFinder.getFilterFactory2( GeoTools.getDefaultHints() );
                     Filter cut= ff.not( ff.within( ff.property( targetGeomName ), ff.literal(hole) ) );
-                    
+
                     //put it on style blackboard
                     //Key:  ProjectBlackboardConstants    String LAYER__DATA_QUERY = "org.locationtech.udig.project.view"; //$NON-NLS-1$
                     IStyleBlackboard styleBlackboard = layer.getStyleBlackboard();
@@ -103,7 +103,7 @@ public class MakeHole implements IOp {
             public String getName() {
                 return "Create Hole Command"; //$NON-NLS-1$
             }
-            
+
         };
         map.sendCommandSync( drillHoleCommand );
     }

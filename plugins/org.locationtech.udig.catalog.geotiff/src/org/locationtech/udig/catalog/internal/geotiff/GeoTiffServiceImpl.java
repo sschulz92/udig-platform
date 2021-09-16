@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -33,7 +33,7 @@ import org.geotools.coverage.grid.io.GridFormatFactorySpi;
 import org.geotools.gce.geotiff.GeoTiffFormat;
 
 /**
- * Provides a handle to a geotiff service allowing the service to be lazily 
+ * Provides a handle to a geotiff service allowing the service to be lazily
  * loaded.
  * @author mleslie
  * @since 0.6.0
@@ -50,27 +50,27 @@ public class GeoTiffServiceImpl extends AbstractRasterService {
     }
 
     @Override
-    public synchronized  List<AbstractRasterGeoResource> resources( IProgressMonitor monitor ) 
+    public synchronized  List<AbstractRasterGeoResource> resources( IProgressMonitor monitor )
             throws IOException {
          if(monitor != null) {
             String msg = MessageFormat.format(
-                    Messages.GeoTiffServiceImpl_connecting_to, 
+                    Messages.GeoTiffServiceImpl_connecting_to,
                     new Object[] {});
             monitor.beginTask(msg, 5);
         }
         if(reader != null && monitor != null)
             monitor.worked(3);
-        
+
         GeoTiffGeoResourceImpl res = new GeoTiffGeoResourceImpl(
                 this, getHandle());
-        List<AbstractRasterGeoResource> list = 
+        List<AbstractRasterGeoResource> list =
             new ArrayList<AbstractRasterGeoResource>();
         list.add(res);
         if(monitor != null)
             monitor.done();
         return list;
-    } 
-    
+    }
+
     @Override
     public Map<String, Serializable> getConnectionParams() {
         return new GeoTiffServiceExtension().createParams(getIdentifier());
@@ -92,7 +92,7 @@ public class GeoTiffServiceImpl extends AbstractRasterService {
     protected synchronized AbstractRasterServiceInfo createInfo(IProgressMonitor monitor) {
          if(monitor == null) monitor = new NullProgressMonitor();
          try {
-             monitor.beginTask(Messages.GeoTiffServiceImpl_loading_task_title, 2); 
+             monitor.beginTask(Messages.GeoTiffServiceImpl_loading_task_title, 2);
              monitor.worked(1);
              return new AbstractRasterServiceInfo(this, "geotiff", "tiff", "tif");   //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
          }

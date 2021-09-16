@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -40,12 +40,12 @@ public class RendererPlugin extends Plugin {
     public static Plugin getDefault(){
         return plugin;
     }
-    
+
     public static void log(Exception e){
-        getDefault().getLog().log(new Status(IStatus.ERROR, ID, 
+        getDefault().getLog().log(new Status(IStatus.ERROR, ID,
                 0, e.getLocalizedMessage(), e));
     }
-    
+
     /**
      * Writes an info log in the plugin's log.
      * <p>
@@ -55,14 +55,14 @@ public class RendererPlugin extends Plugin {
     public static void log( String message, Throwable e) {
         getDefault().getLog().log(new Status(IStatus.INFO, ID, 0, message, e));
     }
-    
+
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 	}
 	public void stop(BundleContext context) throws Exception {
 		super.stop(context);
 	}
-	
+
 	/**
      * Returns an image descriptor for the image file at the given
      * plug-in relative path.
@@ -73,5 +73,5 @@ public class RendererPlugin extends Plugin {
     public static ImageDescriptor getImageDescriptor(String path) {
         return AbstractUIPlugin.imageDescriptorFromPlugin("org.locationtech.udig.render.gridcoverage.basic", path); //$NON-NLS-1$
     }
-    
+
 }

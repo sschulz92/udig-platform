@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -41,7 +41,7 @@ import org.geotools.jdbc.JDBCDataStore;
  * <p>
  * This code mainly copies the PostgisServiceImpl
  * </p>
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @author Harry Bullen, Intelligent Automation
  * @since 1.1.0
@@ -59,7 +59,7 @@ public class MySQLServiceImpl extends IService {
 
     /**
      * Construct <code>MySQLServiceImpl</code>.
-     * 
+     *
      * @param arg1
      * @param arg2
      */
@@ -210,7 +210,7 @@ public class MySQLServiceImpl extends IService {
         return url;
     }
 
-    
+
     private class IServiceMySQLInfo extends IServiceInfo {
 
         IServiceMySQLInfo( JDBCDataStore resource ) {

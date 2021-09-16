@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.Plugin;
 
 /**
  * This interface should be implemented by all classes that wish to process Extensions.
- * 
+ *
  * @see org.locationtech.udig.core.internal.ExtensionPointUtil
  * @author Jesse Eichar
  * @version $Revision: 1.9 $
@@ -26,7 +26,7 @@ public interface ExtensionPointProcessor {
     /**
      * This method is called by ExtensionPointUtil.process(String, ExtensionPointProcessor). This is
      * a callback method for the ExtensionPointUtil class.
-     * 
+     *
      * @see org.locationtech.udig.core.internal.ExtensionPointUtil#process(Plugin, String,
      *      ExtensionPointProcessor)
      * @param extension An extension that extends the Extension point id specified in the

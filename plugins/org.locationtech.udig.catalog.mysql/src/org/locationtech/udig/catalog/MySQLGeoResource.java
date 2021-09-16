@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -45,7 +45,7 @@ import org.locationtech.jts.geom.Envelope;
  * <p>
  * This copies the postgisGeoResouce and is used to identify MySql features.
  * </p>
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @author Harry Bullen, Intelligent Automation
  * @since 1.1.0
@@ -59,7 +59,7 @@ public class MySQLGeoResource extends IGeoResource {
 
     /**
      * Construct <code>MySQLGeoResource</code>.
-     * 
+     *
      * @param parent
      * @param typename
      */

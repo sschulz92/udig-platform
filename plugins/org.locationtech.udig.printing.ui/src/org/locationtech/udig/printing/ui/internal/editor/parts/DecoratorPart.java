@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -30,19 +30,19 @@ import org.eclipse.jface.viewers.TextCellEditor;
  * @since 0.3
  */
 public class DecoratorPart extends BoxPart {
-    
+
     protected DirectEditManager manager;
     protected InternalPropertyListener listener = new InternalPropertyListener();
-    
+
     public void activate() {
         if (isActive()) {
             return;
         }
-        
+
         super.activate();
         ((Box) getModel()).eAdapters().add(this.listener);
     }
-    
+
     public void deactivate() {
         if (!isActive()) {
             return;
@@ -50,18 +50,18 @@ public class DecoratorPart extends BoxPart {
         super.deactivate();
         ((Box) getModel()).eAdapters().remove(this.listener);
     }
-    
+
     protected void refreshVisuals() {
         Box scalebarBox = (Box) this.getModel();
         Point loc = scalebarBox.getLocation();
         Dimension size = scalebarBox.getSize();
         Rectangle rectangle = new Rectangle(loc, size);
-        
+
         ((BoxFigure) getFigure()).setBox((Box) getModel());
-        
+
         ((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), rectangle);
     }
-    
+
     public void performRequest(Request request) {
         if (request.getType() == RequestConstants.REQ_DIRECT_EDIT) {
             if (manager == null) {
@@ -71,18 +71,18 @@ public class DecoratorPart extends BoxPart {
             manager.show();
         }
     }
-    
+
     protected IFigure createFigure() {
         return new BoxFigure();
     }
-    
+
     protected void createEditPolicies() {
         super.createEditPolicies();
-//        installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new LabelDirectEditPolicy()); 
+//        installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new LabelDirectEditPolicy());
     }
-    
+
     protected class InternalPropertyListener extends PropertyListener {
-        
+
         protected void textChanged() {
             refreshVisuals();
         }

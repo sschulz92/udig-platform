@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -42,7 +42,7 @@ import org.opengis.coverage.grid.GridCoverageReader;
 
 /**
  * This printing engine builds a page dynamically once the print funciton is called
- * 
+ *
  * @author banders
  */
 public class TemplatePrintingEngine implements Pageable, Printable {
@@ -53,13 +53,13 @@ public class TemplatePrintingEngine implements Pageable, Printable {
     private double scaleHint;
     private Map map;
     private int numPages;
-    
+
     private IProgressMonitor monitor;
     private PrinterJob printerJob;
 
     /**
      * Constructs a PrintingEngine using the given Page
-     * 
+     *
      * @param page the Page to be printed
      */
     public TemplatePrintingEngine( Map map, Template template, boolean showRasters ) {
@@ -71,7 +71,7 @@ public class TemplatePrintingEngine implements Pageable, Printable {
 
     /**
      * Iterates through the Page's Boxes, drawing to the provided Graphics object
-     * 
+     *
      * @see java.awt.print.Printable#print(java.awt.Graphics, java.awt.print.PageFormat, int)
      */
     public int print( Graphics graphics, PageFormat pageFormat, int pageIndex )
@@ -80,9 +80,9 @@ public class TemplatePrintingEngine implements Pageable, Printable {
         if (pageIndex >= getNumberOfPages()) {
             return Printable.NO_SUCH_PAGE;
         }
-        
+
         template.setActivePage(pageIndex);
-        
+
         //Paper paper = pageFormat.getPaper();
         //paper.setImageableArea(MARGIN, MARGIN, paper.getWidth() - MARGIN*2, paper.getHeight() - MARGIN*2);
         //pageFormat.setPaper(paper);
@@ -120,17 +120,17 @@ public class TemplatePrintingEngine implements Pageable, Printable {
             box.getBoxPrinter().draw(graphics2d, monitor);
 
         }
-        
+
         return Printable.PAGE_EXISTS;
     }
-    
-    
+
+
     protected Page makePage(Map map, PageFormat pf, Template template, boolean showRasters, double scaleHint) {
-        
+
         Map mapCopy = null;
         mapCopy = (Map) ApplicationGIS.copyMap(map);
         List<Layer> layersNoRasters = mapCopy.getLayersInternal();
-        
+
         if (!showRasters){
             List<Layer> toRemove = new ArrayList<Layer>();
             for (Layer layer : layersNoRasters ) {
@@ -142,37 +142,37 @@ public class TemplatePrintingEngine implements Pageable, Printable {
             }
             layersNoRasters.removeAll(toRemove);
         }
-        
-        
-        //adjust scale        
+
+
+        //adjust scale
         //if (scaleHint != -1) {
         //    template.setMapScaleHint(scaleHint);
-        //}        
-        
-        //make the page itself 
+        //}
+
+        //make the page itself
         Page page = ModelFactory.eINSTANCE.createPage();
         page.setSize(new Dimension((int)pf.getImageableWidth(), (int)pf.getImageableHeight()));
 
         //page name stuff not required, because this page will just get discarded
-        MessageFormat formatter = new MessageFormat(Messages.CreatePageAction_newPageName, Locale.getDefault()); 
+        MessageFormat formatter = new MessageFormat(Messages.CreatePageAction_newPageName, Locale.getDefault());
         if (page.getName() == null || page.getName().length() == 0) {
             page.setName(formatter.format(new Object[] { mapCopy.getName() }));
         }
 
         template.init(page, mapCopy);
-        
+
         //copy the boxes from the template into the page
-        Iterator<Box> iter = template.iterator();        
+        Iterator<Box> iter = template.iterator();
         while (iter.hasNext()) {
             page.getBoxes().add(iter.next());
         }
         return page;
-        
+
         //TODO Throw some sort of exception if the page can't be created
 
     }
 
-    
+
     /**
      * @param monitor
      */

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -28,7 +28,7 @@ import org.osgi.framework.Bundle;
 
 /**
  * Process an extention point.
- * 
+ *
  * @author jeichar
  * @since 0.6.0
  */
@@ -70,7 +70,7 @@ public class ExtensionPointList extends ArrayList<IConfigurationElement> {
 
     /**
      * Gets a ExtensionPointList for the provided extensionPoint
-     * 
+     *
      * @param extensionPointId id of the extension point to get the list of extensions for.
      * @return
      */

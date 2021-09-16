@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -30,7 +30,7 @@ import org.geotools.styling.StyleBuilder;
 
 /**
  * A quick raster symbolizer that can only vary opacity.
- * 
+ *
  * @author aalam
  * @since 0.6.0
  */
@@ -42,7 +42,7 @@ public class SLDRasterEditorPart extends SLDEditorPart implements SelectionListe
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.locationtech.udig.style.sld.SLDEditorPart#getContentType()
      */
     public Class getContentType() {
@@ -51,7 +51,7 @@ public class SLDRasterEditorPart extends SLDEditorPart implements SelectionListe
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.locationtech.udig.style.sld.SLDEditorPart#init()
      */
     public void init() {
@@ -60,7 +60,7 @@ public class SLDRasterEditorPart extends SLDEditorPart implements SelectionListe
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.locationtech.udig.style.sld.SLDEditorPart#reset()
      */
     public void reset() {
@@ -71,7 +71,7 @@ public class SLDRasterEditorPart extends SLDEditorPart implements SelectionListe
     private void setStylingElements( RasterSymbolizer symbolizer ) {
          double number = SLDs.rasterOpacity(symbolizer);
          int opacity = (new Double(number * 100)).intValue();
-               
+
          opacityScale.setSelection(opacity);
          opacityText.setText(Integer.toString(opacity) + "%"); //$NON-NLS-1$
          opacityText.pack(true);
@@ -79,7 +79,7 @@ public class SLDRasterEditorPart extends SLDEditorPart implements SelectionListe
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.locationtech.udig.style.sld.SLDEditorPart#createPartControl(org.eclipse.swt.widgets.Composite)
      */
     protected Control createPartControl( Composite parent ) {
@@ -89,12 +89,12 @@ public class SLDRasterEditorPart extends SLDEditorPart implements SelectionListe
         layout.pack = false;
         layout.wrap = true;
         layout.type = SWT.HORIZONTAL;
-        
+
         /* Border Opacity */
         Group borderOpacityArea = new Group(myparent, SWT.NONE);
         borderOpacityArea.setLayout(new GridLayout(2, false));
-        borderOpacityArea.setText(Messages.SLDRasterEditorPart_rasterOpactity_label); 
-        
+        borderOpacityArea.setText(Messages.SLDRasterEditorPart_rasterOpactity_label);
+
         opacityScale = new Scale(borderOpacityArea, SWT.HORIZONTAL);
         opacityScale.setMinimum(0);
         opacityScale.setMaximum(100);
@@ -116,7 +116,7 @@ public class SLDRasterEditorPart extends SLDEditorPart implements SelectionListe
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
      */
     public void widgetDefaultSelected( SelectionEvent e ) {
@@ -125,7 +125,7 @@ public class SLDRasterEditorPart extends SLDEditorPart implements SelectionListe
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
      */
     public void widgetSelected( SelectionEvent e ) {

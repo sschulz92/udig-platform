@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -27,7 +27,7 @@ import org.locationtech.udig.project.ui.UDIGEditorInput;
  * needed. The mapping between a IProjectElements and IEditorInput types are defined by
  * org.locationtech.udig.project.ui.editorInputs extensions.
  * </p>
- * 
+ *
  * @author jones
  * @since 0.3
  */
@@ -39,7 +39,7 @@ public class UDIGEditorInputDescriptor {
     protected Map<IProjectElement, UDIGEditorInput> instances = new HashMap<IProjectElement, UDIGEditorInput>();
     /**
      * Creates a UDIGEditorInput
-     * 
+     *
      * @param element
      * @return the EditorInput
      * @throws CoreException

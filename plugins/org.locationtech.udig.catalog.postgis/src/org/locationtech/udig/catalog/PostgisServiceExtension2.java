@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -37,7 +37,7 @@ import static org.geotools.jdbc.JDBCDataStoreFactory.DBTYPE;
  * PostGis ServiceExtension that has a hierarchy. It represents a Database and has folders within
  * it. One for each Schema that is known. The params object is the same as a normal Postgis except
  * that the schema parameter can be a list of comma separated string.
- * 
+ *
  * @author Jesse Eichar, Refractions Research
  * @since 1.2
  */

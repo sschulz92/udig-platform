@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -51,7 +51,7 @@ import org.locationtech.udig.style.sld.internal.Messages;
  * <li>fire( SelectionSevent ) - notify SimpleStyleConfigurator of change
  * <li>get( StyleBuilder ) - construct based on fields
  * </ul>
- * </p>  
+ * </p>
  * @author Emily Gouge (Refractions Research, Inc.)
  * @since 1.0.0
  */
@@ -93,9 +93,9 @@ public class OpacityViewer {
 
     /**
      * TODO summary sentence for createControl ...
-     * 
+     *
      * @param parent
-     * @param listener1 
+     * @param listener1
      * @return Generated composite
      */
     public Composite createControl( Composite parent, KeyListener listener1 ) {
@@ -120,7 +120,7 @@ public class OpacityViewer {
 
     /**
      * Accepts a listener that will be notified when content changes.
-     * @param listener1 
+     * @param listener1
      */
     public void addListener( SelectionListener listener1 ) {
         this.listener = listener1;
@@ -128,7 +128,7 @@ public class OpacityViewer {
 
     /**
      * Remove listener.
-     * @param listener1 
+     * @param listener1
      */
     public void removeListener( SelectionListener listener1 ) {
         if (this.listener == listener1)
@@ -137,7 +137,7 @@ public class OpacityViewer {
 
     /**
      * TODO summary sentence for fire ...
-     * 
+     *
      * @param event
      */
     protected void fire( SelectionEvent event ) {
@@ -146,9 +146,9 @@ public class OpacityViewer {
         this.listener.widgetSelected(event);
     }
 
-    /** 
-     * Called to set up this "viewer" based on the provided symbolizer 
-     * @param sym 
+    /**
+     * Called to set up this "viewer" based on the provided symbolizer
+     * @param sym
      */
     public void set( RasterSymbolizer sym2 ) {
         listen(false); // don't sync when setting up
@@ -171,8 +171,8 @@ public class OpacityViewer {
 
     /**
      * TODO summary sentence for getStroke ...
-     * @param build 
-     * 
+     * @param build
+     *
      * @return Stroke defined by this model
      */
     public RasterSymbolizer get( StyleBuilder build ) {

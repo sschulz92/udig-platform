@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -38,20 +38,20 @@ public abstract class InfoDisplay {
 
     /**
      * Some displays, like a browser, requre a url to function.
-     * 
+     *
      * @return true if LayerPointInfo is required to have a request URL
      */
     public boolean isUrlRequired(){
         return false;
     }
-    
+
     /**
      * Access control created by createDisplay.
-     * 
-     * @return Control used to display LayerPointInfo 
+     *
+     * @return Control used to display LayerPointInfo
      */
     public abstract Control getControl();
-    
+
     /**
      * Creates the SWT controls for this InfoDisplay.
      * <p>
@@ -63,7 +63,7 @@ public abstract class InfoDisplay {
      * @param parent the parent control
      */
     abstract public void createDisplay( Composite parent );
-    
+
     /**
      * Called by the InfoView to request display.
      * <p>
@@ -72,12 +72,12 @@ public abstract class InfoDisplay {
      * @param info LayerPointInfo to display, or null to disable.
      */
     abstract public void setInfo( LayerPointInfo info );
-    
+
     /**
      * Clean up any used resources
      */
     public void dispose(){
         getControl().dispose();
     }
-    
+
 }

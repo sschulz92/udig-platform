@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -48,7 +48,7 @@ public class AWTGraphics implements ViewportGraphics {
     }
     /**
      * Construct a AWTGraphics with the indicated dpi
-     * 
+     *
      * @param g
      * @param dpi
      */
@@ -97,7 +97,7 @@ public class AWTGraphics implements ViewportGraphics {
      * <p>
      * Please note that the provided AWT Font makes use of a size in *points* (which are documented
      * to be 72 DPI). Internally we adjust this size by the getDPI() value for this AWTGraphics.
-     * 
+     *
      * @param f Font in 72 dpi
      */
     public void setFont( Font f ) {
@@ -196,10 +196,10 @@ public class AWTGraphics implements ViewportGraphics {
 
     /**
      * Converts an SWT image to an AWT BufferedImage
-     * 
+     *
      * @param swtImageData
      * @return
-     * 
+     *
      * @deprecated use {@link AWTSWTImageUtils}
      */
     public static BufferedImage toAwtImage( ImageData swtImageData ) {
@@ -389,7 +389,7 @@ public class AWTGraphics implements ViewportGraphics {
         g.setPaint(gradPaint);
         g.fillRect(x, y, width, height);
     }
-    
+
     public <T> T getGraphics( Class<T> adaptee ) {
         if (adaptee.isAssignableFrom(Graphics2D.class)) {
             return adaptee.cast(g);

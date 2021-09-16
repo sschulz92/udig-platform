@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -40,7 +40,7 @@ import org.locationtech.udig.project.ui.render.glass.GlassPane;
  * <li>Listening to redraw requests from CompositeRenderer
  * <li>Isolating everyone from SWT / AWT graphics pipeline
  * </ul>
- * 
+ *
  * @author jeichar
  * @since 0.1
  */
@@ -48,7 +48,7 @@ public interface ViewportPane extends IMapDisplay {
 
     /**
      * Create a image that is compatable with this ViewportPane.
-     * 
+     *
      * @param w width
      * @param h height
      * @return BufferedImage (may be hardware accelarated)
@@ -68,20 +68,20 @@ public interface ViewportPane extends IMapDisplay {
      * <p>
      * Requests a repaint actually - may not occur right away.
      * </p>
-     * @param x x coordinate of the top left corner of the box to repaint 
-     * @param y y coordinate of the top left corner of the box to repaint 
+     * @param x x coordinate of the top left corner of the box to repaint
+     * @param y y coordinate of the top left corner of the box to repaint
      * @param width width of the box to repaint
      * @param height height of the box to repaint
      */
     public void repaint(int x, int y, int width, int height);
 
-    
+
     /**
      * This function is used to force paint events for a control.  See the Canvas.update() method.
      * <p>
-     * Forces all oustanding paint events for this control to be delivered before returning.  
+     * Forces all oustanding paint events for this control to be delivered before returning.
      * The children of the control are unaffected.  Only paint events are dispatched.
-     * </p> 
+     * </p>
      * <p>
      * Using update is generally unnecessary and can cause flickering and
      * performance problems.  This is true because update() defats the merging of paint
@@ -91,24 +91,24 @@ public interface ViewportPane extends IMapDisplay {
      * of incorrectly positioned images drawn on the screen.  (To ensure all paint events are processed
      * before we invalidate the transform and move the image).
      * </p>
-     * 
-     *    
+     *
+     *
      */
     public void update();
-    
+
     /**
      * Sets the mouse cursor.
      * <p>
      * Limited to System cursors at the moment. Custom cursors will be forthcoming.
      * </p>
-     * 
+     *
      * @param cursor The cursor to use
      */
     public void setCursor( org.eclipse.swt.graphics.Cursor cursor );
 
     /**
      * See {@linkplain java.awt.Component#removeMouseListener(java.awt.event.MouseListener)}
-     * 
+     *
      * @param l A mouse listener
      */
     public void removeMouseListener( MapMouseListener l );
@@ -116,7 +116,7 @@ public interface ViewportPane extends IMapDisplay {
     /**
      * See
      * {@linkplain java.awt.Component#removeMouseMotionListener(java.awt.event.MouseMotionListener)}
-     * 
+     *
      * @param l A mouse listener
      */
     public void removeMouseMotionListener( MapMouseMotionListener l );
@@ -124,14 +124,14 @@ public interface ViewportPane extends IMapDisplay {
     /**
      * See
      * {@linkplain java.awt.Component#removeMouseWheelListener(java.awt.event.MouseWheelListener)}
-     * 
+     *
      * @param l A mouse listener
      */
     public void removeMouseWheelListener( MapMouseWheelListener l );
 
     /**
      * See {@linkplain java.awt.Component#addMouseListener(java.awt.event.MouseListener)}
-     * 
+     *
      * @param l A mouse listener
      */
     public void addMouseListener( MapMouseListener l );
@@ -139,14 +139,14 @@ public interface ViewportPane extends IMapDisplay {
     /**
      * See
      * {@linkplain java.awt.Component#addMouseMotionListener(java.awt.event.MouseMotionListener)}
-     * 
+     *
      * @param l A mouse listener
      */
     public void addMouseMotionListener( MapMouseMotionListener l );
 
     /**
      * See {@linkplain java.awt.Component#addMouseWheelListener(java.awt.event.MouseWheelListener)}
-     * 
+     *
      * @param l A mouse listener
      */
     public void addMouseWheelListener( MapMouseWheelListener l );
@@ -168,22 +168,22 @@ public interface ViewportPane extends IMapDisplay {
     /**
      * Adds a Draw command to the list of draw commands.  This will not refresh
      * the ViewportPane.
-     * 
+     *
      * @param command The new draw command.
      * @model
      */
     public void addDrawCommand( IDrawCommand command );
-    
-    
+
+
     /**
      * Switches <code>ViewportPainter</code> to run custom <code>IDrawCommand</code>s
      * during map repainting or disable them.
-     * 
+     *
      * @param enable <code>true</code> is to run custom draw commands, <code>false</code> otherwise
      */
     public void enableDrawCommands(boolean enable);
-    
-    
+
+
     /**
      * Called when rendering is about to start.
      */
@@ -209,7 +209,7 @@ public interface ViewportPane extends IMapDisplay {
 
     /**
      * Returns the associated MapEditor object.
-     * 
+     *
      * @return the associated MapEditor object.
      */
     MapPart getMapEditor();
@@ -226,7 +226,7 @@ public interface ViewportPane extends IMapDisplay {
      * @return true if the viewportPane component is visible.
      */
     boolean isVisible();
-    
+
     /**
      * returns if the viewportpane has been disposed
      *
@@ -241,7 +241,7 @@ public interface ViewportPane extends IMapDisplay {
      * @return glass pane if set; null if not set
      */
     GlassPane getGlass();
-    
+
     /**
      * Sets the glass Pane
      *

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -41,7 +41,7 @@ import org.locationtech.jts.geom.Envelope;
 
 /**
  * OracleGeoResource representing a table or view.
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -51,7 +51,7 @@ public class OracleGeoResource extends IGeoResource {
 
     /**
      * Construct <code>OracleGeoResource</code>.
-     * 
+     *
      * @param parent
      * @param typename
      */
@@ -64,7 +64,7 @@ public class OracleGeoResource extends IGeoResource {
     OracleServiceImpl getService() {
         return (OracleServiceImpl) service;
     }
-    
+
     @Override
     public ID getID() {
         return id;
@@ -75,7 +75,7 @@ public class OracleGeoResource extends IGeoResource {
         return id.toURL();
     }
 
-    
+
     /*
      * @see org.locationtech.udig.catalog.IGeoResource#getStatus()
      */
@@ -168,7 +168,7 @@ public class OracleGeoResource extends IGeoResource {
                     // source.getSchema().getGeometryDescriptor();
                     crs = source.getSchema().getCoordinateReferenceSystem();
                     this.bounds = ReferencedEnvelopeCache.getReferencedEnvelope(info.getCRS());
-                    
+
                     /*
                     // no full table scan for you!
                     bounds = new ReferencedEnvelope(new Envelope(), crs);

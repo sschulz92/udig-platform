@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -22,7 +22,7 @@ public class BasicWMTMetricsFactory implements IRenderMetricsFactory {
 
 
     public boolean canRender(IRenderContext toolkit) {
-        return toolkit.getLayer().hasResource(WMTGeoResource.class) || 
+        return toolkit.getLayer().hasResource(WMTGeoResource.class) ||
                 toolkit.getLayer().hasResource(WWGeoResource.class);
     }
 
@@ -32,7 +32,7 @@ public class BasicWMTMetricsFactory implements IRenderMetricsFactory {
     public AbstractRenderMetrics createMetrics( IRenderContext context ) {
         return new BasicWMTMetrics(context, this);
     }
-    
+
     /**
      * @see org.locationtech.udig.project.render.RenderMetrics#getRendererType()
      */

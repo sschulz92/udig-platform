@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -39,7 +39,7 @@ import org.opengis.feature.simple.SimpleFeatureType;
  * An Operation that can operate on either GeoResources or on FeatureSources. If the object is a
  * georesource the operation prints out a summary about the resource. if the object is a
  * FeatureSource the number of features are printed.
- * 
+ *
  * @author jones
  */
 public class MultiTargetOp implements IOp {
@@ -68,14 +68,14 @@ public class MultiTargetOp implements IOp {
             throws IOException {
         IGeoResourceInfo info = resource.getInfo(monitor);
         Envelope bounds = info.getBounds();
-        final List<SummaryData> data=new ArrayList<SummaryData>(); 
+        final List<SummaryData> data=new ArrayList<SummaryData>();
         String crs;
         if (info.getCRS() != null)
             crs = info.getCRS().getName().toString();
         else
-            crs = Messages.MultiTargetOp_unknown; 
+            crs = Messages.MultiTargetOp_unknown;
         crs=crs.replace('\n', ' ');
-        
+
         try {
             data.add(new SummaryData(Messages.MultiTargetOp_name, info.getName()));
             data.add(new SummaryData( Messages.MultiTargetOp_title, info.getTitle()));
@@ -94,8 +94,8 @@ public class MultiTargetOp implements IOp {
         } catch (Exception e) {
             display.asyncExec(new Runnable(){
                 public void run() {
-                    MessageDialog.openError(display.getActiveShell(), Messages.MultiTargetOp_resource_summary, 
-                            Messages.MultiTargetOp_error); 
+                    MessageDialog.openError(display.getActiveShell(), Messages.MultiTargetOp_resource_summary,
+                            Messages.MultiTargetOp_error);
                 }
             });
             ProjectUIPlugin.log(null, e);
@@ -138,7 +138,7 @@ public class MultiTargetOp implements IOp {
                         .openInformation(
                                 display.getActiveShell(),
                                 "Number of features", //$NON-NLS-1$
-                                Messages.MultiTargetOp_number + (features == -1 ? Messages.MultiTargetOp_expensive : String.valueOf(features)));  
+                                Messages.MultiTargetOp_number + (features == -1 ? Messages.MultiTargetOp_expensive : String.valueOf(features)));
             }
         });
     }

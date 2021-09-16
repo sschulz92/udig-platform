@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -28,7 +28,7 @@ import org.geotools.coverage.grid.io.GridFormatFactorySpi;
 
 /**
  * Provides a handle to an imageio-ext based image service allowing the service to be lazily loaded.
- * 
+ *
  * @author mleslie
  * @author Daniele Romagnoli, GeoSolutions
  * @author Jody Garnett
@@ -41,7 +41,7 @@ public class ImageServiceImpl extends AbstractRasterService {
 
     /**
      * Construct <code>ImageServiceImpl</code>.
-     * 
+     *
      * @param id
      * @param factory
      */

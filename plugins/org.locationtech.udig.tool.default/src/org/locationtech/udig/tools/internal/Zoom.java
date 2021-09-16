@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -31,7 +31,7 @@ import org.locationtech.jts.geom.Envelope;
 
 /**
  * This class Provides zoom box and click functionality.
- * 
+ *
  * @author Jesse Eichar
  * @version 1.3.0
  */
@@ -46,14 +46,14 @@ public class Zoom extends AbstractModalTool implements ModalTool {
     SelectionBoxCommand shapeCommand = new SelectionBoxCommand();
 
     boolean showContextOnRightClick = false;
-    
+
     /**
      * Creates an new instance of Zoom
      */
     public Zoom() {
         super(MOUSE | MOTION);
     }
-    
+
     public void mouseDragged(MapMouseEvent e) {
         if( start==null ){
             mousePressed(e);
@@ -77,13 +77,13 @@ public class Zoom extends AbstractModalTool implements ModalTool {
         width1 = (int) (height1 * context.getViewportModel().getAspectRatio());
         width2 = Math.abs(x2 - x1);
         height2 = (int) (width2 / context.getViewportModel().getAspectRatio());
-        // choose heights and widths based on which axis is the longest 
+        // choose heights and widths based on which axis is the longest
         if( height1 > height2){
             width=width1;
             height=height1;
         }else{
             width=width2;
-            height=height2;            
+            height=height2;
         }
 
         //center user selected area in center of new box.
@@ -98,11 +98,11 @@ public class Zoom extends AbstractModalTool implements ModalTool {
         }else{
             y=y-(height-Math.abs(y2-y1))/2;
         }
-        
+
         return new Rectangle(x, y, width, height);
     }
 
-    
+
     /**
      * @see org.locationtech.udig.project.tool.AbstractTool#mousePressed(org.locationtech.udig.project.render.displayAdapter.MapMouseEvent)
      */
@@ -111,8 +111,8 @@ public class Zoom extends AbstractModalTool implements ModalTool {
             ((ViewportPane) e.source).getMapEditor().openContextMenu();
         	return;
     	}
-        if ( !e.isAltDown() && !e.isShiftDown() && 
-                (e.button == MapMouseEvent.BUTTON1 
+        if ( !e.isAltDown() && !e.isShiftDown() &&
+                (e.button == MapMouseEvent.BUTTON1
                         || e.button == MapMouseEvent.BUTTON3
                         || (e.button == MapMouseEvent.BUTTON1 && e.isControlDown())) ){
             zooming = true;
@@ -197,7 +197,7 @@ public class Zoom extends AbstractModalTool implements ModalTool {
         try {
             Coordinate center = m.pixelToWorld( (int)r.getCenterX(), (int)r.getCenterY() );
             double zoomFactor = ((double)r.width) / ((double)getContext().getMapDisplay().getWidth());
-            
+
             ZoomCommand cmd = new ZoomCommand(zoomFactor);
             cmd.setFixedPoint(center);
             getContext().sendASyncCommand(cmd);

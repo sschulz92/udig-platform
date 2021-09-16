@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -23,21 +23,21 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * Provides access for editing maps in uDig
- * 
+ *
  * @author Richard Gould
  * @since 0.3
  */
 public class MapEditorInput extends UDIGEditorInput {
 
 	public MapEditorInput(){
-			
+
 	}
 
 	public MapEditorInput(IMap map){
 		setProjectElement(map);
 	}
 
-	
+
     /** MUST BE LAT LONG */
     public Envelope getExtent() {
         IViewportModel model = getProjectElement().getViewportModel();
@@ -63,7 +63,7 @@ public class MapEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for getImageDescriptor ...
-     * 
+     *
      * @see org.eclipse.ui.IEditorInput#getImageDescriptor()
      * @return ImageDescriptor
      */
@@ -73,7 +73,7 @@ public class MapEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for getPersistable ...
-     * 
+     *
      * @see org.eclipse.ui.IEditorInput#getPersistable()
      * @return null
      */
@@ -83,7 +83,7 @@ public class MapEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for getToolTipText ...
-     * 
+     *
      * @see org.eclipse.ui.IEditorInput#getToolTipText()
      * @return getName
      */
@@ -93,7 +93,7 @@ public class MapEditorInput extends UDIGEditorInput {
 
     /**
      * TODO summary sentence for getAdapter ...
-     * 
+     *
      * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
      * @param adapter
      * @return null
@@ -106,7 +106,7 @@ public class MapEditorInput extends UDIGEditorInput {
      * @see org.eclipse.ui.IEditorInput#getName()
      */
     public String getName() {
-        return Messages.MapEditorInput_name; 
+        return Messages.MapEditorInput_name;
     }
 
 }

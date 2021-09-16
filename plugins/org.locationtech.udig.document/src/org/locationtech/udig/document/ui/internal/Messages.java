@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -14,7 +14,7 @@ package org.locationtech.udig.document.ui.internal;
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-    
+
     private static final String BUNDLE_NAME = "org.locationtech.udig.document.ui.internal.messages"; //$NON-NLS-1$
 
     public static String AbstractAttachmentDocument_errSaveAsNotSupported;

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -19,7 +19,7 @@ import org.locationtech.udig.project.element.ProjectElementAdapter;
 
 /**
  * So the project explorer could generically open any editor.
- * 
+ *
  * @author jones
  * @since 0.3
  */
@@ -39,7 +39,7 @@ public abstract class UDIGEditorInput implements IEditorInput {
     public void setProjectElement( IProjectElement projectElement ) {
         this.projectElement = projectElement;
     }
-    
+
     @Override
     public boolean equals(Object arg0) {
     	if (arg0 instanceof UDIGEditorInput) {
@@ -48,7 +48,7 @@ public abstract class UDIGEditorInput implements IEditorInput {
 		}
     	return false;
     }
-    
+
     @Override
     public int hashCode() {
     	return getProjectElement().hashCode();

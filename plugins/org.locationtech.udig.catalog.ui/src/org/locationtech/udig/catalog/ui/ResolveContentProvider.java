@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -20,8 +20,8 @@ import org.locationtech.udig.catalog.ui.internal.Messages;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 /**
- * A "normal" content provider for a tree viewer.   
- * 
+ * A "normal" content provider for a tree viewer.
+ *
  * @author Jesse
  * @since 1.1.0
  */
@@ -36,7 +36,7 @@ public class ResolveContentProvider extends AbstractResolveContentProvider imple
      * </p>
      * The result is not modified by the viewer.
      * </p>
-     * 
+     *
      * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
      * @param parent the parent element
      * @return an array of child elements
@@ -57,7 +57,7 @@ public class ResolveContentProvider extends AbstractResolveContentProvider imple
             return members != null ? members.toArray() : null;
         } else {
             update(resolve); // calculate
-            return new Object[]{Messages.ResolveContentProvider_searching }; 
+            return new Object[]{Messages.ResolveContentProvider_searching };
         }
     }
 

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -38,15 +38,15 @@ import org.eclipse.swt.widgets.Composite;
  * be a node in the tree (at least until we get a FeatureCollection Viewer)
  * </ul>
  * </p>
- * 
- * @author Jody Garnett, Refractions Research 
+ *
+ * @author Jody Garnett, Refractions Research
  * @since 0.6
  */
 public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,ILabelProvider {
-    
+
     List<LayerPointInfo> information = null;
     ImageCache imageCache = new ImageCache();
-    
+
     /**
      * Construct <code>CatalogTreeViewer</code>.
      *
@@ -67,13 +67,13 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
         if( information != null ) {
             information.clear();
             information = null;
-        }    
+        }
         if( imageCache != null ) {
             imageCache.dispose();
             imageCache = null;
         }
-    }    
-    
+    }
+
     /**
      * Provides a mapping from Information to TreeViewer.
      * <p>
@@ -85,12 +85,12 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
      * </ul>
      * </p>
      */
-    
+
     /**
      * Returns the child elements of the given parent element.
      * <p>
-     * The difference between this method and <code>IStructuredContentProvider.getElements</code> 
-     * is that <code>getElements</code> is called to obtain the 
+     * The difference between this method and <code>IStructuredContentProvider.getElements</code>
+     * is that <code>getElements</code> is called to obtain the
      * tree viewer's root elements, whereas <code>getChildren</code> is used
      * to obtain the children of a given parent element in the tree (including a root).
      * </p>
@@ -100,14 +100,14 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
      *
      * @param parent the parent element
      * @return an array of child elements
-     * 
+     *
      */
     public Object[] getChildren(Object parent) {
         if( parent == information ) {
             return information.toArray();
         }
         return null;
-    }        
+    }
     /**
      * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
      */
@@ -119,8 +119,8 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
             return information;
         }
         return null;
-    } 
-    
+    }
+
     /**
      * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
      */
@@ -129,8 +129,8 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
     }
 
     /**
-     * Returns the elements to display in the viewer 
-     * when its input is set to the given element. 
+     * Returns the elements to display in the viewer
+     * when its input is set to the given element.
      * These elements can be presented as rows in a table, items in a list, etc.
      * The result is not modified by the viewer.
      *
@@ -140,10 +140,10 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
     public Object[] getElements(Object inputElement) {
         return getChildren(inputElement);
     }
-    
+
     /**
      * Notificaiton that the input has been changed.
-     * 
+     *
      * @see org.eclipse.jface.viewers.AbstractTreeViewer#inputChanged(java.lang.Object, java.lang.Object)
      * @param input
      * @param oldInput
@@ -152,7 +152,7 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
     protected void inputChanged( Object input, Object oldInput ) {
         if( oldInput != null && oldInput instanceof List) {
             List oldInformation = (List) oldInput;
-            oldInformation.clear();                
+            oldInformation.clear();
         }
         if( input == null ) {
             information = null;
@@ -163,7 +163,7 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
     }
     /**
      * Reset the viewer to new information
-     * 
+     *
      * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
      * @param viewer
      * @param oldInput
@@ -172,8 +172,8 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
     public void inputChanged( Viewer viewer, Object oldInput, Object newInput ) {
         // viewer should equal InfoTreeViewer.this
         inputChanged( newInput, oldInput );
-    }                         
-    
+    }
+
     /*
      * Image based on layer of selected info
      */
@@ -183,7 +183,7 @@ public class InfoTreeViewer extends TreeViewer implements ITreeContentProvider,I
         }
         if (element instanceof LayerPointInfo){
             LayerPointInfo info = (LayerPointInfo) element;
-            return imageCache.getImage( info.getLayer().getIcon() );            
+            return imageCache.getImage( info.getLayer().getIcon() );
         }
         return null;
     }

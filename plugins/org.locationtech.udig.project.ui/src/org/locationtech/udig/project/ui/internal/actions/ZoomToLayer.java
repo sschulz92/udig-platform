@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -34,7 +34,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * An action that sets the zoom to include all the data in the layer.
- * 
+ *
  * @author jeichar
  * @since 0.6.0
  */
@@ -76,7 +76,7 @@ public class ZoomToLayer extends ActionDelegate implements IViewActionDelegate {
         @SuppressWarnings("unchecked")
         public void run( IProgressMonitor monitor ) {
             Map map = ((Layer) selection.getFirstElement()).getMapInternal();
-            
+
             ReferencedEnvelope bounds = new ReferencedEnvelope( map.getViewportModel().getCRS() );
 
             Coordinate mapCenter = map.getViewportModel().getCenter();
@@ -115,7 +115,7 @@ public class ZoomToLayer extends ActionDelegate implements IViewActionDelegate {
          * This only makes sense if the fitToScale is fully contained within the layerBounds and the
          * layerBounds contains the center.
          * <p>
-         * 
+         *
          * @param fitToScale the scaled down envelope (or maybe not)
          * @param layerBounds the unrestricted bounds of the layer
          * @param mapCenter the current center of the displayed map.
@@ -128,10 +128,10 @@ public class ZoomToLayer extends ActionDelegate implements IViewActionDelegate {
             }
 
             Coordinate layerCenter = fitToScale.centre();
-            
+
             double deltaX = mapCenter.x-layerCenter.x;
             double deltaY = mapCenter.y-layerCenter.y;
-            
+
             // the maximum that can be translated in the negative X direction
             double maxNegX = layerBounds.getMinX()-fitToScale.getMinX();
             // the maximum that can be translated in the negative Y direction
@@ -140,7 +140,7 @@ public class ZoomToLayer extends ActionDelegate implements IViewActionDelegate {
             double maxPosX = layerBounds.getMaxX()-fitToScale.getMaxX();
             // the maximum that can be translated in the postive Y direction
             double maxPosY = layerBounds.getMaxY()-fitToScale.getMaxY();
-            
+
             if( deltaX<maxNegX ){
                 deltaX = maxNegX;
             } else if( deltaX>maxPosX ){
@@ -151,7 +151,7 @@ public class ZoomToLayer extends ActionDelegate implements IViewActionDelegate {
             } else if( deltaY>maxPosY ){
                 deltaY = maxPosY;
             }
-            
+
             fitToScale.translate(deltaX, deltaY);
             return fitToScale;
         }

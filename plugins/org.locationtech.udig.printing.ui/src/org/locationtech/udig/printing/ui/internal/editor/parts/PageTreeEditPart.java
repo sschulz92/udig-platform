@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -43,7 +43,7 @@ public class PageTreeEditPart extends AbstractTreeEditPart {
     public PageTreeEditPart( Page page) {
         super(page);
     }
-    
+
     public void activate() {
         if (isActive()) {
             return;
@@ -58,18 +58,18 @@ public class PageTreeEditPart extends AbstractTreeEditPart {
         super.deactivate();
         ((Page) getModel()).eAdapters().remove(this.listener);
     }
-    
+
     protected List getModelChildren() {
         return ((Page) getModel()).getBoxes();
     }
-    
+
     protected class InternalPropertyListener extends PropertyListener {
-        
+
             /**
          * TODO summary sentence for boxesChanged ...
-         * 
+         *
          * @see org.locationtech.udig.printing.model.PropertyListener#boxesChanged()
-         * 
+         *
          */
         protected void boxesChanged() {
             refreshChildren();

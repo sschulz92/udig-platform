@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -22,7 +22,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
  * Represents external services; you can contact the external service using an API of your choice.
  * <p>
  * Quick example:
- * 
+ *
  * <pre>
  * <code>
  * if( resolve.canResolve( FeatureSource.class ) ){
@@ -32,7 +32,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
  * }
  * </code>
  * </pre>
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.7.0
  * @see IAdaptable
@@ -52,7 +52,7 @@ public interface IResolve {
      * <li>TYPE - an example required class (like URL.class)
      * <li>METHOD - an example method that will produce the adapter
      * </ul>
-     * 
+     *
      * <pre>
      * <code>
      * public <T> T resolve( Class<T> adaptee, IProgressMonitor monitor ) throws IOException {
@@ -60,7 +60,7 @@ public interface IResolve {
      *         monitor = new NullProgressMonitor();
      *     if (adaptee == null)
      *         throw new NullPointerException("No adaptor specified" );
-     *     
+     *
      *     if (adaptee.isAssignableFrom(TYPE.class)) {
      *         return adaptee.cast(METHOD(monitor));
      *     }
@@ -72,9 +72,9 @@ public interface IResolve {
      *     return null; // could not find adapter
      * }</code>
      * </pre>
-     * 
+     *
      * May Block.
-     * 
+     *
      * @param adaptee
      * @param monitor
      *            May Be Null
@@ -96,7 +96,7 @@ public interface IResolve {
      * When defining a new AbstractClass you are also asked to please list the required adaptations in your javadocs.
      * <p>
      * The following code example shows intended practice:
-     * 
+     *
      * <pre>
      * <code>
      * public <T> boolean canResolve( Class<T> adaptee ){
@@ -107,7 +107,7 @@ public interface IResolve {
      * }
      * </code>
      * </pre>
-     * 
+     *
      * @see IResolve#resolve(Class, IProgressMonitor);
      * @return true if a resolution for adaptee is avaialble
      */
@@ -115,7 +115,7 @@ public interface IResolve {
 
     /**
      * The parent of this handle, may be null if parent unknown.
-     * 
+     *
      * @param monitor
      *            used to provide feedback during parent lookup
      * @return Parent IResolve, null if unknown
@@ -126,7 +126,7 @@ public interface IResolve {
 
     /**
      * Contents of this handle, Collections.EMPTY_LIST iff this is a leaf.
-     * 
+     *
      * @param monitor
      *            Monitor used to provide feedback during member lookup
      * @return List, possibly empty, of members. Will be EMPTY_LIST if this is a leaf.
@@ -160,7 +160,7 @@ public interface IResolve {
      * <p>
      * In the future this may be extended into a bit mask of connection status.
      * </p>
-     * 
+     *
      * @return Status of the resource
      */
     public Status getStatus();
@@ -174,7 +174,7 @@ public interface IResolve {
      * <p>
      * Not the Exception is expected to be in human readable, terms.
      * </p>
-     * 
+     *
      * @return Text describing service status
      */
     public Throwable getMessage();
@@ -183,13 +183,13 @@ public interface IResolve {
      * A unique resource identifier ... this should be unique for each service. Must Not Block.
      * <p>
      * Creating an "invalid" URL for local content is tricky try the following:
-     * 
+     *
      * <pre>
      * <code>
      * new URL(null, getID().toString(), CorePlugin.RELAXED_HANDLER);
      * </code>
      * </pre>
-     * 
+     *
      * @return ID for this IResolve, should not be null.
      */
     public abstract URL getIdentifier();
@@ -201,7 +201,7 @@ public interface IResolve {
      * typed ID object since there are so many restrictions and corner cases when working with URLs, URIs (or even
      * Strings across platforms).
      * </p>
-     * 
+     *
      * @return ID for this object, will not be null.
      */
     public abstract ID getID();
@@ -213,7 +213,7 @@ public interface IResolve {
      * title cache, and then check for the presents of an Info object to retrieve the title from. An Info object must
      * not be created in this method. If no title is readily available, return null to indicate that a title must be
      * generated.
-     * 
+     *
      * @return title or <code>null</code> if none is readily available
      */
     public String getTitle();
@@ -223,7 +223,7 @@ public interface IResolve {
      * <p>
      * Please ensure that {@link #getStatus()} returns {@link Status#DISPOSED} after this method
      * is called.
-     * 
+     *
      * @param monitor
      */
     public void dispose(IProgressMonitor monitor);

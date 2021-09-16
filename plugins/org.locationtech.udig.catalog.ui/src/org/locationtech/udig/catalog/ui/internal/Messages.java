@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -67,7 +67,7 @@ public class Messages extends NLS {
     public static String ReshapeOperation_DialogText;
     public static String ReshapeOperation_noAction;
     public static String ReshapeOperation_task;
-    
+
     public static String ResourceSelectionPage_brokenReportError;
     public static String ResourceSelectionPage_brokenUnknown;
     public static String ResourceSelectionPage_connectedButNoResources;
@@ -207,7 +207,7 @@ public class Messages extends NLS {
     public static String LayerSelectionPage_message;
     public static String LayerSelectionPage_title;
 
-    
+
 	public static String TransformDialog_Post_Action_Prompt;
     public static String TransformDialog_Title;
 
@@ -219,7 +219,7 @@ public class Messages extends NLS {
 
 	private Messages() {
 	}
-	
+
 	/**
      * Initialize the given Action from a ResourceBundle.
      * <p>
@@ -234,7 +234,7 @@ public class Messages extends NLS {
      * Note: The use of a single image value is mapped to images for both the enabled and distabled
      * state of the IAction. the Local toolbar (elcl16/ and dlcl16/) is assumed if a path has not
      * been provided.
-     * 
+     *
      * <pre><code>
      *  add_co.gif              (prefix.image)
      *     enabled: elcl16/add_co.gif
@@ -243,9 +243,9 @@ public class Messages extends NLS {
      *     enabled: etool16/discovery_wiz.16
      *    disabled: etool16/discovery_wiz.16
      * </code></pre>
-     * 
+     *
      * </p>
-     * 
+     *
      * @param a action
      * @param id used for binding (id.label, id.tooltip, ...)
      */

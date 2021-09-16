@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -25,7 +25,7 @@ import org.osgi.framework.BundleContext;
 
 /**
  * Plugin class for BasicGridCoverage
- * 
+ *
  * @author jones
  * @since 0.6.0
  */
@@ -83,7 +83,7 @@ public class RendererPlugin extends Plugin {
      * <p>
      * This should be used for user level messages.
      * </p>
-     * 
+     *
      * @param message Message to tell the user
      * @param e Throwable assocaited with this message
      */
@@ -94,7 +94,7 @@ public class RendererPlugin extends Plugin {
      * Messages that only engage if getDefault().isDebugging()
      * <p>
      * It is much prefered to do this:
-     * 
+     *
      * <pre><code>
      * private static final String RENDERING = "org.locationtech.udig.project/render/trace";
      * if( ProjectUIPlugin.getDefault().isDebugging() && "true".equalsIgnoreCase( RENDERING ) ){
@@ -119,12 +119,12 @@ public class RendererPlugin extends Plugin {
      * <li>Trace.RENDER - trace rendering progress
      * </ul>
      * </p>
-     * 
+     *
      * @param trace currently only RENDER is defined
      * @return true if -debug is used with a .options file to enable tracing
      */
     public static boolean isDebugging( final String trace ) {
         return getDefault().isDebugging()
-                && "true".equalsIgnoreCase(Platform.getDebugOption(trace)); //$NON-NLS-1$    
+                && "true".equalsIgnoreCase(Platform.getDebugOption(trace)); //$NON-NLS-1$
     }
 }

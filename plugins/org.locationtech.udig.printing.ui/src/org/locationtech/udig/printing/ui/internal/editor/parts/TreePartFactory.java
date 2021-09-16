@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -40,17 +40,17 @@ import org.eclipse.gef.EditPartFactory;
 public class TreePartFactory implements EditPartFactory {
 
     public EditPart createEditPart( EditPart context, Object model ) {
-        
+
         if (model instanceof Box) {
             Box box = (Box) model;
             if (model instanceof Page) {
                 return new PageTreeEditPart((Page) model);
             }
-            
+
             if (box.getBoxPrinter() instanceof MapBoxPrinter) {
                 return new MapTreePart(box);
             }
-            
+
             return new BoxTreeEditPart((Box) model);
         }
         return null;

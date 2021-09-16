@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -13,7 +13,7 @@ package org.locationtech.udig.project.render;
 
 /**
  * Indicates that an exception during Rendering has occurred.
- * 
+ *
  * @author jeichar
  * @since 0.6.0
  */
@@ -24,7 +24,7 @@ public class RenderException extends Exception {
 
     /**
      * Construct <code>RenderException</code>.
-     * 
+     *
      * @param msg comment about the exception
      * @param t the exception that occurred
      */
@@ -34,7 +34,7 @@ public class RenderException extends Exception {
 
     /**
      * Construct <code>RenderException</code>.
-     * 
+     *
      * @param msg comment about the exception
      */
     public RenderException( String msg ) {
@@ -43,7 +43,7 @@ public class RenderException extends Exception {
 
     /**
      * Construct <code>RenderException</code>.
-     * 
+     *
      * @param msg comment about the exception
      */
     public RenderException() {
@@ -52,7 +52,7 @@ public class RenderException extends Exception {
 
     /**
      * Construct <code>RenderException</code>.
-     * 
+     *
      * @param t the exception that occurred
      */
     public RenderException( Throwable t ) {

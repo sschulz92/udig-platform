@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -45,7 +45,7 @@ import org.geotools.jdbc.JDBCDataStore;
 
 /**
  * Service handle representing an oracle database.
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -101,7 +101,7 @@ public class OracleServiceImpl extends IService {
     }
     public void dispose( IProgressMonitor monitor ) {
         super.dispose(monitor);
-        
+
         if( ds != null ){
             ds.dispose();
         }
@@ -255,7 +255,7 @@ public class OracleServiceImpl extends IService {
     /**
      * Checks to make sure the port hasn't been switched from String to Integer and corrects if
      * necessary.
-     * 
+     *
      * @param params Parameters object
      */
     private void checkPort( Map<String, Serializable> params ) {

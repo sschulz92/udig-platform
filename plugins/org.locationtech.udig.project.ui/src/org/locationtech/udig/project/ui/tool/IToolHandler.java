@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -18,7 +18,7 @@ import org.eclipse.core.commands.IHandler;
  * <p>
  * Must have a public default constructor so that the plugin frame work can instantiate the class.
  * </p>
- * 
+ *
  * @see org.locationtech.udig.project.ui.tool.AbstractToolCommandHandler
  * @author jeichar
  * @since 0.6.0
@@ -28,14 +28,14 @@ public interface IToolHandler extends IHandler {
 
     /**
      * Called before any of the IHandler methods are called.
-     * 
+     *
      * @param tool
      */
     void setTool( Tool tool );
 
     /**
      * Called before any of the IHandler methods are called.
-     * 
+     *
      * @param currentCommandId
      */
     void setCurrentCommandId( String currentCommandId );

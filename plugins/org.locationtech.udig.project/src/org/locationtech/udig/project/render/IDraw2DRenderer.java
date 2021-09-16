@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -22,13 +22,13 @@ import org.eclipse.swt.graphics.GC;
  * </p>
  * This interface extends IRenderer as we still require an AWT Graphics2D rendering
  * pipeline to use when printing.
- * <ul> 
+ * <ul>
  * @author Jody Garnett
  * @since 1.2
  */
 public interface IDraw2DRenderer extends IRenderer {
     /**
-     * 
+     *
      * @param gc
      * @param monitor
      * @throws RenderException
@@ -40,7 +40,7 @@ public interface IDraw2DRenderer extends IRenderer {
      * method (for printing).
      * <p>
      * If needed you can make use of AWTSWTImageUtils to reuse your GC based code.
-     * 
+     *
      * @param destination The objects that the Renderer will use for rendering
      * @throws RenderException
      */

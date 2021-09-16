@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -41,7 +41,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * A view for displaying information about a specific image mosaic tile.
- *  
+ *
  * <p>
  *
  * </p>
@@ -63,7 +63,7 @@ public class MosaicInfoView extends ViewPart {
     private MosaicInfoPanel infoPanel;
     private Composite ctr;
     private PageBook book;
-    
+
     /**
      * Undo action to allow you to undo the changes
      */
@@ -93,14 +93,14 @@ public class MosaicInfoView extends ViewPart {
                 enableUndoAction();
             }
         });
-        
+
         ctr = infoPanel.createControl(book);
-        
+
         createActions();
         createToolBar();
-       
+
     }
-    
+
     /**
      * Sets the enabled/disabled status of the
      * undo action based on the information in the infoPanel
@@ -111,7 +111,7 @@ public class MosaicInfoView extends ViewPart {
                 undoAction.setEnabled(infoPanel.canUndo());
             }
         });
-        
+
     }
 
     @Override
@@ -165,9 +165,9 @@ public class MosaicInfoView extends ViewPart {
     }
 
     /**
-     * Finds the first feature in the given layer 
+     * Finds the first feature in the given layer
      * that interested the given bounding box.
-     * 
+     *
      *
      * @param layer
      * @param bbox
@@ -205,8 +205,8 @@ public class MosaicInfoView extends ViewPart {
         }
         return null;
     }
-    
-    
+
+
     /**
      * Create the actions associated with the view.
      */
@@ -220,11 +220,11 @@ public class MosaicInfoView extends ViewPart {
         };
         undoAction.setDisabledImageDescriptor(RendererPlugin.getImageDescriptor(ICONS_DTOOL16_UNDO_EDIT));
         undoAction.setImageDescriptor(RendererPlugin.getImageDescriptor(ICONS_ETOOL16_UNDO_EDIT));
-        
+
         undoAction.setToolTipText(Messages.MosaicInfoView_UndoActionToolTip);
         undoAction.setEnabled(false);
     }
-    
+
     /**
      * Create the view tool bar and add undo action.
      */
@@ -237,7 +237,7 @@ public class MosaicInfoView extends ViewPart {
      * Class to track the information request
      * <p>
      * </p>
-     * 
+     *
      * @author Emily Gouge (Refractions Research, Inc)
      * @since 1.1.0
      */

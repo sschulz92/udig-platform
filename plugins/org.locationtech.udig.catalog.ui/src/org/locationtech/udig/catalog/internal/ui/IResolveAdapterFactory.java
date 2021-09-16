@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -22,7 +22,7 @@ import org.eclipse.core.runtime.IAdapterFactory;
  * Please be aware that although this will allow getAdapter to negotiate
  * the IResolve methods; the result uses IBlocableAdapter and actually
  * performs IO resulting in the possibility of long delays and IOExceptions.
- * 
+ *
  * @author jeichar
  * @since 0.9
  */

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -23,7 +23,7 @@ import org.locationtech.udig.catalog.wms.internal.Messages;
 
 /**
  * A service extension for creating WMS Services
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -125,7 +125,7 @@ public class WMSServiceExtension implements ServiceExtension2 {
         }
         if( QUERY != null && QUERY.toUpperCase().indexOf( "SERVICE=" ) != -1){ //$NON-NLS-1$
             int indexOf = QUERY.toUpperCase().indexOf( "SERVICE=" ); //$NON-NLS-1$
-            // we have a service! it better be wfs            
+            // we have a service! it better be wfs
             if( QUERY.toUpperCase().indexOf( "SERVICE=WMS") == -1 ){ //$NON-NLS-1$
                 int endOfExp = QUERY.indexOf('&', indexOf);
                 if( endOfExp == -1 )

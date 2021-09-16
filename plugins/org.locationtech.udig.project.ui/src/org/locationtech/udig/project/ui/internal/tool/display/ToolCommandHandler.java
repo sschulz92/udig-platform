@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -25,7 +25,7 @@ import org.locationtech.udig.project.ui.internal.ProjectUIPlugin;
  * </li>
  * <li>It checks the category ToolP
  * The handler for tool commands.
- * 
+ *
  * @author jeichar
  * @since 0.9.0
  * @version 1.3.0
@@ -40,7 +40,7 @@ public class ToolCommandHandler extends AbstractHandler {
     public ToolCommandHandler( ModalToolCategory category ) {
         this.category = category;
     }
-    
+
     /**
      * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
      */
@@ -57,21 +57,21 @@ public class ToolCommandHandler extends AbstractHandler {
             MapToolEntry victim = null;
             for( Object child : category.getContainer().getChildren() ){
                 if( child instanceof MapToolEntry ){
-                    MapToolEntry entry = (MapToolEntry) child;                    
+                    MapToolEntry entry = (MapToolEntry) child;
                     if( !category.getId().equals( entry.getCategoryId() )){
                         continue; // tool is not from our category
                     }
                     ToolProxy proxy = entry.getMapToolProxy();
-                    
+
                     if( !proxy.isEnabled() ){
                         continue; // skip disabled tools
                     }
-                    
+
                     if( first == null ){
-                        first = entry; // this will be what is selected unless we have a 
+                        first = entry; // this will be what is selected unless we have a
                     }
                     if( victim == null ){ // if we have not found a victim to activate yet
-                        victim = entry; 
+                        victim = entry;
                     }
                     if( proxy.isActive() ){
                         // we have a winner!
@@ -82,7 +82,7 @@ public class ToolCommandHandler extends AbstractHandler {
             if( victim == null ){
                 victim = first; // we were at the end of the list; cycle back to first
             }
-            
+
             // okay victim is our new "Active" tool; how do we update the map an palette to use it?
             if( victim != null ){
                 if( victim.getMapToolProxy() != null ){

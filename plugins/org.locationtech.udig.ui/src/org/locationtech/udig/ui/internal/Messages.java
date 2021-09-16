@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -169,39 +169,39 @@ public class Messages extends NLS {
     public static String CRSChooser_tab_standardCRS;
     public static String CRSChooser_label_crs;
     public static String CRSChooser_label_crsWKT;
-    
+
     public static String cancel_label;
     public static String cancel_image;
 //    public static String cancel_description;
 //    public static String cancel_tooltip;
-    
+
     public static String orientation_horizontal_label;
     public static String orientation_horizontal_image;
 //    public static String orientation_horizontal_description;
 //    public static String orientation_horizontal_tooltip;
-    
+
     public static String orientation_vertical_label;
     public static String orientation_vertical_image;
 //    public static String orientation_vertical_description;
 //    public static String orientation_vertical_tooltip;
-    
+
     public static String orientation_single_label;
     public static String orientation_single_image;
 //    public static String orientation_single_description;
 //    public static String orientation_single_tooltip;
-    
+
     public static String orientation_automatic_label;
     public static String orientation_automatic_image;
 //    public static String orientation_automatic_description;
 //    public static String orientation_automatic_tooltip;
-    
+
     public static String addAttributeAction_label;
     public static String DefaultExpressionViewer_attribute;
     public static String DefaultExpressionViewer_operation;
     public static String DefaultExpressionViewer_value;
 
     public static String ExceptionDetailsEditorMessage;
-    
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
@@ -209,7 +209,7 @@ public class Messages extends NLS {
 
 	private Messages() {
 	}
-	
+
 	/**
      * Initialize the given Action from a ResourceBundle.
      * <p>
@@ -224,7 +224,7 @@ public class Messages extends NLS {
      * Note: The use of a single image value is mapped to images for both the enabled and distabled
      * state of the IAction. the Local toolbar (elcl16/ and dlcl16/) is assumed if a path has not
      * been provided.
-     * 
+     *
      * <pre><code>
      *  add_co.gif              (prefix.image)
      *     enabled: elcl16/add_co.gif
@@ -233,10 +233,10 @@ public class Messages extends NLS {
      *     enabled: etool16/discovery_wiz.16
      *    disabled: etool16/discovery_wiz.16
      * </code></pre>
-     * 
+     *
      * </p>
-     * 
-     * @param a action 
+     *
+     * @param a action
      * @param id used for binding (id.label, id.tooltip, ...)
      * @deprecated not safe, using this will cause bugs.  jeichar
      */

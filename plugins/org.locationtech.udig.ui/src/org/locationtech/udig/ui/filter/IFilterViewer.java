@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -36,19 +36,19 @@ import org.opengis.filter.Filter;
  * <li>{@link SWT#MULTI}: Viewer can take additional height</li>
  * <li>{@link SWT#READ_ONLY}</li>
  * </ul>
- 
+
  * @see FilterInput Used to provide context (such as feature type to suggest attribute names)
  * @author Scott
  * @author Jody Garnett
  * @since 1.3.2
  */
 public abstract class IFilterViewer extends Viewer {
-    
+
     /**
      * Input provided to help when creating a Filter.
      */
     protected FilterInput input;
-    
+
     /**
      * Filter being edited.
      */
@@ -56,7 +56,7 @@ public abstract class IFilterViewer extends Viewer {
 
     /**
      * Set the input for this Filter.
-     * 
+     *
      * @param input Filter, String or other data object to use as the input for this filter
      */
     public void setInput(Object filterInput){
@@ -81,23 +81,23 @@ public abstract class IFilterViewer extends Viewer {
     public FilterInput getInput() {
         return input;
     }
-    
+
     public static boolean same( Filter before, Filter after ){
         String beforeCql = before != null ? ECQL.toCQL(before) : "(empty)";
         String afterCql = after != null ? ECQL.toCQL(after) : "(empty)";
-        
+
         return Utilities.equals(beforeCql, afterCql);
     }
-    
+
     /**
      * Refreshes this viewer completely with information freshly obtained from {@link #input} and {@link #filter}.
      */
     public abstract void refresh();
-    
+
     /**
      * Direct access to the Filter being defined.
      * <p>
-     * 
+     *
      * @return Filter being defined
      */
     public Filter getFilter(){
@@ -106,7 +106,7 @@ public abstract class IFilterViewer extends Viewer {
 
     /**
      * Returns the current selection for this provider.
-     * 
+     *
      * @return Current filter from {@link #getFilter()} or {@link StructuredSelection#EMPTY} if not defined
      */
     public ISelection getSelection(){
@@ -124,10 +124,10 @@ public abstract class IFilterViewer extends Viewer {
      * @param filter
      */
     public abstract void setFilter( Filter filter );
-    
+
     /**
      * Used internally to update the filter and issue a {@link SelectionChangedEvent}.
-     * 
+     *
      * @param newFilter
      */
     protected void internalUpdate(Filter newFilter) {
@@ -145,7 +145,7 @@ public abstract class IFilterViewer extends Viewer {
     }
     /**
      * Extracts a filter from the selection making use of {@link #setFilter(Filter)} to update the viewer.
-     * 
+     *
      * @param selection Selection defining Filter
      * @param reveal <code>true</code> if the selection is to be made visible, and
      *        <code>false</code> otherwise
@@ -161,7 +161,7 @@ public abstract class IFilterViewer extends Viewer {
         }
         setFilter(Filter.EXCLUDE);
     }
-    
+
     //
     // Helper methods to assist implementors
     //
@@ -188,9 +188,9 @@ public abstract class IFilterViewer extends Viewer {
     protected void feedback(String warning){
         if( input != null && input.getFeedback() != null ){
             ControlDecoration feedback = input.getFeedback();
-            
+
             feedback.setDescriptionText(warning);
-            
+
             FieldDecorationRegistry decorations = FieldDecorationRegistry.getDefault();
             FieldDecoration errorDecoration = decorations.getFieldDecoration(FieldDecorationRegistry.DEC_WARNING);
             feedback.setImage(errorDecoration.getImage());
@@ -211,9 +211,9 @@ public abstract class IFilterViewer extends Viewer {
         if( isRequired ){
             if( input != null && input.getFeedback() != null ){
                 ControlDecoration feedback = input.getFeedback();
-                
+
                 feedback.setDescriptionText(warning);
-                
+
                 FieldDecorationRegistry decorations = FieldDecorationRegistry.getDefault();
                 if( isRequired ){
                     FieldDecoration requiredDecoration = decorations.getFieldDecoration(FieldDecorationRegistry.DEC_REQUIRED);
@@ -242,7 +242,7 @@ public abstract class IFilterViewer extends Viewer {
     protected void feedback(String error, Throwable exception){
         if( input != null && input.getFeedback() != null ){
             ControlDecoration feedback = input.getFeedback();
-            
+
             feedback.setDescriptionText(error);
             FieldDecorationRegistry decorations = FieldDecorationRegistry.getDefault();
             FieldDecoration warningDecoration = decorations.getFieldDecoration(FieldDecorationRegistry.DEC_WARNING);
@@ -258,14 +258,14 @@ public abstract class IFilterViewer extends Viewer {
 //  /**
 //   * Checks that the filter is valid using {@link IFilterViewer#isValid()} and update the UI to
 //   * desplay any error messages using {@link IFilterViewer#getValidationMessage()} if not valid.
-//   * 
+//   *
 //   * @return true if the filter is valid
 //   */
 //  public abstract boolean validate();
 //
 //  /**
 //   * Used to check for any validation messages (such as required field etc...)
-//   * 
+//   *
 //   * @return Validation message
 //   */
 //  public abstract String getValidationMessage();
@@ -277,7 +277,7 @@ public abstract class IFilterViewer extends Viewer {
 //   * Note that the decision on whather FilterEditor canProcess() should be informed by the
 //   * presence of attributes it design to work with.
 //   * </p>
-//   * 
+//   *
 //   * @param input the imput that this filterEditor will take
 //   * @return
 //   */

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -34,16 +34,16 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * Implementation of a Template at its most basic. Contains a title bar and a map.
- * 
+ *
  * @author Richard Gould
  */
 public class BasicTemplate extends AbstractTemplate {
 
     private static final int MARGIN = 10;
     private static final int SPACING = 10;
-    
+
     private Rectangle mapBounds;
-    
+
     /**
      * Constructs the BasicTemplate and populates its two boxes with a title and a map.
      */
@@ -53,7 +53,7 @@ public class BasicTemplate extends AbstractTemplate {
 
     /**
      * Populates the templates two boxes with a title and map
-     * 
+     *
      * @param page the parent(owner) page
      * @param map the Map to be drawn
      */
@@ -147,11 +147,11 @@ public class BasicTemplate extends AbstractTemplate {
 
         int mapX = MARGIN;
         int mapY = MARGIN + labelAndSpacing;
-        
+
         Rectangle mapBounds = new Rectangle(
                 mapX,
                 mapY,
-                mapWidth, 
+                mapWidth,
                 mapHeight);
         mapBox.setSize(new Dimension(mapBounds.width, mapBounds.height));
 

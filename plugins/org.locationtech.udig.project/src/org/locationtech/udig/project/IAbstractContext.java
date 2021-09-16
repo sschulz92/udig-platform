@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -48,7 +48,7 @@ import org.locationtech.jts.geom.Geometry;
  * versions</li>
  * </ul>
  * </p>
- * 
+ *
  * @author Jesse
  * @since 0.5
  */
@@ -62,7 +62,7 @@ public interface IAbstractContext {
      * <p>
      * Called to obtain current viewport bounds and crs.
      * </p>
-     * 
+     *
      * @return The Viewportmodel for the map.
      * @see IViewportModel
      */
@@ -76,7 +76,7 @@ public interface IAbstractContext {
      * <p>
      * Called to obtain the currently editable feature.
      * </p>
-     * 
+     *
      * @return The map's edit manager.
      * @see IEditManager
      */
@@ -90,7 +90,7 @@ public interface IAbstractContext {
      * <p>
      * Called to refresh the current display.
      * </p>
-     * 
+     *
      * @return The RenderManager for the map.
      * @see IRenderManager
      */
@@ -104,7 +104,7 @@ public interface IAbstractContext {
      * <p>
      * Called to obtain the height and width of the display.
      * </p>
-     * 
+     *
      * @return The IMapDisplay for the map.
      * @see IMapDisplay
      */
@@ -115,7 +115,7 @@ public interface IAbstractContext {
      * <p>
      * The Map data object.
      * </p>
-     * 
+     *
      * @return The context's map.
      * @see IMap
      */
@@ -129,7 +129,7 @@ public interface IAbstractContext {
      * <p>
      * Contains all the {@linkplain IProjectElements} in the project.
      * </p>
-     * 
+     *
      * @return The containing Project of the map.
      * @see IProject
      */
@@ -138,14 +138,14 @@ public interface IAbstractContext {
     /**
      * Gets up the affine transform that will transform from the world to screen. A convenience
      * method.
-     * 
+     *
      * @return a transform that maps from real world coordinates to the screen
      */
     AffineTransform worldToScreenTransform();
 
     /**
      * Returns the pixel on the screen for a given coordinate in world space. A convenience method.
-     * 
+     *
      * @param coord A coordinate in world space.
      * @return The pixel on the screen that the world coordinate is drawn on.
      */
@@ -154,7 +154,7 @@ public interface IAbstractContext {
     /**
      * Converts a coordinate expressed on the device space back to real world coordinates A
      * convenience method.
-     * 
+     *
      * @param x horizontal coordinate on device space
      * @param y vertical coordinate on device space
      * @return The correspondent real world coordinate
@@ -164,7 +164,7 @@ public interface IAbstractContext {
     /**
      * Creates an Envelope that is close, error to slightly larger, to the Rectangle when it is
      * transformed into world coordinates.
-     * 
+     *
      * @param rectangle
      * @return
      */
@@ -172,13 +172,13 @@ public interface IAbstractContext {
 
     /**
      * Creates a MathTransform that will transform from the screen CRS to the world CRS.
-     * 
+     *
      * @return
      */
     public MathTransform2D worldToScreenMathTransform();
     /**
      * Returns the size of a pixel in world units. A convenience method.
-     * 
+     *
      * @return the size of a pixel in world units.
      */
     Coordinate getPixelSize();
@@ -186,7 +186,7 @@ public interface IAbstractContext {
     /**
      * Returns a world bounding box the size of a pixel at the location corresponding to the point
      * on the screen. A convenience method.
-     * 
+     *
      * @return the size of a pixel in world units.
      */
     Envelope getPixelBoundingBox( Point screenLocation );
@@ -197,21 +197,21 @@ public interface IAbstractContext {
      * <p>
      * XXX: Can we make this a ReferencedEnvelope?
      * </p>
-     * 
+     *
      * @return the ReferencedEnvelope around the Point
      */
     ReferencedEnvelope getBoundingBox( Point screenLocation, int scalefactor );
 
     /**
      * CoordinateReferenceSystem of the map.
-     * 
+     *
      * @return getViewportModel().getCRS();
      */
     CoordinateReferenceSystem getCRS();
 
     /**
      * Transform the provided envelope to a java 2d shape (in screen coordiantes).
-     * 
+     *
      * @param box
      * @return
      */
@@ -219,21 +219,21 @@ public interface IAbstractContext {
 
     /**
      * Returns the currently Selected Layer
-     * 
+     *
      * @return the currently Selected Layer
      */
     public ILayer getSelectedLayer();
 
     /**
      * Transform the provided geometry to a java 2d shape (in screen coordiantes).
-     * 
+     *
      * @param box
      * @return
      */
     Shape toShape( Geometry geometry, CoordinateReferenceSystem crs );
     /**
      * Returns all the features that intersect with the bounding box.
-     * 
+     *
      * @param source The featuresource to get features from.
      * @param bbox The bounding box that acts as a filter.  Must be in map coordinates.
      * @return all the features that intersect with the bounding box.
@@ -242,16 +242,16 @@ public interface IAbstractContext {
 
     /**
      * Returns the list of layers in the current map.
-     * 
+     *
      * @return The list of layers in the current map.
      */
     List<ILayer> getMapLayers();
-    
+
     /**
      * Makes a deep copy of this object, if necessary.
      * This is an alternative to clone since I hate clone, it is too hard to implement.
      *
-     * @return a new copy of this object.  
+     * @return a new copy of this object.
      */
     public IAbstractContext copy();
 

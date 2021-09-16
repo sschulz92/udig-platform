@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -36,7 +36,7 @@ import org.eclipse.core.runtime.IExtension;
  * </p>
  * <p>
  * Example Use:
- * 
+ *
  * <pre><code>
  *  List&lt;Thingy&gt; stuff = ExtentionPointUtil.list( new ExtentionPointProcessor2(){
  *     public Object process( IExtention extention, IConfigurationElement element ){
@@ -44,16 +44,16 @@ import org.eclipse.core.runtime.IExtension;
  *     }
  *  }
  * </code></pre>
- * 
+ *
  * </p>
- * 
+ *
  * @author jgarnett
  * @since 0.6
  */
 public abstract class ExtensionPointItemCreator {
     /**
      * Process this extention point into a List.
-     * 
+     *
      * @param xpid Extention point to process
      * @return List of items created
      */
@@ -63,7 +63,7 @@ public abstract class ExtensionPointItemCreator {
     /**
      * Method called to create a List item from an extention point. This is a callback method for
      * the ExtensionPointUtil class.
-     * 
+     *
      * @param extension An extension that extends the Extension point id specified in the
      *        ExtensionPointUtil.process() call.
      * @param element One of the configuration element of the extension. The process method is

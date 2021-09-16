@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -26,9 +26,9 @@ import org.geotools.styling.SelectedChannelType;
 import org.locationtech.udig.style.sld.internal.Messages;
 
 /**
- * Allows editing/viewing of a Red/Green/Blue Raster Channels. 
+ * Allows editing/viewing of a Red/Green/Blue Raster Channels.
  * This uses three ChannelViewer to represent Red,Green, and Blue Channels
- *  
+ *
  * <p>
  * Workflow:
  * <ol>
@@ -40,7 +40,7 @@ import org.locationtech.udig.style.sld.internal.Messages;
  * </ul>
  * </p>
  * </p>
- * 
+ *
  * @author Emily Gouge (Refractions Reserach, Inc.)
  * @since 1.1.0
  */
@@ -51,9 +51,9 @@ public class RGBChannelViewer  {
     private ChannelViewer blueChannel;
     private ChannelViewer greenChannel;
     private Button chEnabled;
-        
-    private SelectionListener listener; 
-    
+
+    private SelectionListener listener;
+
     // listener for selecting / deselecting the widget
     private class Listener implements SelectionListener{
 
@@ -69,7 +69,7 @@ public class RGBChannelViewer  {
         }
     }
     private Listener sync = new Listener();
-    
+
     /**
      * Creates a new RBG Channel Viewer
      * @param red     red channel
@@ -81,10 +81,10 @@ public class RGBChannelViewer  {
         this.blueChannel = blue;
         this.greenChannel = green;
     }
-            
+
     /**
      * Accepts a listener that will be notified when content changes.
-     * @param listener1 
+     * @param listener1
      */
     public void addListener( SelectionListener listener1 ) {
         this.listener = listener1;
@@ -95,17 +95,17 @@ public class RGBChannelViewer  {
 
     /**
      * Remove listener.
-     * @param listener1 
+     * @param listener1
      */
     public void removeListener( SelectionListener listener1 ) {
         if (this.listener == listener1)
             this.listener = null;
     }
-    
-    
+
+
     /**
      * TODO summary sentence for fire ...
-     * 
+     *
      * @param event
      */
     protected void fire( SelectionEvent event ) {
@@ -113,9 +113,9 @@ public class RGBChannelViewer  {
             return;
         this.listener.widgetSelected(event);
     }
-    
+
     /**
-     * 
+     *
      *
      * @return The red channel
      */
@@ -123,7 +123,7 @@ public class RGBChannelViewer  {
         return this.redChannel;
     }
     /**
-     * 
+     *
      *
      * @return the green channel
      */
@@ -131,14 +131,14 @@ public class RGBChannelViewer  {
         return this.greenChannel;
     }
     /**
-     * 
+     *
      *
      * @return the blue channel
      */
     public ChannelViewer getBlueChannel(){
         return this.blueChannel;
     }
-    
+
     void listen( boolean listen ){
         if( listen ){
             chEnabled.addSelectionListener(this.sync);
@@ -146,7 +146,7 @@ public class RGBChannelViewer  {
             chEnabled.removeSelectionListener(this.sync);
         }
     }
-    
+
     /**
      * Creates the control
      *
@@ -156,7 +156,7 @@ public class RGBChannelViewer  {
     public Composite createControl(Composite parent){
        Group g = new Group(parent, SWT.SHADOW_ETCHED_IN);
        g.setLayout(new GridLayout(1, false));
-       
+
        chEnabled = new Button(g, SWT.CHECK);
        chEnabled.setText(Messages.RGBChannelViewer_RBGChannelSelectionLabel);
        chEnabled.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 3, 1));
@@ -165,25 +165,25 @@ public class RGBChannelViewer  {
            public void widgetSelected(SelectionEvent e) {
                setChannelsEnabled(chEnabled.getSelection());
            }
-           
+
        });
-       
+
        redChannel.createControl(g);
        greenChannel.createControl(g);
        blueChannel.createControl(g);
-       
+
        return g;
     }
-    
+
     /**
-     * 
+     *
      *
      * @return true if RBG Channel selection enabled
      */
     public boolean isEnabled(){
         return chEnabled.getSelection();
     }
-    
+
     /**
      *
      * @param enabled
@@ -192,18 +192,18 @@ public class RGBChannelViewer  {
         chEnabled.setSelection(enabled);
         setChannelsEnabled(enabled);
     }
-    
+
     public void setEditable(boolean editable){
         setEnabled(editable);
         chEnabled.setEnabled(editable);
     }
-    
+
     private void setChannelsEnabled(boolean enabled){
         redChannel.setEnabled(enabled);
         greenChannel.setEnabled(enabled);
         blueChannel.setEnabled(enabled);
     }
-    
+
     /**
      * Updates the values used to draw the histogram
      *
@@ -214,7 +214,7 @@ public class RGBChannelViewer  {
         blueChannel.updateHistogram(rgbHistograms);
         greenChannel.updateHistogram(rgbHistograms);
     }
-    
+
     /**
      * Sets the default values for the raster symbolizer
      *
@@ -228,7 +228,7 @@ public class RGBChannelViewer  {
             SelectedChannelType red = null;
             SelectedChannelType green = null;
             SelectedChannelType blue = null;
-            
+
             if (cs == null) {
                 setEnabled(false);
             }else{
@@ -251,7 +251,7 @@ public class RGBChannelViewer  {
             listen(true); // listen to user now
         }
     }
-    
+
     public void setBands(String[] bands){
         redChannel.setBands(bands);
         greenChannel.setBands(bands);

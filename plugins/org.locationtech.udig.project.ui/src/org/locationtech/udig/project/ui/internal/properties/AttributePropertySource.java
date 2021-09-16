@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -20,18 +20,18 @@ import org.opengis.feature.type.AttributeDescriptor;
 
 /**
  * Allows complex attributes to be a property source. Only nested attributes are property
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
 public class AttributePropertySource implements IPropertySource2 {
     private Object attr;
     IPropertyDescriptor[] descriptors;
-    private static final String OTHER = Messages.AttributePropertySource_other; 
+    private static final String OTHER = Messages.AttributePropertySource_other;
 
     /**
      * Creates a new instance of AttributePropertySource
-     * 
+     *
      * @param type
      * @param attr
      */
@@ -55,7 +55,7 @@ public class AttributePropertySource implements IPropertySource2 {
      */
     public IPropertyDescriptor[] getPropertyDescriptors() {
         if (descriptors == null) {
-            descriptors = new IPropertyDescriptor[]{new PropertyDescriptor(OTHER, 
+            descriptors = new IPropertyDescriptor[]{new PropertyDescriptor(OTHER,
             		Messages.AttributePropertySource_value)};
         }
 

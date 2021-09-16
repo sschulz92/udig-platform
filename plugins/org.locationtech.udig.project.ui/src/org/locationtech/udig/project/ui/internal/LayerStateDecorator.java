@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -28,7 +28,7 @@ import org.locationtech.udig.project.internal.Layer;
  * <p>
  * This would be better handled as a series of lightweight decorators if such things can be aranged.
  * </p>
- * 
+ *
  * @author jgarnett
  * @since 0.7.0
  */
@@ -88,7 +88,7 @@ public class LayerStateDecorator implements ILightweightLabelDecorator {
      * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
      */
     public void dispose() {
-        // clean up 
+        // clean up
         listeners.clear();
     }
 
@@ -97,7 +97,7 @@ public class LayerStateDecorator implements ILightweightLabelDecorator {
      *      java.lang.String)
      */
     public boolean isLabelProperty( Object element, String property ) {
-        return true; // "state".equals( property ); 
+        return true; // "state".equals( property );
     }
 
     /**

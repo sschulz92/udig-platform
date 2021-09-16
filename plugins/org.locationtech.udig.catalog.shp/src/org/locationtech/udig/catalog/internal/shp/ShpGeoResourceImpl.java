@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -64,7 +64,7 @@ import org.opengis.style.GraphicalSymbol;
 
 /**
  * Connect to a shapefile.
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -165,15 +165,15 @@ public class ShpGeoResourceImpl extends IGeoResource {
         return parent.getDS(monitor).getFeatureSource();
     }
 
-    
+
     public Style style( IProgressMonitor monitor ) throws IOException {
         SimpleFeatureSource source  = featureSource(null);
 
         SimpleFeatureType featureType = source.getSchema();
-        
+
         ID fileID = parent.getID();
         if( !fileID.isFile() ){
-            return null; // we are only checking for sidecar files 
+            return null; // we are only checking for sidecar files
         }
         File file = fileID.toFile("sld");
         if( !file.exists()){
@@ -186,10 +186,10 @@ public class ShpGeoResourceImpl extends IGeoResource {
         if( sld == null ){
             return null; // well that is unexpected since f.exists()
         }
-        
+
         Style[] styles = SLDs.styles( sld );
         // Style[] styles = parser.readXML();
-        
+
         // put the first one on
         if (styles != null && styles.length > 0) {
             Style style = SLDs.matchingStyle(styles, featureType);
@@ -201,20 +201,20 @@ public class ShpGeoResourceImpl extends IGeoResource {
         }
         return null; // well nothing worked out; make your own style
     }
-    
+
     /**
      * This transforms all external graphics references that are relative to absolute.
-     * This is a workaround to be able to visualize png and svg in relative mode, which 
+     * This is a workaround to be able to visualize png and svg in relative mode, which
      * doesn't work right now in geotools. See: http://jira.codehaus.org/browse/GEOT-3235
-     * 
+     *
      * This will not be necessary any more as soon as the geotools bug is fixed.
-     * 
+     *
      * @param relatedFile the related shapefile.
      * @param style the style to check.
      */
     private void makeGraphicsAbsolute( File relatedFile, Style style ) {
         File parentFolder = relatedFile.getParentFile();
-        
+
         ExternalGraphicsAbsolutePathMaker visitor = new ExternalGraphicsAbsolutePathMaker(parentFolder);
         visitor.visit(style);
     }
@@ -377,7 +377,7 @@ public class ShpGeoResourceImpl extends IGeoResource {
 
     /**
      * Helper method performing the same function as service( monitor ) without the
-     * monitor or chance of IOException. 
+     * monitor or chance of IOException.
      * <p>
      * @return ShpServiceImpl responsible for this ShpGeoResourceImpl
      */
@@ -393,11 +393,11 @@ public class ShpGeoResourceImpl extends IGeoResource {
             return false;
         }
         return (adaptee.isAssignableFrom(IGeoResourceInfo.class) || adaptee.isAssignableFrom(SimpleFeatureStore.class)
-                || adaptee.isAssignableFrom(FeatureSource.class) 
-                || adaptee.isAssignableFrom(SimpleFeatureSource.class) 
-                || adaptee.isAssignableFrom(IService.class) 
+                || adaptee.isAssignableFrom(FeatureSource.class)
+                || adaptee.isAssignableFrom(SimpleFeatureSource.class)
+                || adaptee.isAssignableFrom(IService.class)
                 || adaptee.isAssignableFrom(Style.class)
-                ) 
+                )
                 || super.canResolve(adaptee);
     }
     @Override

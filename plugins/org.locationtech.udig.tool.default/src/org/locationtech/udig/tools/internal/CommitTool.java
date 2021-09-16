@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -37,7 +37,7 @@ public class CommitTool extends AbstractActionTool {
      */
     public void run() {
 //        context.sendASyncCommand(context.getEditFactory().createCommitCommand());
-    	// I don't need confirmation on a commit so rather than use a command I'm going to 
+    	// I don't need confirmation on a commit so rather than use a command I'm going to
     	// directly execute the command here
     	PlatformGIS.run(new IRunnableWithProgress(){
 
@@ -52,7 +52,7 @@ public class CommitTool extends AbstractActionTool {
 					Display display = Display.getDefault();
 					display.asyncExec(new Runnable() {
 						public void run() {
-							
+
 							Shell parent = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 							String message = Messages.CommitTool_Error_message;
 							MessageDialog.openError(parent , Messages.CommitTool_error_shell_title, message);
@@ -60,7 +60,7 @@ public class CommitTool extends AbstractActionTool {
 					});
 				}
 			}
-    		
+
     	});
     }
 

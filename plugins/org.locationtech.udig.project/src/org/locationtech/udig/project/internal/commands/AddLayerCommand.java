@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -31,7 +31,7 @@ public class AddLayerCommand extends AbstractCommand implements UndoableMapComma
     private ILayer selectedLayer;
     /**
      * Construct <code>AddLayerCommand</code>.
-     * 
+     *
      * @param layer the layer that will be added.
      */
     public AddLayerCommand( Layer layer ) {
@@ -40,7 +40,7 @@ public class AddLayerCommand extends AbstractCommand implements UndoableMapComma
 
     /**
      * Construct <code>AddLayerCommand</code>.
-     * 
+     *
      * @param layer the layer that will be added.
      * @param index the zorder that the layer will be added.
      */
@@ -51,7 +51,7 @@ public class AddLayerCommand extends AbstractCommand implements UndoableMapComma
 
     /**
      * Remove the layer that was added during execution.
-     * 
+     *
      * @see org.locationtech.udig.project.command.UndoableCommand#rollback()
      */
     public void rollback( IProgressMonitor monitor ) throws Exception {
@@ -62,7 +62,7 @@ public class AddLayerCommand extends AbstractCommand implements UndoableMapComma
     /**
      * Adds a layer to the map. Defensive programming is recommended but command framework protects
      * against exceptions raised in commands.
-     * 
+     *
      * @see org.locationtech.udig.project.command.MapCommand#run()
      */
     public void run( IProgressMonitor monitor ) throws Exception {
@@ -77,11 +77,11 @@ public class AddLayerCommand extends AbstractCommand implements UndoableMapComma
 
     /**
      * Each command has a name that is displayed with the undo/redo buttons.
-     * 
+     *
      * @see org.locationtech.udig.project.command.MapCommand#getName()
      */
     public String getName() {
-        return Messages.AddLayerCommand_Name + layer.getName(); 
+        return Messages.AddLayerCommand_Name + layer.getName();
     }
 
 }

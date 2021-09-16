@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -22,7 +22,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
  * An IAdaptable object that adapts IResolves to other objects. This is used by the framework. The
  * IResolveAdapterFactory will adapt IResolves to objects of this class so that the frame work can
  * try to
- * 
+ *
  * @author jeichar
  */
 public class IResolveAdaptable implements IBlockingAdaptable {
@@ -30,7 +30,7 @@ public class IResolveAdaptable implements IBlockingAdaptable {
     private IResolve resolve;
 
     /**
-     * 
+     *
      */
     public IResolveAdaptable( IResolve resolve ) {
         this.resolve = resolve;

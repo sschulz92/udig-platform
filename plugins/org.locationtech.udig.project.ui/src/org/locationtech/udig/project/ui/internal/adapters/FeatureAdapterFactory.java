@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -32,7 +32,7 @@ import org.opengis.feature.simple.SimpleFeature;
 
 /**
  * Adapts Geotools objects to Eclipse objects, such as Adaptable objects, property sources, etc...
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
@@ -79,7 +79,7 @@ public class FeatureAdapterFactory implements IAdapterFactory {
 
     /**
      * Returns true if the adaptableObject can be adapted to one of the supported adapters.
-     * 
+     *
      * @param adaptableObject the object to adapt
      * @return true if the adaptableObject can be adapted to one of the supported adapters.
      */
@@ -96,7 +96,7 @@ public class FeatureAdapterFactory implements IAdapterFactory {
      * <p>
      * A convenience method that searches the array from getAdapterList()
      * </p>
-     * 
+     *
      * @param adapterType the class to see if the factory can create an adapter for.
      * @return true if an adapter can be made for the type.
      */
@@ -110,7 +110,7 @@ public class FeatureAdapterFactory implements IAdapterFactory {
 
     /**
      * Creates a PropertySource for Features
-     * 
+     *
      * @param adaptableObject
      * @return a PropertySource for Features
      */
@@ -120,7 +120,7 @@ public class FeatureAdapterFactory implements IAdapterFactory {
 
     /**
      * Creates a PropertySource for Features
-     * 
+     *
      * @param adaptableObject
      * @return a PropertySource for Features
      */
@@ -130,7 +130,7 @@ public class FeatureAdapterFactory implements IAdapterFactory {
 
     /**
      * Creates a PropertySource for Features
-     * 
+     *
      * @param adaptableObject
      * @return a PropertySource for Features
      */

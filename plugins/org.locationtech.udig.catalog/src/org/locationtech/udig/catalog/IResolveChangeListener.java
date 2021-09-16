@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -18,7 +18,7 @@ import java.util.EventListener;
  * <p>
  * You can use various visitors to explore the changes
  * </p>
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -37,7 +37,7 @@ public interface IResolveChangeListener extends EventListener {
      * Note that this method is not guaranteed to execute in the UI thread, so UI work must be
      * performed with Display.getDefault().asyncExec();
      * </p>
-     * 
+     *
      * @param event the resource change event
      * @see IResourceDelta
      */

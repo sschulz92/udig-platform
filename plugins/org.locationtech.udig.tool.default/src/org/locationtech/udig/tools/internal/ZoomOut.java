@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -15,13 +15,13 @@ import org.locationtech.udig.project.ui.tool.AbstractActionTool;
 
 /**
  * Tool that zooms out a fixed amount.
- * 
+ *
  * @author jgarnett
  * @since 0.6.0
  */
 public class ZoomOut extends AbstractActionTool{
 
-    
+
     /*
      * @see org.locationtech.udig.project.ui.tool.ActionTool#run()
      */

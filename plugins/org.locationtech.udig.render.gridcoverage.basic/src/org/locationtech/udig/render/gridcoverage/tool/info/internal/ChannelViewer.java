@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -34,20 +34,20 @@ import org.eclipse.swt.widgets.Slider;
  * applying an gamma value. As well a histogram of the values is displayed.
  * <p>
  * Here is the pretty picture:
- * 
+ *
  * <pre><code>
  * +-- Channel ----------------+|
  * |        +----------+        |
  * | Band:  | 1       V|        |
- * |        +----------+        |       
+ * |        +----------+        |
  * |  <----------x------> xx    |
- * | -255       0       255     | 
+ * | -255       0       255     |
  * +----------------------------+
  * </code></pre>
- * 
+ *
  * </p>
 
- * 
+ *
  * @author Emily Gouge (Refractions Research, Inc.)
  * @since 1.0.0
  */
@@ -59,13 +59,13 @@ public class ChannelViewer {
     private Slider sliderConst; // slider widget
     private Label lblSlider;    //value of slider
     private String name;        //channel name
-    
+
     private SelectionListener sync;
     private ControlDecoration warningDecorator;
-   
+
 
     /**
-     * Creates a new channel 
+     * Creates a new channel
      * @param name      Name of channel
      * @param listener  Listener to call when modification to channel selection
      */
@@ -73,10 +73,10 @@ public class ChannelViewer {
         this.name = name;
         this.sync = listener;
     }
-   
+
     /**
      * Sets the possible bands to be displayed in the draw down list.
-     * 
+     *
      * @param bands
      */
     public void setBands( String[] bands ) {
@@ -93,8 +93,8 @@ public class ChannelViewer {
 
     /**
      * Updates the channel band selection and color correction values
-     * 
-     * @param bandIndex - the index of the band 
+     *
+     * @param bandIndex - the index of the band
      * @param colorCorrection - the value between -255 and 255 of color correction
      */
     public void set( int bandIndex, double colorCorrection) {
@@ -108,7 +108,7 @@ public class ChannelViewer {
         }
     }
 
-   
+
     void listen( boolean listen ) {
         if (listen) {
             this.cmbBands.addSelectionListener(this.sync);
@@ -121,7 +121,7 @@ public class ChannelViewer {
 
     /**
      * Creates the control.
-     * 
+     *
      * @param parent
      * @param listener1
      * @return
@@ -145,25 +145,25 @@ public class ChannelViewer {
         // Create the control decoration warning image
         final Image fieldDecorationWarningImage;
         fieldDecorationWarningImage = FieldDecorationRegistry.getDefault().getFieldDecoration(
-                FieldDecorationRegistry.DEC_ERROR).getImage();       
+                FieldDecorationRegistry.DEC_ERROR).getImage();
         // Create the control decoration
         warningDecorator = new ControlDecoration(cmbBands, SWT.RIGHT | SWT.CENTER);
         warningDecorator.setMarginWidth(4);
         warningDecorator.setImage(fieldDecorationWarningImage);
         warningDecorator.setDescriptionText("Warning!"); //$NON-NLS-1$
         warningDecorator.hide();
-        
+
         Composite sliderGrp = new Composite(channelGrp, SWT.NONE);
         GridData gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 3;
         sliderGrp.setLayout(new GridLayout(1, false));
         sliderGrp.setLayoutData(gd);
-        
+
         Composite grp = new Composite(sliderGrp, SWT.NONE);
         grp.setLayout(new GridLayout(4, true));
         gd = new GridData(GridData.FILL_HORIZONTAL);
         grp.setLayoutData(gd);
-        
+
         sliderConst = new Slider(grp,SWT.NONE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 3;
@@ -176,7 +176,7 @@ public class ChannelViewer {
         gd.widthHint = 25;
         lblSlider.setLayoutData(gd);
         lblSlider.setText("0000"); //$NON-NLS-1$
-        
+
         Label txtLeft = new Label(grp, SWT.LEFT);
         txtLeft.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
         txtLeft.setText("-255"); //$NON-NLS-1$
@@ -186,7 +186,7 @@ public class ChannelViewer {
         Label txtRight = new Label(grp, SWT.RIGHT);
         txtRight.setLayoutData(new GridData(SWT.END, SWT.CENTER, false, false));
         txtRight.setText("255"); //$NON-NLS-1$
-        
+
         sliderConst.addSelectionListener(new SelectionListener(){
 
             public void widgetDefaultSelected( SelectionEvent e ) {
@@ -196,14 +196,14 @@ public class ChannelViewer {
                 lblSlider.setText( String.valueOf(sliderConst.getSelection() - 255));
             }});
         sliderConst.setSelection(255);
-        
+
         listen(true);
     }
 
     /**
      * Adds an error decoration with given error message.  If null
      * will remove decoration
-     * 
+     *
      *
      * @param error
      */
@@ -216,12 +216,12 @@ public class ChannelViewer {
         }
     }
     /**
-     * @return the index of the selected band 
+     * @return the index of the selected band
      */
     public int getBandIndex(){
         return this.cmbBands.getSelectionIndex();
     }
-    
+
     /**
      *
      * @return the color correction as a value between -255 and 255

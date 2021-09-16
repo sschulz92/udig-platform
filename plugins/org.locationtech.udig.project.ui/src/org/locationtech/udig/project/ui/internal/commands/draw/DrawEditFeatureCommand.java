@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -41,7 +41,7 @@ import org.opengis.referencing.operation.TransformException;
 
 /**
  * Draws the currently edited feature on the screen.
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
@@ -71,7 +71,7 @@ public class DrawEditFeatureCommand extends AbstractDrawCommand {
 
     /**
      * Creates a new instance of DrawFeatureCommand
-     * 
+     *
      * @param model The viewportmodel that the command uses to determine how the victim should be
      *        drawn.
      */

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -22,7 +22,7 @@ import org.locationtech.udig.project.ui.commands.IPreMapDrawCommand;
 /**
  * Sets the ViewportGraphics object translate its 0,0 coordinate by -x,-y. IE. shapes are drawn down
  * and right if x,y are both positive.
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
@@ -35,7 +35,7 @@ public class TranslateCommand extends AbstractDrawCommand
 
     /**
      * Construct <code>TranslateCommand</code>.
-     * 
+     *
      * @param offset The amount of offset
      */
     public TranslateCommand( Point offset ) {
@@ -44,7 +44,7 @@ public class TranslateCommand extends AbstractDrawCommand
 
     /**
      * Construct <code>TranslateCommand</code>.
-     * 
+     *
      * @param x The amount of offset in the x-direction
      * @param y The amount of offset in the y-direction
      */
@@ -70,7 +70,7 @@ public class TranslateCommand extends AbstractDrawCommand
 
     /**
      * Sets the amount the command will translate during the next paint phase
-     * 
+     *
      * @param x x-translation
      * @param y y-translation
      */
@@ -80,7 +80,7 @@ public class TranslateCommand extends AbstractDrawCommand
     }
     /**
      * Sets the amount the command will translate during the next paint phase
-     * 
+     *
      * @param offset The amount of translation
      */
     public void setTranslation( Point offset ) {

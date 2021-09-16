@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -59,7 +59,7 @@ import org.eclipse.swt.widgets.Label;
 
 /**
  * A page that allows the user to select the resources he/she wish to include in the map.
- * 
+ *
  * @author jeichar
  * @since 0.9.0
  */
@@ -80,7 +80,7 @@ public class ResourceSelectionPage extends WorkflowWizardPage implements IPageCh
 
     public ResourceSelectionPage( String pageName ) {
         super(pageName);
-        setTitle(Messages.ResourceSelectionPage_title); 
+        setTitle(Messages.ResourceSelectionPage_title);
         setMessage(Messages.ResourceSelectionPage_message);
         setDescription(Messages.ResourceSelectionPage_description);
         setImageDescriptor(CatalogUIPlugin.getDefault().getImageDescriptor(ImageConstants.CHOOSE_LAYER_WIZARD));
@@ -104,7 +104,7 @@ public class ResourceSelectionPage extends WorkflowWizardPage implements IPageCh
         if( viewer.getLabelProvider()!=null )
         	viewer.getLabelProvider().dispose();
     }
-    
+
     private List<IResolve> getGeoResources( final IResolve resolve, boolean fork ) {
         if (resolveMap.get(resolve) == null || resolveMap.isEmpty()) {
             final List<IResolve> list = new ArrayList<IResolve>();
@@ -166,9 +166,9 @@ public class ResourceSelectionPage extends WorkflowWizardPage implements IPageCh
     public void createControl( Composite parent ) {
         Composite composite = new Composite(parent, SWT.NULL);
         composite.setLayout(new GridLayout());
-        
+
         viewer = new CheckboxTreeViewer(composite);
-        
+
         viewer.setSorter( null );
         viewer.getControl().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         viewer.addPostSelectionChangedListener(new ISelectionChangedListener(){
@@ -193,8 +193,8 @@ public class ResourceSelectionPage extends WorkflowWizardPage implements IPageCh
 
         label = new Label(composite, SWT.NONE);
         label.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        label.setText(MessageFormat.format(Messages.ResourceSelectionPage_NumLayersSelected,0));        
-        
+        label.setText(MessageFormat.format(Messages.ResourceSelectionPage_NumLayersSelected,0));
+
         setInput(state);
 
         setControl(composite);
@@ -236,7 +236,7 @@ public class ResourceSelectionPage extends WorkflowWizardPage implements IPageCh
             // it is expanded so the selected children will be checked
             return Collections.emptyList();
         }
-        
+
         // not expanded so all children are considered selected.
         if( resolve instanceof IGeoResource){
             return Collections.singletonList((IGeoResource)resolve);
@@ -266,14 +266,14 @@ public class ResourceSelectionPage extends WorkflowWizardPage implements IPageCh
         }else {
             viewer.setInput(state.getServices()); // initialize viewer input to nothing
             Map<IGeoResource, IService> resources = state.getResources();
-            
+
             if (resources != null) {
                 Set<IService> expanded=new HashSet<IService>();
                 for( Map.Entry<IGeoResource, IService> entry:resources.entrySet() ) {
                     checked++;
                     IGeoResource resource = entry.getKey();
                     IService service = entry.getValue();
-                    
+
                     viewer.setChecked(resource, true);
                     viewer.setChecked(service, true);
                     expanded.add(service);
@@ -286,12 +286,12 @@ public class ResourceSelectionPage extends WorkflowWizardPage implements IPageCh
             }
         }
         viewer.setGrayedElements(grayedElements.toArray());
-    
+
         label.setText(MessageFormat.format(Messages.ResourceSelectionPage_NumLayersSelected,checked));
     }
 
     Button findButton( Control[] children, int id ) {
-        if (((Integer) getShell().getDefaultButton().getData()).intValue() == id) 
+        if (((Integer) getShell().getDefaultButton().getData()).intValue() == id)
             return getShell().getDefaultButton();
 
         for( Control child : children ) {
@@ -333,7 +333,7 @@ public class ResourceSelectionPage extends WorkflowWizardPage implements IPageCh
         private ServiceTreeProvider updateChildren(Object o, boolean checked) {
             ServiceTreeProvider p = (ServiceTreeProvider) viewer.getContentProvider();
             if( o instanceof IGeoResource ){
-                return p;  
+                return p;
             }
             Object[] children = p.getChildren(o);
             if (children != null && children.length > 0) {

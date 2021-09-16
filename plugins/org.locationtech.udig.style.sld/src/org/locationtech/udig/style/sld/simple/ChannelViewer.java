@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -40,19 +40,19 @@ import org.opengis.filter.expression.Literal;
  * applying an gamma value. As well a histogram of the values is displayed.
  * <p>
  * Here is the pretty picture:
- * 
+ *
  * <pre><code>
  * +-- Channel ---------------------------------------------+
  * |        +----------+       +------------------------+   |
  * | Band:  | 1       V|       |                        |   |
- * |        +----------+       |                        |   |        
+ * |        +----------+       |                        |   |
  * |                           |    Histogram           |   |
  * |        +----------+       |                        |   |
  * | Gamma: | 1.0     V|       |                        |   |
- * |        +----------+       +------------------------+   |       
+ * |        +----------+       +------------------------+   |
  * +--------------------------------------------------------+
  * </code></pre>
- * 
+ *
  * </p>
  * <p>
  * Workflow:
@@ -67,7 +67,7 @@ import org.opengis.filter.expression.Literal;
  * <li>getGamma() - gets the gamma the user selected
  * </ul>
  * </p>
- * 
+ *
  * @author Emily Gouge (Refractions Research, Inc.)
  * @since 1.0.0
  */
@@ -109,7 +109,7 @@ public class ChannelViewer {
 
     /**
      * Creates a new channel viewer
-     * 
+     *
      * @param name The name of the channel
      * @param channelColor The color associated with the channel
      * @param bandIndex The index of the channel
@@ -122,7 +122,7 @@ public class ChannelViewer {
 
     /**
      * Sets the possible bands to be displayed in the draw down list.
-     * 
+     *
      * @param bands
      */
     public void setBands( String[] bands ) {
@@ -135,7 +135,7 @@ public class ChannelViewer {
     }
     /**
      * Accepts a listener that will be notified when content changes.
-     * 
+     *
      * @param listener1
      */
     public void addListener( SelectionListener listener1 ) {
@@ -144,7 +144,7 @@ public class ChannelViewer {
 
     /**
      * Remove listener
-     * 
+     *
      * @param listener1
      */
     public void removeListener( SelectionListener listener1 ) {
@@ -154,7 +154,7 @@ public class ChannelViewer {
 
     /**
      * TODO summary sentence for fire ...
-     * 
+     *
      * @param event
      */
     protected void fire( SelectionEvent event ) {
@@ -165,7 +165,7 @@ public class ChannelViewer {
 
     /**
      * Called to set up this "viewer" based on the provided symbolizer
-     * 
+     *
      * @param sym
      * @param defaultValue - the value to select from the bands array if channel is null (0 based)
      */
@@ -204,7 +204,7 @@ public class ChannelViewer {
 
     /**
      * Updates the histogram with the new histogram values.
-     * 
+     *
      * @param histValues
      */
     public void updateHistogram( int[][] histValues ) {
@@ -314,7 +314,7 @@ public class ChannelViewer {
 
     /**
      * Creates the control.
-     * 
+     *
      * @param parent
      * @param listener1
      * @return
@@ -355,7 +355,7 @@ public class ChannelViewer {
 
     /**
      * Enables/Disables the control and its subcomponents.
-     * 
+     *
      * @param enabled
      */
     public void setEnabled( boolean enabled ) {

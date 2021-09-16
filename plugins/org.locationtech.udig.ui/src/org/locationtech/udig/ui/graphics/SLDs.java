@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -149,7 +149,7 @@ public class SLDs extends SLD {
                 }
                 public Object visit( Function function, Object data ) {
                     for( Expression param : function.getParameters() ){
-                        param.accept(this, data ); 
+                        param.accept(this, data );
                     }
                     return data;
                 }
@@ -165,15 +165,15 @@ public class SLDs extends SLD {
             }
             ColorVisitor search = new ColorVisitor();
             expr.accept(search, null );
-            
-            return search.found;            
+
+            return search.found;
         }
     }
-    
+
     /**
      * Grabs the font from the first TextSymbolizer.
      * <p>
-     * If you are using something fun like symbols you 
+     * If you are using something fun like symbols you
      * will need to do your own thing.
      * </p>
      * @param symbolizer Text symbolizer information.
@@ -245,7 +245,7 @@ public class SLDs extends SLD {
 
     /**
      * Extracts the fill color with a given opacity from the {@link PointSymbolizer}.
-     * 
+     *
      * @param symbolizer the point symbolizer from which to get the color.
      * @return the {@link Color} with transparency if available. Returns null if no color is available.
      */
@@ -285,7 +285,7 @@ public class SLDs extends SLD {
 
     /**
      * Extracts the stroke color with a given opacity from the {@link PointSymbolizer}.
-     * 
+     *
      * @param symbolizer the point symbolizer from which to get the color.
      * @return the {@link Color} with transparency if available. Returns null if no color is available.
      */
@@ -365,7 +365,7 @@ public class SLDs extends SLD {
     }
 
     /**
-     * Returns the min scale of the default rule, or 0 if none is set 
+     * Returns the min scale of the default rule, or 0 if none is set
      */
     public static double minScale( FeatureTypeStyle fts ) {
         if (fts == null || fts.rules().isEmpty()){
@@ -376,7 +376,7 @@ public class SLDs extends SLD {
     }
 
     /**
-     * Returns the max scale of the default rule, or {@linkplain Double#NaN} if none is set 
+     * Returns the max scale of the default rule, or {@linkplain Double#NaN} if none is set
      */
     public static double maxScale( FeatureTypeStyle fts ) {
         if (fts == null || fts.rules().isEmpty()){
@@ -459,7 +459,7 @@ public class SLDs extends SLD {
             return null; // well that is unexpected since f.exists()
         }
     }
-    
+
     public static Style parseStyle(URL url) throws IOException {
         // try SLD 1.1 first
         SLDConfiguration config = new SLDConfiguration();
@@ -489,13 +489,13 @@ public class SLDs extends SLD {
                 input.close();
             }
         }
-        // The SLD 1.0 parser is far more forgiving 
+        // The SLD 1.0 parser is far more forgiving
         StyleFactory factory = CommonFactoryFinder.getStyleFactory(GeoTools.getDefaultHints());
         SLDParser styleReader = new SLDParser(factory, url);
         Style style = styleReader.readXML()[0];
         return style;
     }
-    
+
     public static Style praseStyle(File file) throws IOException {
         StyleFactory styleFactory = CommonFactoryFinder.getStyleFactory();
         // try SLD 1.1 first
@@ -526,7 +526,7 @@ public class SLDs extends SLD {
                 reader.close();
             }
         }
-        
+
         // parse it up
         SLDParser parser = new SLDParser(styleFactory);
         try {
@@ -541,8 +541,8 @@ public class SLDs extends SLD {
         return null;
     }
     /**
-     * Creates an SLD and UserLayer, and nests the style (SLD-->UserLayer-->Style). 
-     * 
+     * Creates an SLD and UserLayer, and nests the style (SLD-->UserLayer-->Style).
+     *
      * @see net.refractions.project.internal.render.SelectionStyleContent#createDefaultStyledLayerDescriptor
      * @param style
      * @return SLD

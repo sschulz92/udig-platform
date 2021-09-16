@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -29,7 +29,7 @@ import org.opengis.filter.Filter;
 
 /**
  * Counts all the features that are within the current view.
- * 
+ *
  * @author jeichar
  * @since 1.0
  */
@@ -72,11 +72,11 @@ public class FeaturesInView implements IOp {
         display.asyncExec(new Runnable(){
             public void run() {
                 if (exception == null)
-                    MessageDialog.openInformation(display.getActiveShell(), 
+                    MessageDialog.openInformation(display.getActiveShell(),
                     		Messages.FeaturesInView_0,
-                            Messages.FeaturesInView_1 + finalCount); 
+                            Messages.FeaturesInView_1 + finalCount);
                 else
-                    MessageDialog.openInformation(display.getActiveShell(), 
+                    MessageDialog.openInformation(display.getActiveShell(),
                     		Messages.FeaturesInView_0,
                     		MessageFormat.format(Messages.FeaturesInView_3, new Object[] {finalCount})
                     );

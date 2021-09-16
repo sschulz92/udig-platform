@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -28,7 +28,7 @@ import org.eclipse.gef.requests.CreateRequest;
 
 /**
  * This is a policy for the Page.  It allows new boxes to be created.
- * 
+ *
  * @author Richard Gould
  * @since 0.3
  */
@@ -37,14 +37,14 @@ public class CustomXYLayoutEditPolicy extends XYLayoutEditPolicy {
     protected Command createAddCommand(EditPart child, Object constraint) {
         return null;
     }
-    
+
     protected Command createChangeConstraintCommand(EditPart child, Object constraint) {
     	if (!(constraint instanceof Rectangle)) {
     		return null;
     	}
-    	
+
     	if (getHostFigure().getBounds().contains((Rectangle) constraint)) {
-	        
+
 	        SetConstraintCommand locationCommand = new SetConstraintCommand();
 	        locationCommand.setNode((Box) child.getModel());
 	        locationCommand.setLocation(((Rectangle) constraint).getLocation());
@@ -53,7 +53,7 @@ public class CustomXYLayoutEditPolicy extends XYLayoutEditPolicy {
         }
         return null;
     }
-    
+
     protected Command getCreateCommand(CreateRequest request) {
 		Object child = request.getNewObjectType();
 		if (!(child instanceof Class)) {
@@ -61,20 +61,20 @@ public class CustomXYLayoutEditPolicy extends XYLayoutEditPolicy {
 		}
 		Class childClass = (Class) child;
 		if (BoxPrinter.class.isAssignableFrom(childClass)) {
-			// return a command that can add a Shape to a ShapesDiagram 
-			return new BoxCreateCommand((Box)request.getNewObject(), 
+			// return a command that can add a Shape to a ShapesDiagram
+			return new BoxCreateCommand((Box)request.getNewObject(),
 					(Page)getHost().getModel(), (Rectangle)getConstraintFor(request));
 		}
 		return null;
     }
-    
+
     protected Command getDeleteDependantCommand(Request request) {
         return null;
-    }    
+    }
 
     /**
      * TODO summary sentence for createChildEditPolicy ...
-     * 
+     *
      * @see org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy#createChildEditPolicy(org.eclipse.gef.EditPart)
      * @param child
      * @return

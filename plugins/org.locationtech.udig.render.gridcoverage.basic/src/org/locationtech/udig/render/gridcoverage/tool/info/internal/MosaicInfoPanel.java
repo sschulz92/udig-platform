@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -53,7 +53,7 @@ import org.opengis.filter.expression.Literal;
 import org.locationtech.jts.geom.Geometry;
 
 /**
- * 
+ *
  * This class is the info panel for the ImageMosaic information.
  * <p>
  *
@@ -72,28 +72,28 @@ public class MosaicInfoPanel {
     private ChannelViewer green;
     private ChannelViewer blue;
     private Composite grpBands ;
-    
+
     // used to track the current selected feature and layer
     private ILayer currentLayer;
     private SimpleFeature currentFeature;
-    
-    // the current colors applied to the image before edits are made; 
+
+    // the current colors applied to the image before edits are made;
     //this values are reset when a new image is selected
     private String currentColors;
     private String currentBands;
-    
-    
+
+
     //listener that is fired when a new feature is selected
     private List<FeatureSelectedListener> selectionListeners;
-    
+
     //listeners that are fired when the existing feature is changed
     private List<FeatureUpdatedListener> updatelistener;
-    
+
     private FilterFactory2 ff;
-    
+
     //job to update the feature
     private final UpdateImageMosaicJob updateJob = new UpdateImageMosaicJob();
-    
+
     /**
      * Creates a new mosaic info panel
      */
@@ -109,7 +109,7 @@ public class MosaicInfoPanel {
      * @return
      */
     public Composite createControl(Composite parent){
-        
+
         SelectionListener listener = new SelectionListener(){
 
             public void widgetDefaultSelected( SelectionEvent e ) {
@@ -118,7 +118,7 @@ public class MosaicInfoPanel {
             public void widgetSelected( SelectionEvent e ) {
                 applyUpdates();
             }};
-            
+
         Composite all = new Composite(parent, SWT.NONE);
         all.setLayout(new GridLayout(1, false));
         Group g = new Group(all, SWT.SHADOW_ETCHED_IN);
@@ -126,24 +126,24 @@ public class MosaicInfoPanel {
         g.setLayout(new GridLayout(4, false));
         GridData gd = new GridData(GridData.FILL_HORIZONTAL);
         g.setLayoutData(gd);
-        
+
         createLabel(g,Messages.MosaicInfoPanel_FileLabel);
         txtFileName = createLabel(g);
-        
+
         createLabel(g, Messages.MosaicInfoPanel_FileDateLabel);
         txtDate = createLabel(g);
-        
+
         createLabel(g, Messages.MosaicInfoPanel_FileTypeLabel);
         txtFileType = createLabel(g);
-        
+
         createLabel(g, Messages.MosaicInfoPanel_FileSizeLabel);
         txtFileSize = createLabel(g);
-        
+
         grpBands = new Composite(all, SWT.SHADOW_ETCHED_IN);
         grpBands.setLayout(new GridLayout(3, false));
         gd = new GridData(GridData.FILL_HORIZONTAL);
         grpBands.setLayoutData(gd);
-        
+
         red = new ChannelViewer(Messages.MosaicInfoPanel_RedBandLabel, listener);
         red.createControl(grpBands);
         green = new ChannelViewer(Messages.MosaicInfoPanel_GreenBandLabel, listener);
@@ -151,9 +151,9 @@ public class MosaicInfoPanel {
         blue = new ChannelViewer(Messages.MosaicInfoPanel_BlueBandLabel, listener);
         blue.createControl(grpBands);
 
-        return all; 
+        return all;
     }
-    
+
     /**
      * Creates an empty label
      */
@@ -163,7 +163,7 @@ public class MosaicInfoPanel {
         l.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         return l;
     }
-    
+
     /**
      * Creates a label with the given text
      *
@@ -179,7 +179,7 @@ public class MosaicInfoPanel {
         l.setLayoutData(gd);
         return l;
     }
-    
+
     /**
      * Updates the information displayed based on the
      * selected feature and layer.  Once the information is update
@@ -209,8 +209,8 @@ public class MosaicInfoPanel {
                         AbstractGridCoverage2DReader.class, null);
 
                 // get File
-               
-                // Commented out as Simone has removed the API we were using                
+
+                // Commented out as Simone has removed the API we were using
                 String locationAttributeName = "location"; // imageReader.getLocationAttributeName();
                 Object attribute = f.getAttribute(locationAttributeName);
                 Literal eq = getFilterFactory().literal(attribute);
@@ -236,8 +236,8 @@ public class MosaicInfoPanel {
                 // if possible update band information
                 this.currentBands = null;
                 this.currentColors = null;
-                
-                // Commented out as Simone has removed the API we were using             
+
+                // Commented out as Simone has removed the API we were using
                 /*
                 if (file != null && imageReader.hasBandColorAttributes()) {
                     grpBands.setVisible(true);
@@ -286,14 +286,14 @@ public class MosaicInfoPanel {
                     // doesn't support band and color enhancements
                     grpBands.setVisible(false);
                 //}
-                
+
             } catch (Exception ex) {
                 RendererPlugin.log("Cannot update feature information", ex); //$NON-NLS-1$
             }
         }
        fireFeatureSelected(f);
     }
-    
+
     /**
      * Fires the feature selected listeners
      *
@@ -303,7 +303,7 @@ public class MosaicInfoPanel {
         for( Iterator<FeatureSelectedListener> iterator = selectionListeners.iterator(); iterator.hasNext(); ) {
             FeatureSelectedListener type = (FeatureSelectedListener) iterator.next();
             type.fireFeatureSelected(feature);
-            
+
         }
     }
 
@@ -325,7 +325,7 @@ public class MosaicInfoPanel {
     public void addFeatureUpdatedListener(FeatureUpdatedListener listener){
         this.updatelistener.add(listener);
     }
-    
+
     private int[] parseBands(String bands){
         String[] sband = bands.split(","); //$NON-NLS-1$
         int[] iband = new int[3];
@@ -334,7 +334,7 @@ public class MosaicInfoPanel {
         }
         return iband;
     }
-    
+
     private double[] parseColors(String bands){
         String[] sband = bands.split(","); //$NON-NLS-1$
         double[] colors = new double[3];
@@ -343,42 +343,42 @@ public class MosaicInfoPanel {
         }
         return colors;
     }
-    
+
     /**
-     * Determines if you can undo the current change.  
+     * Determines if you can undo the current change.
      * <p>
      * A change can be undone if a current feature has been selected that has band and color
      * correction attributes; and if the currently selected bands and color correction values (in the gui)
-     * differ from the values that occurred when the feature was first selected. 
+     * differ from the values that occurred when the feature was first selected.
      *
      * @return
      */
     public boolean canUndo(){
         if (this.currentFeature != null && this.currentBands != null && this.currentColors != null){
             int[] bands = parseBands(this.currentBands);
-            double[] colors = parseColors(this.currentColors);            
+            double[] colors = parseColors(this.currentColors);
             return !(bands[0] == red.getBandIndex() && bands[1] == green.getBandIndex() && bands[2] == blue.getBandIndex() &&
                 colors[0] == red.getColorCorrectionValue() && colors[1] == green.getColorCorrectionValue() && colors[2] == blue.getColorCorrectionValue());
         }
         return false;
     }
-    
+
     /**
      * Reset the values in the shapefile and in the mosaic info panel back
      * to the values that were defined when the feature was first selected.
-     * 
+     *
      */
     public void undo(){
         try {
             if (canUndo()){
                 int[] bands = parseBands(this.currentBands);
                 double[] colors = parseColors(this.currentColors);
-                
+
                 //update gui elements
                 red.set(bands[0], colors[0]);
                 green.set(bands[1], colors[1]);
                 blue.set(bands[2], colors[2]);
-                
+
                 //update file
                 final ImageMosaicReader imageReader = (ImageMosaicReader) currentLayer.getGeoResource().resolve(GridCoverageReader.class, null);
                 updateJob.setData(imageReader, currentLayer, currentFeature, bands[0], bands[1], bands[2], colors[0], colors[1], colors[2], updatelistener);
@@ -388,9 +388,9 @@ public class MosaicInfoPanel {
 
             ex.printStackTrace();
         }
-        
+
     }
-    
+
     /**
      * Applies the modifications to the image mosaic and redraw
      * the changed tile
@@ -412,11 +412,11 @@ public class MosaicInfoPanel {
         red.setError(null);
         green.setError(null);
         blue.setError(null);
-        
+
         final double redColor = red.getColorCorrectionValue();
         final double greenColor = green.getColorCorrectionValue();
         final double blueColor = blue.getColorCorrectionValue();
-        
+
         try {
 
             final ImageMosaicReader imageReader = (ImageMosaicReader) currentLayer.getGeoResource()
@@ -435,24 +435,24 @@ public class MosaicInfoPanel {
         }
         return ff;
     }
-    
+
     /**
-     * Class to track an work of the update job so only one job is scheduled and 
+     * Class to track an work of the update job so only one job is scheduled and
      * it is always updated to the latest
      */
     private class UpdateImageMosaicJob extends Job{
-        
+
         private ImageMosaicReader imageReader = null;
         private int[] bands;
         private double colors[];
         private ILayer layer;
         private SimpleFeature feature;
         private List<FeatureUpdatedListener> updateListener;
-        
+
         public UpdateImageMosaicJob(){
             super("Update Image Moasic Job"); //$NON-NLS-1$
         }
-        
+
         public void setData(ImageMosaicReader reader, ILayer layer, SimpleFeature f, int redBand, int greenBand, int blueBand, double redColor, double greenColor, double blueColor, List<FeatureUpdatedListener> listener){
             this.imageReader = reader;
             this.bands = new int[]{redBand, greenBand, blueBand};
@@ -461,38 +461,38 @@ public class MosaicInfoPanel {
             this.feature = f;
             this.updateListener = listener;
         }
-        
+
         protected IStatus run( IProgressMonitor monitor ) {
-            // Commented out as Simone has removed the API we were using            
+            // Commented out as Simone has removed the API we were using
             String location = "location"; // this.imageReader.getLocationAttributeName();
             final Filter filter = getFilterFactory().equals(
                     ff.property( location ),
                     ff.literal(this.feature.getAttribute(location)));
 
             // update values
-            
+
             // Commented out as Simone has removed the API we were using
-            
+
             // imageReader.updateBandSelection(filter, bands, colors);
             //refresh gui
             layer.refresh(((Geometry) feature.getDefaultGeometry()).getEnvelopeInternal());
             //fire listeners
             fireUpdateListeners(feature);
-            
+
             return Status.OK_STATUS;
         }
-        
+
         private void fireUpdateListeners(SimpleFeature feature){
             for( Iterator<FeatureUpdatedListener> iterator = this.updateListener.iterator(); iterator.hasNext(); ) {
                 FeatureUpdatedListener listener = (FeatureUpdatedListener) iterator.next();
                 listener.fireFeatureUpdated(feature);
-                
+
             }
         }
     }
-    
+
     /**
-     * 
+     *
      * A simple listener that is fired when a feature is selected.
      *
      * @author Emily Gouge
@@ -501,10 +501,10 @@ public class MosaicInfoPanel {
     public static abstract class FeatureSelectedListener{
         public abstract void fireFeatureSelected(SimpleFeature feature);
     }
-    
+
     /**
      * A simple listener that is fired when a feature is updated.
-     * 
+     *
      * @author Emily Gouge
      * @since 1.2.0
      */

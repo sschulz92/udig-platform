@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -34,7 +34,7 @@ import org.opengis.util.CodeList;
 
 /**
  * A PropertyDescriptor for attributes of a SimpleFeature.
- * 
+ *
  * @author jeichar
  * @since 0.3
  */
@@ -42,13 +42,13 @@ public class AttributePropertyDescriptor extends PropertyDescriptor {
     protected AttributeDescriptor type;
     AttributeValidator validator;
     private String[] comboBoxList;
-    
+
     /** Is the property editable and should return a cell editor. */
     private boolean editable = false;
 
     /**
      * Creates a new instance of AttributePropertyDescriptor
-     * 
+     *
      * @param id The object used to identify the value
      * @param displayName The Property display name
      * @param type The Attribute type that describes the attribute
@@ -57,9 +57,9 @@ public class AttributePropertyDescriptor extends PropertyDescriptor {
     public AttributePropertyDescriptor( Object id, String displayName, AttributeDescriptor type, SimpleFeatureType schema ) {
         this(id, displayName, type, schema, false);
     }
-    
+
     /**
-     * 
+     *
      * @param id The object used to identify the value
      * @param displayName The Property display name
      * @param type  The Attribute type that describes the attribute
@@ -80,14 +80,14 @@ public class AttributePropertyDescriptor extends PropertyDescriptor {
     public CellEditor createPropertyEditor( Composite parent ) {
     	if(!editable)
     		return null;
-    	
+
         try{
             if (Boolean.class.isAssignableFrom(type.getType().getBinding())
                     || boolean.class.isAssignableFrom(type.getType().getBinding()))
                 return new ComboBoxCellEditor(
                         parent,
                         new String[]{
-                                Messages.AttributePropertyDescriptor_true, Messages.AttributePropertyDescriptor_false});  
+                                Messages.AttributePropertyDescriptor_true, Messages.AttributePropertyDescriptor_false});
             if (String.class.isAssignableFrom(type.getType().getBinding()))
                 return new TextCellEditor(parent);
             if (Integer.class.isAssignableFrom(type.getType().getBinding()))

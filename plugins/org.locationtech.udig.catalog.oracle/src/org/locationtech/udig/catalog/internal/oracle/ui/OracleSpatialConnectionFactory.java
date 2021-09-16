@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -23,7 +23,7 @@ import org.locationtech.udig.catalog.ui.AbstractUDIGConnectionFactory;
 
 /**
  * This appears to be glue code added by Jesse.
- * 
+ *
  * @since 1.2.0
  */
 public class OracleSpatialConnectionFactory extends AbstractUDIGConnectionFactory {
@@ -38,8 +38,8 @@ public class OracleSpatialConnectionFactory extends AbstractUDIGConnectionFactor
         // and ensure it is ment for us
         ID id = ID.cast( context );
         if( id.toString().indexOf("oracle") != -1){
-            
-        }        
+
+        }
         return null;
     }
 

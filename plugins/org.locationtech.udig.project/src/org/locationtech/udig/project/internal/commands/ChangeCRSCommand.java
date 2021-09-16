@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -22,7 +22,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * Change the CRS of a map.
- * 
+ *
  * @author Jesse
  * @since 1.0.0
  */
@@ -44,7 +44,7 @@ public class ChangeCRSCommand extends AbstractNavCommand implements
 
 	/**
 	 * Each command has a name that is displayed with the undo/redo buttons.
-	 * 
+	 *
 	 * @see org.locationtech.udig.project.command.MapCommand#getName()
 	 */
 	public String getName() {

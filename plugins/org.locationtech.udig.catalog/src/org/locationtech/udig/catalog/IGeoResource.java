@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -43,7 +43,7 @@ import org.eclipse.swt.widgets.Display;
  * Please consider implementing support for resolve( ImageDescriptor.class, null ) as it will allow
  * your IGeoResource to show up with a unique representation in the Catalog view.
  * </p>
- * 
+ *
  * @author David Zwiers, Refractions Research
  * @since 0.6
  */
@@ -68,13 +68,13 @@ public abstract class IGeoResource implements IResolve {
      * </ul>
      * <p>
      * Example Use (no casting required!):
-     * 
+     *
      * <pre>
      * <code>
      * IGeoResourceInfo info = resolve(IGeoResourceInfo.class);
      * </code>
      * </pre>
-     * 
+     *
      * </p>
      * <p>
      * Recommended adaptions:
@@ -83,7 +83,7 @@ public abstract class IGeoResource implements IResolve {
      * <li>List.class - members( monitor ) ie children of this georesource as in the wms layer case
      * </ul>
      * </p>
-     * 
+     *
      * @param adaptee
      * @param monitor
      * @return instance of adaptee, or null if unavailable (IGeoResourceInfo and IService must be
@@ -151,7 +151,7 @@ public abstract class IGeoResource implements IResolve {
      * <p>
      * Here is an implementation example (for something that can adapt to ImageDescriptor and
      * FeatureSource):
-     * 
+     *
      * <pre>
      * <code>
      * public &lt;T&gt; boolean canResolve( Class&lt;T&gt; adaptee ) {
@@ -172,7 +172,7 @@ public abstract class IGeoResource implements IResolve {
     /**
      * Delegate to implementing classes to create and return the appropriate IGeoResourceInfo
      * implementation.
-     * 
+     *
      * @return IGeoResourceInfo resolve(IGeoResourceInfo.class,IProgressMonitor monitor);
      * @throws IOException
      */
@@ -201,7 +201,7 @@ public abstract class IGeoResource implements IResolve {
      * *super.getInfo* as it is providing caching for you and will insure that createInfo is only
      * called once.
      * </p>
-     * 
+     *
      * @return IGeoResourceInfo resolve(IGeoResourceInfo.class,IProgressMonitor monitor);
      * @see IGeoResource#resolve(Class, IProgressMonitor)
      * @see IGeoResource#createInfo(IProgressMonitor)
@@ -226,7 +226,7 @@ public abstract class IGeoResource implements IResolve {
                         // this delta describes what has changed
                         /*
                         IResolveDelta delta = new ResolveDelta(this, IResolveDelta.Kind.CHANGED);
-                        
+
                         // fire the change
                         CatalogImpl localCatalog = (CatalogImpl) CatalogPlugin.getDefault().getLocalCatalog();
                         localCatalog.fire(new ResolveChangeEvent(this, IResolveChangeEvent.Type.POST_CHANGE, delta));
@@ -240,10 +240,10 @@ public abstract class IGeoResource implements IResolve {
         }
         return info;
     }
-    
+
     /**
      * Map of this resource's persistent properties, may be empty.
-     * 
+     *
      * @return The map containing the persistent properties where the key is the
      *         {@link QualifiedName} of the property and the value is the {@link String} value of
      *         the property.
@@ -258,7 +258,7 @@ public abstract class IGeoResource implements IResolve {
      * Returns parent for this GeoResource.
      * <p>
      * Most implementations will use the following code example:
-     * 
+     *
      * <pre>
      * <code>
      * public IService parent( IProgressMonitor monitor ) throws IOException {
@@ -266,13 +266,13 @@ public abstract class IGeoResource implements IResolve {
      * }
      * </code>
      * </pre>
-     * 
+     *
      * This code example preserves backwords compatibility with uDig 1.0 via type narrowing IResolve
      * to IService.
      * <p>
      * You will need to provide a different implementation when working with nested content (like
      * database schema or wms layers).
-     * 
+     *
      * @return parent IResolve for this GeoResource
      * @see IGeoResource#resolve(Class, IProgressMonitor)
      */
@@ -286,7 +286,7 @@ public abstract class IGeoResource implements IResolve {
      * <p>
      * The provided implementation indicates that this IGeoResource is a leaf.
      * </p>
-     * 
+     *
      * @return Collections.emptyList();
      * @see org.locationtech.udig.catalog.IResolve#members(org.eclipse.core.runtime.IProgressMonitor)
      */
@@ -296,7 +296,7 @@ public abstract class IGeoResource implements IResolve {
 
     /**
      * This should represent the identifier
-     * 
+     *
      * @see Object#equals(java.lang.Object)
      * @param arg0
      * @return
@@ -312,7 +312,7 @@ public abstract class IGeoResource implements IResolve {
 
     /**
      * This should represent the identified
-     * 
+     *
      * @see Object#hashCode()
      * @return
      */
@@ -342,7 +342,7 @@ public abstract class IGeoResource implements IResolve {
      */
     /**
      * Indicate class and id.
-     * 
+     *
      * @return string representing this IResolve
      */
     public String toString() {
@@ -361,7 +361,7 @@ public abstract class IGeoResource implements IResolve {
      * <p>
      * For example: A WMS (IService) with an id of http://www.something.com/wms?Service=WMS would
      * have georesources with ids similar to: http://www.something.com/wms?Service=WMS#layer1
-     * 
+     *
      * @see IResolve#getIdentifier()
      */
     public abstract URL getIdentifier();
@@ -373,7 +373,7 @@ public abstract class IGeoResource implements IResolve {
     /**
      * hide user password from the layer ID if it exists and returns
      * ID as String.
-     * 
+     *
      * @param layer
      * @return
      */
@@ -389,7 +389,7 @@ public abstract class IGeoResource implements IResolve {
 
     /**
      * Disposes of any resources or listeners required. Default implementation does nothing.
-     * 
+     *
      * @param monitor monitor to show progress
      */
     public void dispose( IProgressMonitor monitor ) {
@@ -398,7 +398,7 @@ public abstract class IGeoResource implements IResolve {
     /**
      * Retrieves the title from the IService cache or from the GeoResourceInfo object if they exist.
      * No objects are created and null is returned if there is no title readily available.
-     * 
+     *
      * @return title or null if none is readily available
      */
     public String getTitle() {
@@ -420,7 +420,7 @@ public abstract class IGeoResource implements IResolve {
         }
         return title;
     }
-    
+
     public IService service( IProgressMonitor monitor ) throws IOException {
         return service;
     }

@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -41,14 +41,14 @@ public class SetConstraintCommand extends Command {
     private Box box;
     private Point newPos;
     private Point oldPos;
-    
+
     private Dimension newSize;
     private Dimension oldSize;
-    
+
     public void setLocation(Point p) {
         this.newPos = p;
     }
-    
+
     public void setNode(Box node) {
         this.box = node;
     }
@@ -56,20 +56,20 @@ public class SetConstraintCommand extends Command {
     public void execute() {
         oldPos = this.box.getLocation();
         this.box.setLocation(newPos);
-        
+
         oldSize = this.box.getSize();
         this.box.setSize(newSize);
     }
-    
+
     public String getLabel() {
-        return Messages.SetConstraintCommand_label; 
+        return Messages.SetConstraintCommand_label;
     }
-    
+
     public void redo() {
         this.box.setLocation(newPos);
         this.box.setSize(newSize);
     }
-    
+
     public void undo() {
         this.box.setLocation(oldPos);
         this.box.setSize(oldSize);

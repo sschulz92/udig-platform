@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -37,12 +37,12 @@ import org.opengis.feature.type.PropertyDescriptor;
 
 /**
  * A SimpleFeature can handle setAttribute in a threadsafe way.
- * 
+ *
  * @since 1.2.0
  */
 public class EditFeature extends DecoratingFeature implements IAdaptable, SimpleFeature {
     private IEditManager manager;
-    
+
     // not used yet; could be used to "batch up" changes to send in one command?
     private Set<String> dirty = new LinkedHashSet<String>(); // we no longer need this
 
@@ -50,7 +50,7 @@ public class EditFeature extends DecoratingFeature implements IAdaptable, Simple
 
     /**
      * Construct <code>AdaptableFeature</code>.
-     * 
+     *
      * @param feature the wrapped feature
      * @param evaluationObject the layer that contains the feature.
      */
@@ -58,12 +58,12 @@ public class EditFeature extends DecoratingFeature implements IAdaptable, Simple
         super(manager.getEditFeature());
         this.manager = manager;
     }
-    
+
     public EditFeature( IEditManager manager, SimpleFeature feature ) {
         super( feature );
         this.manager = manager;
     }
-    
+
     /**
      * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
      */
@@ -128,7 +128,7 @@ public class EditFeature extends DecoratingFeature implements IAdaptable, Simple
         xpath = xpathlist.toArray(new String[xpathlist.size()]);
         value = values.toArray();
         SetAttributesCommand sync = new SetAttributesCommand(xpath, value);
-        manager.getMap().sendCommandASync(sync);       
+        manager.getMap().sendCommandASync(sync);
     }
     @Override
     public void setAttributes( Object[] values ) {

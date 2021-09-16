@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -23,9 +23,9 @@ import org.osgi.framework.BundleContext;
  * @since 0.6.0
  */
 public class WorldImagePlugin extends AbstractUIPlugin {
-    
+
     public static final String PROTOCOL_FILE = "file"; //$NON-NLS-1$
-    
+
     private static WorldImagePlugin plugin;
     private ResourceBundle resourceBundle;
 
@@ -37,29 +37,29 @@ public class WorldImagePlugin extends AbstractUIPlugin {
         super();
         plugin = this;
     }
-    
+
     public void start(BundleContext context) throws Exception {
         super.start(context);
     }
-    
+
     public void stop(BundleContext context) throws Exception {
         plugin = null;
         this.resourceBundle = null;
         super.stop(context);
     }
-    
+
     /**
      * Retrieves the default instance of this class.
-     * 
+     *
      * @return Default instance of WorldImagePlugin.
      */
     public static WorldImagePlugin getDefault() {
         return plugin;
     }
-    
+
     /**
      * Retrieves the string value of the requested resource.
-     * 
+     *
      * @param key
      * @return Value of the desired resource string.
      */
@@ -71,10 +71,10 @@ public class WorldImagePlugin extends AbstractUIPlugin {
             return key;
         }
     }
-    
+
     /**
      * Retrieves the default resource bundle for this plugin.
-     * 
+     *
      * @return ResourceBundle
      */
     public ResourceBundle getResourceBundle() {
@@ -87,5 +87,5 @@ public class WorldImagePlugin extends AbstractUIPlugin {
             this.resourceBundle = null;
         }
         return this.resourceBundle;
-    } 
+    }
 }

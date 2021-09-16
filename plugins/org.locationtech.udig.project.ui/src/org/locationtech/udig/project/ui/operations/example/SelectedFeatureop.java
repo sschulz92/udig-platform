@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -30,7 +30,7 @@ import org.opengis.filter.Filter;
 
 /**
  * Counts the selected and non selected features on the layer
- * 
+ *
  * @author jesse
  * @author Andrea Antonello (www.hydrologis.com)
  */
@@ -44,7 +44,7 @@ public class SelectedFeatureop implements IOp {
         @SuppressWarnings("unchecked")
 		FeatureSource<SimpleFeatureType, SimpleFeature> source = layer
                 .getResource(FeatureSource.class, new NullProgressMonitor());
-        
+
         FilterAttributeExtractor extractor = new FilterAttributeExtractor(source.getSchema());
         layer.getFilter().accept(extractor, null);
         String[] atts = extractor.getAttributeNames();
@@ -68,7 +68,7 @@ public class SelectedFeatureop implements IOp {
                 	lastUpdate = System.currentTimeMillis();
             	}
             }
-            
+
             final int finalAllCount = allCount;
             final int finalSelectedCount = selectedCount;
             display.asyncExec(new Runnable(){

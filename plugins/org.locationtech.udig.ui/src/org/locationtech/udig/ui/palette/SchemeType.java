@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -19,7 +19,7 @@ import org.opengis.util.InternationalString;
 
 /**
  * Enumeration on SchemeType.
- * 
+ *
  * @author jgarnett
  * @since 0.9.0
  * @deprecated
@@ -47,30 +47,30 @@ public enum SchemeType {
      * Qualitative schemes are best suited to representing nominal or categorical data.
      */
     QUALITATIVE;
-    
+
     /** <code>description</code> field */
     public final InternationalString description;
-    
+
     /** <code>display</code> field */
     public final InternationalString display;
-        
-    private SchemeType(){        
+
+    private SchemeType(){
         this.display = string( name()+".display" ); //$NON-NLS-1$
         this.description = string( name()+".description" );         //$NON-NLS-1$
     }
-    
+
     private static ResourceBundle bundle = null;
-    
+
     /**
      * Gets a string from the resource bundle. We don't want to crash because of a missing String.
      * Returns the key if not found.
-     * 
+     *
      * @param key  the id to look up
      * @return the string with the given key
      */
     private static InternationalString string(String key) {
         if( bundle == null ){
-            try {            
+            try {
                 bundle = ResourceBundle.getBundle( "org.locationtech.udig.ui.palette.schemeType"); //$NON-NLS-1$
             }
             catch( Throwable t ){
@@ -83,7 +83,7 @@ public enum SchemeType {
                 return new SimpleInternationalString( bundle.getString(key) );
             else
                 return new SimpleInternationalString("!" + key + "!"); //$NON-NLS-1$ //$NON-NLS-2$
-                
+
         } catch (MissingResourceException e) {
             return new SimpleInternationalString(key);
         }

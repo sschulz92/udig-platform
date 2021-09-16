@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -46,7 +46,7 @@ import org.opengis.referencing.operation.TransformException;
 
 /**
  * Draws a feature on the screen.
- * 
+ *
  * @author jeichar
  * @since 0.9
  */
@@ -68,12 +68,12 @@ public class DrawFeatureCommand extends AbstractDrawCommand {
      */
 //    private Point imageLocation;
     /**
-     * The image of the drawn feature.  
+     * The image of the drawn feature.
      * @see #preRender()
      */
     private Image image;
     private boolean errorReported;
-    
+
     /**
      * @param feature
      * @param layer layer that feature is from
@@ -101,7 +101,7 @@ public class DrawFeatureCommand extends AbstractDrawCommand {
     public DrawFeatureCommand( SimpleFeature feature ) {
         this(feature, feature.getFeatureType().getCoordinateReferenceSystem());
     }
-    
+
     /**
      * Renders the feature to a image buffer so that drawing command will be fast.
      * If feature is large you should call this so that there isn't a big delay in the display
@@ -113,12 +113,12 @@ public class DrawFeatureCommand extends AbstractDrawCommand {
      * If this method is called then this object must be sent to the ViewportPane or be disposed
      * because a Image object is created that needs to be disposed.
      * </p>
-     * 
+     *
      */
     public void preRender(){
-        
+
         if( BUFFER_READY ){
-        
+
             PlatformGIS.syncInDisplayThread(new Runnable(){
                 public void run() {
                     renderInternal();
@@ -126,7 +126,7 @@ public class DrawFeatureCommand extends AbstractDrawCommand {
             });
         }
     }
-    
+
     private void renderInternal(){
         if( syms==null ) {
             syms = Drawing.getSymbolizers(((Geometry)feature.getDefaultGeometry()).getClass(), color,false);
@@ -142,27 +142,27 @@ public class DrawFeatureCommand extends AbstractDrawCommand {
         }catch (Exception e) {
             envelope=new ReferencedEnvelope(feature.getBounds());
         }
-        double[] screenbounds=new double[]{ 
-                envelope.getMinX(), envelope.getMinY(), 
-                envelope.getMaxX(), envelope.getMaxY(), 
+        double[] screenbounds=new double[]{
+                envelope.getMinX(), envelope.getMinY(),
+                envelope.getMaxX(), envelope.getMaxY(),
                 };
         toScreen.transform(screenbounds, 0, screenbounds, 0, 2);
-        
+
 //        imageLocation=new Point((int)(Math.min(screenbounds[0], screenbounds[2])), (int)(Math.min(screenbounds[1], screenbounds[3])) );
-        
+
         int width = (int) Math.abs(screenbounds[2]-screenbounds[0]);
         int height = (int) Math.abs(screenbounds[3]-screenbounds[1]);
         //create transparent image
         image=AWTSWTImageUtils.createDefaultImage(Display.getDefault(), width, height);
-        
+
         // draw feature
         SWTGraphics graphics=new SWTGraphics(image, Display.getDefault());
-        
+
         drawing.drawFeature(graphics, feature,
                 getMap().getViewportModel().worldToScreenTransform(envelope, new Dimension(width,height)), false, syms, mt);
         graphics.dispose();
     }
-    
+
     /** I haven't been able to get the SWT image buffer going yet
      * So this flag is so I can quickly enable the unstable code for
      * development and disable it for committing my changes.
@@ -221,7 +221,7 @@ public class DrawFeatureCommand extends AbstractDrawCommand {
     /**
      * Allows the symbolizers to be set
      *
-     * @param syms symbolizers to use to draw features.  
+     * @param syms symbolizers to use to draw features.
      */
     public void setSymbolizers( Symbolizer[] syms){
         if( syms==null )
@@ -269,7 +269,7 @@ public class DrawFeatureCommand extends AbstractDrawCommand {
         if( !valid )
             dispose();
     }
-    
+
     protected void finalize(){
         dispose();
     }
@@ -283,7 +283,7 @@ public class DrawFeatureCommand extends AbstractDrawCommand {
             image=null;
         }
     }
-    
+
     private static class MathTransformKey{
         final CoordinateReferenceSystem from, to;
 
@@ -321,6 +321,6 @@ public class DrawFeatureCommand extends AbstractDrawCommand {
                 return false;
             return true;
         }
-        
+
     }
 }

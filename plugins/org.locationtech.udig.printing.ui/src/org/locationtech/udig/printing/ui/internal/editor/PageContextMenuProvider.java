@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -43,7 +43,7 @@ import org.eclipse.ui.actions.ActionFactory;
 public class PageContextMenuProvider extends ContextMenuProvider {
 
     private ActionRegistry registry;
-    
+
     /**
      * Construct <code>PageContextMenuProvider</code>.
      *
@@ -56,39 +56,39 @@ public class PageContextMenuProvider extends ContextMenuProvider {
 
     /**
      * TODO summary sentence for buildContextMenu ...
-     * 
+     *
      * @see org.eclipse.gef.ContextMenuProvider#buildContextMenu(org.eclipse.jface.action.IMenuManager)
      * @param manager
      */
     @SuppressWarnings("unchecked")
     public void buildContextMenu( IMenuManager manager ) {
         GEFActionConstants.addStandardActionGroups(manager);
-        
-    	
+
+
     	IAction action = getActionRegistry().getAction(ActionFactory.UNDO.getId());
     	manager.appendToGroup(GEFActionConstants.GROUP_UNDO, action);
 
     	action = getActionRegistry().getAction(ActionFactory.REDO.getId());
     	manager.appendToGroup(GEFActionConstants.GROUP_UNDO, action);
-        
+
         for( BoxAction boxAction : PrintingPlugin.getBoxExtensionActions(null) ) {
             if( boxAction.isEnabled() )
                 manager.appendToGroup(GEFActionConstants.GROUP_EDIT,boxAction);
         }
-//    	
+//
 //    	DirectEditAction action2 = (DirectEditAction) getActionRegistry().getAction(GEFActionConstants.DIRECT_EDIT);
 //        action2.getText();
 //    	if (action2.isEnabled())
 //    	    manager.appendToGroup(GEFActionConstants.GROUP_UNDO, action2);
 //
 //        action = getActionRegistry().getAction(EditMapAction.EDIT_MAP);
-//    	if (action.isEnabled()) 
+//    	if (action.isEnabled())
 //    	    manager.appendToGroup(, action);
-//    	
+//
     	action = getActionRegistry().getAction(ActionFactory.DELETE.getId());
     	if (action.isEnabled())
     		manager.appendToGroup(GEFActionConstants.GROUP_EDIT, action);
-    	
+
 
     	// Alignment Actions
 /*    	MenuManager submenu = new MenuManager("Alignment Thing");
@@ -104,9 +104,9 @@ public class PageContextMenuProvider extends ContextMenuProvider {
     	action = getActionRegistry().getAction(GEFActionConstants.ALIGN_RIGHT);
     	if (action.isEnabled())
     		submenu.add(action);
-    		
+
     	submenu.add(new Separator());
-    	
+
     	action = getActionRegistry().getAction(GEFActionConstants.ALIGN_TOP);
     	if (action.isEnabled())
     		submenu.add(action);

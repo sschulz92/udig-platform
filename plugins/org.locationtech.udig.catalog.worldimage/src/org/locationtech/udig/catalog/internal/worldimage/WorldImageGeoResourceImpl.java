@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -42,7 +42,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * Provides a handle to a world image resource allowing the service to be lazily loaded.
- * 
+ *
  * @author mleslie
  * @since 0.6.0
  */
@@ -52,7 +52,7 @@ public class WorldImageGeoResourceImpl extends AbstractRasterGeoResource {
 
     /**
      * Construct <code>WorldImageGeoResourceImpl</code>.
-     * 
+     *
      * @param service Service creating this resource.
      * @param name Human readable name of this resource.
      * @param prjURL Name a projection file associated with this resource can be expected to have.
@@ -85,7 +85,7 @@ public class WorldImageGeoResourceImpl extends AbstractRasterGeoResource {
 
     /**
      * Convenience method for opening a PrjFileReader.
-     * 
+     *
      * @return A new PrjFileReader
      * @throws IOException If an error occurs during creation.
      */
@@ -126,7 +126,7 @@ public class WorldImageGeoResourceImpl extends AbstractRasterGeoResource {
 
     /**
      * Convenience method to create a ReadableByteChannel from a URL.
-     * 
+     *
      * @param prjURL
      * @return A Channel for the given file
      * @throws IOException

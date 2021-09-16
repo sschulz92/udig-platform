@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -39,18 +39,18 @@ import org.eclipse.gef.commands.Command;
 public class DeleteCommand extends Command {
     private Page parent;
     private Box child;
-    
+
     public DeleteCommand() {
-        super(Messages.DeleteCommand_delete); 
+        super(Messages.DeleteCommand_delete);
     }
-    
+
     public void execute() {
         parent.getBoxes().remove(child);
     }
     public void undo() {
         parent.getBoxes().add(child);
     }
-    
+
     public void setChild( Box child ) {
         this.child = child;
     }

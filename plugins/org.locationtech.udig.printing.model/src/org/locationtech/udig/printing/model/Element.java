@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2004, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2004, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -21,15 +21,15 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  * <li>a location</li>
  * <li>a size</li>
- * </ul> 
+ * </ul>
  * Each object to be included in a Page must implement this interface.
- * 
+ *
  * @author Richard Gould
  * @since 0.3
  * @model
  */
 public interface Element extends EObject{
-    
+
     /**
      * @return this element's location (x, y)
      * @see Point
@@ -50,7 +50,7 @@ public interface Element extends EObject{
 
     /**
      * The size of the paper that the page will be printed on calculated in mm
-     * 
+     *
      * @return The paper size (width, height) that the page can be printed to
      * @model
      */
@@ -67,7 +67,7 @@ public interface Element extends EObject{
 
     /**
      * The size is calculated in pixels, and represent coordinates on a page.
-     * 
+     *
      * @return this element's size (width, height)
      * @model
      * @see Dimension
