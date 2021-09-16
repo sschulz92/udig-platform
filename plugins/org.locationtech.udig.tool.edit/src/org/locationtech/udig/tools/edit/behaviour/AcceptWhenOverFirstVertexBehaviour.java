@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2004, Refractions Research Inc.
  *
@@ -31,7 +32,8 @@ import org.eclipse.core.runtime.NullProgressMonitor;
  * Runs the accept behaviours registered with the {@link EditToolHandler} when the mouse is clicked over
  * the first vertex of a shape
  * 
- * <p>Requirements: * <ul>
+ * <p>Requirements:
+ * <ul>
  * <li>event type == RELEASE</li>
  * <li>edit state == CREATING </li>
  * <li>no modifiers down</li>
@@ -39,7 +41,10 @@ import org.eclipse.core.runtime.NullProgressMonitor;
  * <li>no buttons down</li>
  * <li>current shape and geom are set</li>
  * <li>mouse is over the first vertex of the currentShape</li>
- * <li>event type != DOUBLE_CLICK</li> *</ul> * </p> * @author jones
+ * <li>event type != DOUBLE_CLICK</li>
+ *</ul>
+ * </p>
+ * @author jones
  * @since 1.1.0
  */
 public class AcceptWhenOverFirstVertexBehaviour implements EventBehaviour {

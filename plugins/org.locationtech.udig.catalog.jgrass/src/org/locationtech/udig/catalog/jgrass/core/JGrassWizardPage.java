@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * (C) HydroloGIS - www.hydrologis.com 
  * (C) 2009 IBM Corporation and others.
  * 

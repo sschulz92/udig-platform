@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * https://locationtech.org/projects/technology.udig
  * (C) 2018, Eclipse Foundation
  *

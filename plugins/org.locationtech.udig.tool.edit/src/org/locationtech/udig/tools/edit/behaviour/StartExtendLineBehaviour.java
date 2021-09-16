@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2004, Refractions Research Inc.
  *
@@ -32,12 +33,17 @@ import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
  * Edit Mode is set to CREATING or CREATING_BACKWARD
- * <p>Requirements: * <ul> * <li>EventType==Released</li>
+ * <p>Requirements:
+ * <ul>
+ * <li>EventType==Released</li>
  * <li>CurrentShape != null</li>
  * <li>mouse is over end vertex</li>
  * <li>button1 was released</li>
  * <li>no buttons or modifiers down</li>
- * <li>mode == MODIFYING or NONE</li> * </ul> * </p> * </p>
+ * <li>mode == MODIFYING or NONE</li>
+ * </ul>
+ * </p>
+ * </p>
  * 
  * @author jones
  * @since 1.1.0

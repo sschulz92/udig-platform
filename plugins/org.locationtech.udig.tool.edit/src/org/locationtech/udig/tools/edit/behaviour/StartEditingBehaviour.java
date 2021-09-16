@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2004, Refractions Research Inc.
  *
@@ -31,14 +32,22 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 
 /**
  * Creates a new Geometry and feature
- * <p>Requirements: * <ul> * <li>current state is NONE</li>
+ * <p>Requirements:
+ * <ul>
+ * <li>current state is NONE</li>
  * <li>eventType is RELEASED</li>
  * <li>no modifiers</li>
  * <li>button1 released</li>
  * <li>no buttons down</li>
- * </ul> * </p> * <p>Action: * <ul> * <li>Sets the currentGeom to be the default geom on the black board</li> * <li>Sets the state to CREATING</li>
+ * </ul>
+ * </p>
+ * <p>Action:
+ * <ul>
+ * <li>Sets the currentGeom to be the default geom on the black board</li>
+ * <li>Sets the state to CREATING</li>
  * <li>Adds a point to the geom</li>
- * </ul> * </p>
+ * </ul>
+ * </p>
  * @author jones
  * @since 1.1.0
  */

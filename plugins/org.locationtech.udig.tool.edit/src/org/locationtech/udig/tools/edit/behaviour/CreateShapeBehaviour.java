@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2004, Refractions Research Inc.
  *
@@ -39,12 +40,19 @@ import org.locationtech.jts.geom.LinearRing;
 import org.locationtech.jts.geom.MultiLineString;
 
 /**
- * <p>Requirements: * <ul> * <li>Mouse Dragged</li>
+ * <p>Requirements:
+ * <ul>
+ * <li>Mouse Dragged</li>
  * <li>CurrentState == NONE</li>
  * <li>Mouse button 1 down</li>
- * </ul> * </p> * <p>Action: * <ul> * <li>draws a shape as the mouse is dragged</li>
+ * </ul>
+ * </p>
+ * <p>Action:
+ * <ul>
+ * <li>draws a shape as the mouse is dragged</li>
  * <li>creates a feature on the current layer when mouse is released</li>
- * </ul> * </p>
+ * </ul>
+ * </p>
  * @author jones
  * @since 1.1.0
  */

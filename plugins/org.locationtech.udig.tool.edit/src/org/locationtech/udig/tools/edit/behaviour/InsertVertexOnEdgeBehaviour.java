@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2004, Refractions Research Inc.
  *
@@ -29,14 +30,19 @@ import org.locationtech.jts.geom.Polygon;
 /**
  * Inserts a vertex at the location where the mouse event occurred
  * 
- * <p>Requirements: * <ul> * <li>event type == RELEASE</li>
+ * <p>Requirements:
+ * <ul>
+ * <li>event type == RELEASE</li>
  * <li>edit state == MODIFYING </li>
  * <li>no modifiers down</li>
  * <li>button 1 released</li>
  * <li>no buttons down</li>
  * <li>current shape and geom are set</li>
  * <li>mouse is not over a vertex of the current shape</li>
- * <li>mouse is over an edge </li> * </ul> * </p> * @author jones
+ * <li>mouse is over an edge </li>
+ * </ul>
+ * </p>
+ * @author jones
  * @since 1.1.0
  */
 public class InsertVertexOnEdgeBehaviour implements EventBehaviour {

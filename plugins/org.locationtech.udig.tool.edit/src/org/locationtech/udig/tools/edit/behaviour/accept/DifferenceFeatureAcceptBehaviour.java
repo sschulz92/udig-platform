@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2004, Refractions Research Inc.
  *
@@ -19,9 +20,14 @@ import org.locationtech.udig.tools.edit.commands.DifferenceFeatureCommand;
 /**
  * Executes the {@link DifferenceFeatureCommand}
  * 
- * <p>Requirements: * <ul> * <li>currentShape is not null</li>
+ * <p>Requirements:
+ * <ul>
+ * <li>currentShape is not null</li>
  * <li>edit blackboard has a geometry that is not the currentShape</li>
- * <li></li> * </ul> * </p> * @author jones
+ * <li></li>
+ * </ul>
+ * </p>
+ * @author jones
  * @since 1.1.0
  */
 public class DifferenceFeatureAcceptBehaviour implements Behaviour {

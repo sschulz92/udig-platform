@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2004, Refractions Research Inc.
  *
@@ -38,16 +39,23 @@ import org.locationtech.udig.tools.edit.support.Selection;
  * <li>sets Edit State to Modified</li>
  * </ul>
  *
- * <p>Requirements: * <ul> * <li>eventType RELEASED</li>
+ * <p>Requirements:
+ * <ul>
+ * <li>eventType RELEASED</li>
  * <li>handler has currentGeom</li>
  * <li>edit state is modified or NONE</li>
  * <li>only one of ctrl or shift is</li>
  * <li>Mouse is over a vertex</li>
- *</ul> * </p> * <p>Action: * <ul> * <li>if no modifiers clears selection and adds selected vertex</li>
+ *</ul>
+ * </p>
+ * <p>Action:
+ * <ul>
+ * <li>if no modifiers clears selection and adds selected vertex</li>
  * <li>if shift down adds selected vertex</li>
  * <li>if ctrl down removes vertex if in selection or adds selected vertex if not</li>
  * <li>sets Edit State to Modified</li>
- *</ul> * </p>
+ *</ul>
+ * </p>
  * @author jones
  * @since 1.1.0
  */

@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2004, Refractions Research Inc.
  *
@@ -28,14 +29,22 @@ import org.locationtech.udig.tools.edit.support.PrimitiveShape;
 import org.locationtech.udig.tools.edit.support.ShapeType;
 
 /**
- * <p>Requirements: * <ul>
+ * <p>Requirements:
+ * <ul>
  * <li>EventType==RELEASED</li>
  * <li>Current State == Creating</li>
  * <li>Current Shape != null</li>
  * <li>Button1 is released</li>
  * <li>no buttons are down</li>
  * <li>no modifiers are down</li>
- * <li>current geom is a polygon or unknown</li> * </ul> * </p> * <p>Action: * <ul> * <li></li> * </ul> * </p>
+ * <li>current geom is a polygon or unknown</li>
+ * </ul>
+ * </p>
+ * <p>Action:
+ * <ul>
+ * <li></li>
+ * </ul>
+ * </p>
  * @author jones
  * @since 1.1.0
  */

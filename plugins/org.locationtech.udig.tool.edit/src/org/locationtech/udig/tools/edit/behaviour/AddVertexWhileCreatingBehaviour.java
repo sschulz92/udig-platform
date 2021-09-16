@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2004, Refractions Research Inc.
  *
@@ -32,13 +33,18 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 /**
  * Add a vertex as the last vertex in the shape
  * 
- * <p>Requirements: * <ul> * <li>event type == RELEASE</li> * <li>edit state == CREATING </li>
+ * <p>Requirements:
+ * <ul>
+ * <li>event type == RELEASE</li>
+ * <li>edit state == CREATING </li>
  * <li>no modifiers down</li>
  * <li>button 1 released</li>
  * <li>no buttons down</li>
  * <li>current shape and geometry are set</li>
  * <li>mouse is not over a vertex of the current shape</li>
- * </ul> * </p> * @author Jesse
+ * </ul>
+ * </p>
+ * @author Jesse
  * @since 1.1.0
  */
 public class AddVertexWhileCreatingBehaviour implements EventBehaviour {

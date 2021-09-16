@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (c) 2010, Vienna City
  * 
