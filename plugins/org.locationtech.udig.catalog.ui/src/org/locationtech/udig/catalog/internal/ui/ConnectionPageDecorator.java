@@ -1,7 +1,7 @@
-/*
- *    uDig - User Friendly Desktop Internet GIS client
- *    http://udig.refractions.net
- *    (C) 2012, Refractions Research Inc.
+/**
+ * uDig - User Friendly Desktop Internet GIS client
+ * http://udig.refractions.net
+ * (C) 2012, Refractions Research Inc.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -18,6 +18,13 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.jface.wizard.IWizard;
+import org.eclipse.jface.wizard.IWizardPage;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.geotools.data.DataSourceException;
 import org.locationtech.udig.catalog.IService;
 import org.locationtech.udig.catalog.ui.AbstractUDIGImportPage;
 import org.locationtech.udig.catalog.ui.UDIGConnectionPage;
@@ -30,28 +37,17 @@ import org.locationtech.udig.catalog.ui.workflow.WorkflowWizardDialog;
 import org.locationtech.udig.catalog.ui.workflow.WorkflowWizardPage;
 import org.locationtech.udig.ui.PlatformGIS;
 
-import org.eclipse.jface.wizard.IWizard;
-import org.eclipse.jface.wizard.IWizardPage;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
-import org.geotools.data.DataSourceException;
-
 /**
- * Wraps around a UDIGConnectionPage providing a list of services or resources
- * selected.
+ * Wraps around a UDIGConnectionPage providing a list of services or resources selected.
  * <p>
- * This is used to smoothly transition to adding layers to a map when
- * the page is used as part of the Add Layer wizard.
- * 
+ * This is used to smoothly transition to adding layers to a map when the page is used as part of
+ * the Add Layer wizard.
+ *
  * @see UDIGConnectionPage
  * @since 1.0
  */
 public class ConnectionPageDecorator extends WorkflowWizardPage
-        implements
-            UDIGConnectionPage,
-            Listener {
+        implements UDIGConnectionPage, Listener {
 
     /** underlying import page * */
     UDIGConnectionPage page;
@@ -60,14 +56,15 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
         super("connection"); // set name later //$NON-NLS-1$
     }
 
+    @Override
+    @Deprecated
     public Map<String, Serializable> getParams() {
         return page.getParams();
     }
 
     @Override
-    public void setState( State state ) {
+    public void setState(State state) {
         super.setState(state);
-        
 
         UDIGConnectionPage tmp;
 
@@ -77,23 +74,23 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
             EndConnectionState endConnectionState = (EndConnectionState) intermediateState
                     .getEndState();
 
-            tmp = endConnectionState.getConnectionFactory().createConnectionPage(
-                    intermediateState.getIndex());
+            tmp = endConnectionState.getConnectionFactory()
+                    .createConnectionPage(intermediateState.getIndex());
         } else {
             EndConnectionState endConnectionState = (EndConnectionState) state;
             tmp = (endConnectionState).getConnectionFactory().createConnectionPage(
                     endConnectionState.getDescriptor().getWizardPageCount() - 1);
         }
-        
+
         this.page = tmp;
-        
+
         // we do the instance check to allow the connection page to
         // optionally extend DataPipelinePage.
         if (tmp instanceof WorkflowWizardPage) {
             ((WorkflowWizardPage) tmp).setState(state);
         }
-        
-        if( tmp.getWizard()!=getWizard() ){
+
+        if (tmp.getWizard() != getWizard()) {
             tmp.setWizard(getWizard());
         }
 
@@ -114,9 +111,10 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
 
     }
 
-    public void createControl( Composite parent ) { 
+    @Override
+    public void createControl(Composite parent) {
         page.createControl(parent);
-        
+
         setControl(page.getControl());
     }
 
@@ -126,48 +124,48 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
         setControl(null);
     }
 
-      @Override
+    @Override
     public boolean isPageComplete() {
-          if( page == null ){
-              return false; // not ready yet
-          }
-          boolean complete = page.isPageComplete();
-          if (complete && getState() instanceof EndConnectionState) {
-              // set some context for the connection state
-              EndConnectionState state = (EndConnectionState) getState();
-              state.setServices(page.getServices());
-              if (page instanceof AbstractUDIGImportPage) {
-                  AbstractUDIGImportPage importPage = (AbstractUDIGImportPage) page;
-                  state.setSelectedResources(importPage.getResourceIDs());
-              }
-          }
+        if (page == null) {
+            return false; // not ready yet
+        }
+        boolean complete = page.isPageComplete();
+        if (complete && getState() instanceof EndConnectionState) {
+            // set some context for the connection state
+            EndConnectionState state = (EndConnectionState) getState();
+            state.setServices(page.getServices());
+            if (page instanceof AbstractUDIGImportPage) {
+                AbstractUDIGImportPage importPage = (AbstractUDIGImportPage) page;
+                state.setSelectedResources(importPage.getResourceIDs());
+            }
+        }
         return complete;
     }
-      
-     @Override
+
+    @Override
     public boolean leavingPage() {
-         if (getState() instanceof EndConnectionState) {
-             // set some context for the connection state
-             EndConnectionState state = (EndConnectionState) getState();
-             Collection<IService> services = page.getServices();
-			 state.setServices(services);
-			 
-             if (page instanceof AbstractUDIGImportPage) {
-                 AbstractUDIGImportPage importPage = (AbstractUDIGImportPage) page;
-                 Collection<URL> resourceIDs = importPage.getResourceIDs();
-                 
-				 state.setSelectedResources(resourceIDs);
-             }
-         }
-         
-         if (page instanceof AbstractUDIGImportPage) {
-             AbstractUDIGImportPage importPage = (AbstractUDIGImportPage) page;
-             if (!importPage.leavingPage()) {
-                 return false;
-             }
-         }
-         
-         return true;
+        if (getState() instanceof EndConnectionState) {
+            // set some context for the connection state
+            EndConnectionState state = (EndConnectionState) getState();
+            Collection<IService> services = page.getServices();
+            state.setServices(services);
+
+            if (page instanceof AbstractUDIGImportPage) {
+                AbstractUDIGImportPage importPage = (AbstractUDIGImportPage) page;
+                Collection<URL> resourceIDs = importPage.getResourceIDs();
+
+                state.setSelectedResources(resourceIDs);
+            }
+        }
+
+        if (page instanceof AbstractUDIGImportPage) {
+            AbstractUDIGImportPage importPage = (AbstractUDIGImportPage) page;
+            if (!importPage.leavingPage()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     @Override
@@ -196,25 +194,30 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
     }
 
     @Override
-    public void setWizard( IWizard newWizard ) {
+    public void setWizard(IWizard newWizard) {
         super.setWizard(newWizard);
     }
 
-    public void forward( State current, State prev ) {
+    @Override
+    public void forward(State current, State prev) {
     }
 
-    public void backward( State current, State next ) {
+    @Override
+    public void backward(State current, State next) {
     }
 
-    public void statePassed( State state ) {
-        PlatformGIS.syncInDisplayThread(new Runnable(){
+    @Override
+    public void statePassed(State state) {
+        PlatformGIS.syncInDisplayThread(new Runnable() {
+            @Override
             public void run() {
                 setErrorMessage(null);
             }
         });
     }
 
-    public void stateFailed( State state ) {
+    @Override
+    public void stateFailed(State state) {
         if (state instanceof EndConnectionState) {
             EndConnectionState connectionState = (EndConnectionState) state;
             Map<IService, Throwable> errors = connectionState.getErrors();
@@ -224,7 +227,8 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
                 Throwable t = entry.getValue();
                 final String message = formatException(entry.getKey(), t);
                 if (Display.getCurrent() == null) {
-                    Display.getDefault().asyncExec(new Runnable(){
+                    Display.getDefault().asyncExec(new Runnable() {
+                        @Override
                         public void run() {
                             page.setErrorMessage(message);
                         }
@@ -236,7 +240,7 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
         }
     }
 
-    private String formatException( IService key, Throwable t ) {
+    private String formatException(IService key, Throwable t) {
         if (t instanceof UnknownHostException) {
             return key.getIdentifier().getHost() + Messages.ConnectionPage_illegalHost;
         }
@@ -250,11 +254,13 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
         return Messages.ConnectionPage_genericError;
     }
 
-    public void started( State first ) {
+    @Override
+    public void started(State first) {
 
     }
 
-    public void finished( State last ) {
+    @Override
+    public void finished(State last) {
         if (!(getContainer() instanceof WorkflowWizardDialog) && getContainer() != null) {
             getWizard().performFinish();
         }
@@ -276,8 +282,9 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
     public Control getControl() {
         return super.getControl();
     }
-        
-    public void setPreviousPage( IWizardPage page ) {
+
+    @Override
+    public void setPreviousPage(IWizardPage page) {
         super.setPreviousPage(page);
         IWizardPage previousPage = page;
         if (page instanceof ConnectionPageDecorator) {
@@ -286,14 +293,16 @@ public class ConnectionPageDecorator extends WorkflowWizardPage
         this.page.setPreviousPage(previousPage);
     }
 
+    @Override
     public Collection<URL> getResourceIDs() {
         return page.getResourceIDs();
     }
 
+    @Override
     public Collection<IService> getServices() {
         return page.getServices();
     }
-    
+
     @Override
     public State getState() {
         return super.getState();
