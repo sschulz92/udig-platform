@@ -1,4 +1,5 @@
-/* uDig - User Friendly Desktop Internet GIS client
+/**
+ * uDig - User Friendly Desktop Internet GIS client
  * http://udig.refractions.net
  * (C) 2012, Refractions Research Inc.
  *
@@ -19,55 +20,57 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
- * Dynamic ImageRegistry 
+ * Dynamic ImageRegistry
+ *
  * @author fgdrf
  */
 public abstract class AbstractUdigUIPlugin extends AbstractUIPlugin {
-    
+
     /**
      * the default Icon path to access images
      */
-    public static final String DEFAULT_ICON_PATH = "icons/";
+    public static final String DEFAULT_ICON_PATH = "icons/"; //$NON-NLS-1$
 
     /**
      * The constructor.
      */
-  	public AbstractUdigUIPlugin() {
-  	    super();
-  	}
-  	
-  	public ImageDescriptor getImageDescriptor(String symbolicName) {
-  		
-  		ImageRegistry imageRegistry = getImageRegistry();
-  		ImageDescriptor imageDescriptor = imageRegistry.getDescriptor(symbolicName);
-  		if (imageDescriptor == null) {
-  			// create it from Path and add it to registry
-  			registerImage(getIconPath(), symbolicName);
-  		}
-  		return imageRegistry.getDescriptor(symbolicName);
-  	}
+    public AbstractUdigUIPlugin() {
+        super();
+    }
 
-  	public Image getImage(String symbolicName) {
-  		ImageRegistry imageRegistry = getImageRegistry();
-  		Image image = imageRegistry.get(symbolicName);
-  		if (image == null) {
-  			// create it from Path and add it to registry
-  			registerImage(getIconPath(), symbolicName);
-  		}
-  		return imageRegistry.get(symbolicName);
-  	}
-  	
-  	private void registerImage(IPath iconPath, String symbolicName) {
-  		URL imageUrl = FileLocator.find(getBundle(), iconPath.append(symbolicName), null);
+    public ImageDescriptor getImageDescriptor(String symbolicName) {
+
+        ImageRegistry imageRegistry = getImageRegistry();
+        ImageDescriptor imageDescriptor = imageRegistry.getDescriptor(symbolicName);
+        if (imageDescriptor == null) {
+            // create it from Path and add it to registry
+            registerImage(getIconPath(), symbolicName);
+        }
+        return imageRegistry.getDescriptor(symbolicName);
+    }
+
+    public Image getImage(String symbolicName) {
+        ImageRegistry imageRegistry = getImageRegistry();
+        Image image = imageRegistry.get(symbolicName);
+        if (image == null) {
+            // create it from Path and add it to registry
+            registerImage(getIconPath(), symbolicName);
+        }
+        return imageRegistry.get(symbolicName);
+    }
+
+    private void registerImage(IPath iconPath, String symbolicName) {
+        URL imageUrl = FileLocator.find(getBundle(), iconPath.append(symbolicName), null);
         ImageDescriptor image = ImageDescriptor.createFromURL(imageUrl);
         ImageRegistry imageRegistry = getImageRegistry();
-        
+
         imageRegistry.put(symbolicName, image);
-	}
-  	
-  	/**
+    }
+
+    /**
      * Returns the shared instance.
+     *
      * @return {@link AbstractUdigUIPlugin} singleton
      */
-	public abstract IPath getIconPath();
+    public abstract IPath getIconPath();
 }
